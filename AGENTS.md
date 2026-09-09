@@ -62,5 +62,7 @@ Use the following order for repository changes and reviews:
 5. Check C++11, C++14, and C++17 compatibility, installation consumers, and ODR tests when public headers change.
 6. Treat MQL5 scripts as manual tests unless a MetaEditor compiler is available. Manual scripts report an aggregate pass/fail result.
 7. Preserve convenient public aliases. Move an alias to an opt-in legacy header only when its legacy status is confirmed by history and documentation.
-8. Keep Doxygen source and generated-site inputs consistent with the project version. Do not commit placeholder versions.
+8. Keep documentation source templates version-neutral. Do not commit generated
+   documentation version substitutions; publish.yaml injects the effective version
+   during publication.
 9. Finish with `git diff --check`, a status review, and a concise summary of remaining risks or unverified platform-specific checks.
