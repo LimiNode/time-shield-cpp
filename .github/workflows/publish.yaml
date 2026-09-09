@@ -17,17 +17,23 @@ jobs:
         with:
           submodules: "true"
           fetch-depth: 0
-      - name: Inject version into documentation sources
+      - name: Inject documentation version
         run: |
+          CMAKE_VERSION=$(sed -nE 's/^project\(TimeShield VERSION ([^ ]+) .*/\1/p' CMakeLists.txt)
+          test -n "$CMAKE_VERSION" || { echo "Unable to determine CMake project version"; exit 1; }
           if [ "$GITHUB_REF_TYPE" = "tag" ]; then
             VERSION="${GITHUB_REF_NAME#v}"
+            if [ "$VERSION" != "$CMAKE_VERSION" ]; then
+              echo "Tag version $VERSION does not match CMake project version $CMAKE_VERSION"
+              exit 1
+            fi
           else
-            VERSION=$(sed -nE 's/^project\(TimeShield VERSION ([^ ]+) .*/\1/p' CMakeLists.txt)
+            VERSION="$CMAKE_VERSION"
           fi
           test -n "$VERSION" || { echo "Unable to determine project version"; exit 1; }
-          echo "Using version: $VERSION"
+          echo "Documentation version: $VERSION"
           test -f docs/mainpage.md || { echo "mainpage.md not found!"; exit 1; }
-          sed -i -E "s/^(\*\*Version:\*\* ).*/\1\`$VERSION\`/" docs/mainpage.md
+          sed -i "s/VERSION_PLACEHOLDER/$VERSION/g" docs/mainpage.md
           sed -i -E "s/^PROJECT_NUMBER[[:space:]]*=.*/PROJECT_NUMBER         = $VERSION/" Doxyfile
       - name: Generate Documentation
         uses: mattnotmitt/doxygen-action@edge

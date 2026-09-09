@@ -1,6 +1,6 @@
 \mainpage Time Shield Library
 
-**Version:** 1.0.6
+**Version:** `VERSION_PLACEHOLDER`
 
 \section intro_sec Introduction
 
