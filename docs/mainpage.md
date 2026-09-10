@@ -48,6 +48,18 @@ the target platform and toggling optional modules:
   confirmed renamed conversion helpers when defined before including Time Shield
   headers.
 
+The public API uses three stability tiers:
+
+- Canonical API contains the primary documented types and functions.
+- Convenience API contains supported alternative names and short aliases.
+- Legacy compatibility API contains historically renamed or superseded names
+  with an established replacement and requires explicit opt-in when disabled
+  from the default surface.
+
+Short or alternative names are not legacy merely because a canonical equivalent
+exists. Legacy status requires repository history, documentation, an explicit
+rename, or an established replacement.
+
 All public symbols are declared inside the `time_shield` namespace.
 
 \section invariants_sec API Invariants

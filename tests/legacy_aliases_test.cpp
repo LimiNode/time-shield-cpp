@@ -18,7 +18,19 @@ int main() {
     TIME_SHIELD_TEST_CHECK(time_shield::get_year_ms<>(timestamp_ms) == 2024);
     TIME_SHIELD_TEST_CHECK(time_shield::get_weekday_from_date<>(date) == time_shield::SUN);
     TIME_SHIELD_TEST_CHECK(time_shield::get_weekday_from_ts<>(timestamp) == time_shield::SUN);
+    const int integral_timestamp = static_cast<int>(timestamp);
+    TIME_SHIELD_TEST_CHECK(time_shield::get_weekday_from_ts<>(integral_timestamp) == time_shield::SUN);
     TIME_SHIELD_TEST_CHECK(time_shield::get_weekday_from_ts_ms<>(timestamp_ms) == time_shield::SUN);
+    TIME_SHIELD_TEST_CHECK(time_shield::next_day_unix_day(0) == time_shield::SEC_PER_DAY);
+    TIME_SHIELD_TEST_CHECK(time_shield::next_day_unixday(0) == time_shield::SEC_PER_DAY);
+    TIME_SHIELD_TEST_CHECK(time_shield::next_day_unix_day_ms(0) == time_shield::MS_PER_DAY);
+    TIME_SHIELD_TEST_CHECK(time_shield::next_day_unixday_ms(0) == time_shield::MS_PER_DAY);
+    TIME_SHIELD_TEST_CHECK(time_shield::gregorian_to_jd(2.5, 5, 2024)
+                           == time_shield::gregorian_ymd_to_jd(2024, 5, 2, 12, 0));
+    TIME_SHIELD_TEST_CHECK(time_shield::gregorian_to_jd(2U, 5U, 2024U, 12U, 0U, 0U, 0U)
+                           == time_shield::gregorian_ymd_to_jd(2024, 5, 2, 12, 0));
+    TIME_SHIELD_TEST_CHECK(time_shield::gregorian_to_jdn(2U, 5U, 2024U)
+                           == time_shield::gregorian_ymd_to_jdn(2024, 5, 2));
 
     return 0;
 }

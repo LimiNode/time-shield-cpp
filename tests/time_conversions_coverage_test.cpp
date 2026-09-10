@@ -1,3 +1,4 @@
+#define TIME_SHIELD_ENABLE_LEGACY_ALIASES
 #include <time_shield/time_conversions.hpp>
 #include <time_shield/time_unit_conversions.hpp>
 
@@ -260,8 +261,6 @@ int main() {
     TIME_SHIELD_TEST_CHECK(num_days_in_month_ts(sample_ts) == 30);
 
     TIME_SHIELD_TEST_CHECK(weekday_of_ts(day_start) == SUN);
-    TIME_SHIELD_TEST_CHECK(weekday_of_ts(day_start) == SUN);
-    TIME_SHIELD_TEST_CHECK(weekday_of_ts_ms(sec_to_ms(day_start)) == SUN);
     TIME_SHIELD_TEST_CHECK(weekday_of_ts_ms(sec_to_ms(day_start)) == SUN);
     TIME_SHIELD_TEST_CHECK(wd_ts(day_start) == SUN);
     TIME_SHIELD_TEST_CHECK(wd_ms(sec_to_ms(day_start)) == SUN);

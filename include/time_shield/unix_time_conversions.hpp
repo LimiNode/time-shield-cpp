@@ -227,7 +227,7 @@ namespace time_shield {
     /// \tparam T The return type of the function (default is ts_t).
     /// \param unix_day The number of days since the UNIX epoch.
     /// \return The timestamp in seconds representing the beginning of the next UNIX day.
-    template<class T = ts_ms_t>
+    template<class T = ts_t>
     TIME_SHIELD_CONSTEXPR T start_of_next_day_from_unix_day(dse_t unix_day) noexcept {
         return unix_day * SEC_PER_DAY + SEC_PER_DAY;
     }

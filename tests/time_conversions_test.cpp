@@ -1,5 +1,9 @@
 #include <time_shield/time_conversions.hpp>
 #include "test_assert.hpp"
+#include <type_traits>
+
+static_assert(std::is_same<decltype(time_shield::start_of_next_day_from_unix_day(0)), time_shield::ts_t>::value,
+              "seconds next-day conversion must default to ts_t");
 
 /// \brief Basic checks for time conversion helpers.
 int main() {

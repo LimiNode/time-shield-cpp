@@ -52,10 +52,10 @@ int main() {
     const mjd_t mjd_epoch = ts_to_mjd(static_cast<ts_t>(0));
     TIME_SHIELD_TEST_CHECK(std::fabs(mjd_epoch - 40587.0) < epsilon);
 
-    const jd_t jd_year2000 = gregorian_to_jd(1U, 1U, 2000U, 12U, 0U, 0U, 0U);
+    const jd_t jd_year2000 = gregorian_ymd_to_jd(2000, 1, 1, 12, 0, 0, 0);
     TIME_SHIELD_TEST_CHECK(std::fabs(jd_year2000 - 2451545.0) < epsilon);
 
-    const jdn_t jdn_unix_epoch = gregorian_to_jdn(1U, 1U, 1970U);
+    const jdn_t jdn_unix_epoch = gregorian_ymd_to_jdn(1970, 1, 1);
     TIME_SHIELD_TEST_CHECK(jdn_unix_epoch == static_cast<jdn_t>(2440588));
 
     const double phase_epoch = moon_phase(static_cast<fts_t>(0));

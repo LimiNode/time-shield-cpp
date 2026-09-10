@@ -154,20 +154,6 @@ namespace time_shield {
         return start_of_next_day_from_unix_day(unix_day);
     }
 
-    /// \brief Alias for start_of_next_day_from_unix_day function.
-    /// \copydoc start_of_next_day_from_unix_day
-    template<class T = ts_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unix_day(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day(unix_day);
-    }
-
-    /// \brief Alias for start_of_next_day_from_unix_day function.
-    /// \copydoc start_of_next_day_from_unix_day
-    template<class T = ts_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unixday(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day(unix_day);
-    }
-    
 //------------------------------------------------------------------------------
 
     /// \brief Alias for start_of_next_day_from_unix_day_ms function.
@@ -177,20 +163,6 @@ namespace time_shield {
         return start_of_next_day_from_unix_day_ms(unix_day);
     }
 
-    /// \brief Alias for start_of_next_day_from_unix_day_ms function.
-    /// \copydoc start_of_next_day_from_unix_day_ms
-    template<class T = ts_ms_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unix_day_ms(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day_ms(unix_day);
-    }
-
-    /// \brief Alias for start_of_next_day_from_unix_day_ms function.
-    /// \copydoc start_of_next_day_from_unix_day_ms
-    template<class T = ts_ms_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unixday_ms(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day_ms(unix_day);
-    }
-    
 //------------------------------------------------------------------------------
 
     /// \brief Alias for min_since_epoch function.
