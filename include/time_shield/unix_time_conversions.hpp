@@ -185,10 +185,10 @@ namespace time_shield {
     /// Converts a number of days since the UNIX epoch (January 1, 1970) to the corresponding timestamp
     /// in milliseconds at the start of the specified day.
     ///
-    /// \tparam T The return type of the function (default is ts_t).
+    /// \tparam T The return type of the function (default is ts_ms_t).
     /// \param unix_day Number of days since the UNIX epoch.
     /// \return The timestamp in milliseconds representing the beginning of the specified UNIX day.
-    template<class T = ts_t>
+    template<class T = ts_ms_t>
     TIME_SHIELD_CONSTEXPR T unix_day_to_ts_ms(dse_t unix_day) noexcept {
         return unix_day * MS_PER_DAY;
     }
