@@ -1002,20 +1002,6 @@ namespace time_shield {
         return weekday_of_ts<T>(ms_to_sec<ts_t>(ts_ms));
     }
 
-    /// \brief Alias for weekday_of_ts.
-    /// \copydoc weekday_of_ts
-    template<class T = Weekday>
-    TIME_SHIELD_CONSTEXPR T get_weekday_from_ts(ts_t ts) noexcept {
-        return weekday_of_ts<T>(ts);
-    }
-
-    /// \brief Alias for weekday_of_ts_ms.
-    /// \copydoc weekday_of_ts_ms
-    template<class T = Weekday>
-    TIME_SHIELD_CONSTEXPR T get_weekday_from_ts_ms(ts_ms_t ts_ms) {
-        return weekday_of_ts_ms<T>(ts_ms);
-    }
-
     /// \brief Get the timestamp at the start of the current month.
     ///
     /// This function returns the timestamp at the start of the current month,

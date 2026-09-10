@@ -7,7 +7,7 @@ int main() {
     const time_shield::Weekday weekday = time_shield::weekday_of_ts(ts);
     const time_shield::Weekday weekday_ms = time_shield::weekday_of_ts_ms(ts_ms);
     const time_shield::Weekday weekday_alias = time_shield::day_of_week<>(ts);
-    const time_shield::Weekday weekday_alias_2 = time_shield::get_weekday_from_ts<>(ts);
+    const time_shield::Weekday weekday_alias_2 = time_shield::wd_ts<>(ts);
 
     const time_shield::ts_ms_t from_components = time_shield::to_timestamp_ms(2024, 1, 2, 3, 4, 5, 6);
     const time_shield::fts_t floating_alias = time_shield::to_fts(2024, 1, 2, 3, 4, 5, 6);

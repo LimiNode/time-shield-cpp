@@ -44,6 +44,10 @@ the target platform and toggling optional modules:
 - `TIME_SHIELD_HAS_WINSOCK` — WinSock availability.
 - `TIME_SHIELD_ENABLE_NTP_CLIENT` — builds the NTP client when set to `1`.
 
+- `TIME_SHIELD_ENABLE_LEGACY_ALIASES` enables compatibility aliases for
+  confirmed renamed conversion helpers when defined before including Time Shield
+  headers.
+
 All public symbols are declared inside the `time_shield` namespace.
 
 \section invariants_sec API Invariants

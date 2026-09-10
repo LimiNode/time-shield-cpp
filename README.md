@@ -91,6 +91,9 @@ library and report platform capabilities:
 - `TIME_SHIELD_HAS_WINSOCK` — set when WinSock APIs are available.
 - `TIME_SHIELD_ENABLE_NTP_CLIENT` — enables the optional `NtpClient` module
   (defaults to `1` on supported platforms).
+- `TIME_SHIELD_ENABLE_LEGACY_ALIASES` enables compatibility aliases for
+  confirmed renamed conversion helpers. Define it before including Time Shield
+  headers; it is disabled by default.
 
 C++ and MQL5 public headers place their declarations inside the `time_shield`
 namespace. Use `time_shield::` or `using namespace time_shield;` to access that

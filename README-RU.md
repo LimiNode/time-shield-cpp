@@ -62,6 +62,9 @@ bool monday = is_workday(now);
 - `TIME_SHIELD_PLATFORM_WINDOWS` / `TIME_SHIELD_PLATFORM_UNIX` — определение целевой платформы.
 - `TIME_SHIELD_HAS_WINSOCK` — наличие WinSock API.
 - `TIME_SHIELD_ENABLE_NTP_CLIENT` — включает модуль `NtpClient` (по умолчанию `1` на поддерживаемых платформах).
+- `TIME_SHIELD_ENABLE_LEGACY_ALIASES` — включает алиасы для подтверждённо
+  переименованных функций преобразования. Макрос определяется до включения
+  заголовков Time Shield и по умолчанию выключен.
 
 Все заголовки библиотеки используют пространство имён `time_shield`. Для доступа к API можно писать `time_shield::` или подключать `using namespace time_shield;`.
 

@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Corrected OA date conversions to align with Excel semantics and related edge cases.
 - Hardened time boundary and rounding behavior, including overflow-safe millisecond conversions and related tests.
 - Corrected `MIN_PER_30_DAY` and aligned MQL5 timestamp range constants with the C++ API.
+- Moved confirmed renamed conversion aliases behind the opt-in `TIME_SHIELD_ENABLE_LEGACY_ALIASES` macro.
 - Expanded timezone and NTP coverage and finalized recent timezone conversion support and NTP-facing documentation for consumers.
 
 ## [v1.0.5] - 2025-12-22
