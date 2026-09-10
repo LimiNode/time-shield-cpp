@@ -50,3 +50,19 @@ Header guard rules:
   `TIME_SHIELD_MQL5_HEADER_<PATH>_<FILE>_<EXT>_INCLUDED`.
 - Do not use guard names that start with an underscore, start with an underscore
   followed by an uppercase letter, or contain a double underscore.
+
+## Agent execution checklist
+
+Use the following order for repository changes and reviews:
+
+1. Inspect repository guidance and the current working tree before editing.
+2. Review code, tests, build configuration, public documentation, and release metadata as separate concerns.
+3. Build with CMake and the `MinGW Makefiles` generator. Keep build and test directories under `tmp/agent-work/`.
+4. Run CTest in both Debug and Release configurations. Runtime test checks must remain active in Release builds.
+5. Check C++11, C++14, and C++17 compatibility, installation consumers, and ODR tests when public headers change.
+6. Treat MQL5 scripts as manual tests unless a MetaEditor compiler is available. Manual scripts report an aggregate pass/fail result.
+7. Preserve convenient public aliases. Move an alias to an opt-in legacy header only when its legacy status is confirmed by history and documentation.
+8. Keep documentation source templates version-neutral. Do not commit generated
+   documentation version substitutions; publish.yaml injects the effective version
+   during publication.
+9. Finish with `git diff --check`, a status review, and a concise summary of remaining risks or unverified platform-specific checks.

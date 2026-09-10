@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.0.6] - 2026-04-23
-- Added `ZonedClock` with reusable named-zone and fixed-offset local-time helpers and clarified timezone semantics.
+## [v1.0.6] - Unreleased
+- Added `ZonedClock` with reusable named-zone and fixed-offset local-time helpers, including explicit resolution of ambiguous and nonexistent local times.
+- Added an MQL4 `TimeShield` facade and aligned MQL4/MQL5 umbrella-header compatibility.
 - Completed ISO week-date parsing support and formatter/parser round-trip coverage.
 - Added timeframe parsing helpers for trading and engineering strings in C++ and MQL5, with docs, examples, and tests.
 - Split Julian conversions into a dedicated header while preserving the public include surface.
@@ -12,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Restored C++11 `constexpr` compatibility in affected header-owned APIs.
 - Corrected OA date conversions to align with Excel semantics and related edge cases.
 - Hardened time boundary and rounding behavior, including overflow-safe millisecond conversions and related tests.
+- Corrected `MIN_PER_30_DAY` and aligned MQL5 timestamp range constants with the C++ API.
 - Expanded timezone and NTP coverage and finalized recent timezone conversion support and NTP-facing documentation for consumers.
 
 ## [v1.0.5] - 2025-12-22
