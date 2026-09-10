@@ -33,8 +33,25 @@ jobs:
           test -n "$VERSION" || { echo "Unable to determine project version"; exit 1; }
           echo "Documentation version: $VERSION"
           test -f docs/mainpage.md || { echo "mainpage.md not found!"; exit 1; }
+          test -f Doxyfile || { echo "Doxyfile not found!"; exit 1; }
+          grep -Fq "VERSION_PLACEHOLDER" docs/mainpage.md || {
+            echo "Version placeholder not found in mainpage.md"
+            exit 1
+          }
+          grep -Eq '^PROJECT_NUMBER[[:space:]]*=[[:space:]]*$' Doxyfile || {
+            echo "Version-neutral PROJECT_NUMBER not found in Doxyfile"
+            exit 1
+          }
           sed -i "s/VERSION_PLACEHOLDER/$VERSION/g" docs/mainpage.md
           sed -i -E "s/^PROJECT_NUMBER[[:space:]]*=.*/PROJECT_NUMBER         = $VERSION/" Doxyfile
+          if grep -Fq "VERSION_PLACEHOLDER" docs/mainpage.md; then
+            echo "Version placeholder was not replaced"
+            exit 1
+          fi
+          grep -Fxq "PROJECT_NUMBER         = $VERSION" Doxyfile || {
+            echo "Doxygen PROJECT_NUMBER was not updated"
+            exit 1
+          }
       - name: Generate Documentation
         uses: mattnotmitt/doxygen-action@edge
       - name: Publish generated content to GitHub Pages
