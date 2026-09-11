@@ -161,3 +161,22 @@ jobs:
             cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=11
       - name: Build pkg-config consumer without NTP
         run: cmake --build build-pkg-config
+
+  pkg-config-multiarch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure with multiarch library directory
+        run: cmake -S . -B build -DTIME_SHIELD_CPP_BUILD_TESTS=OFF -DCMAKE_INSTALL_LIBDIR=lib/x86_64-linux-gnu
+      - name: Build and install
+        run: cmake --build build && cmake --install build --prefix install
+      - name: Verify relocatable pkg-config prefix
+        run: |
+          export PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/x86_64-linux-gnu/pkgconfig"
+          test "$(pkg-config --variable=prefix time-shield)" = "${{ github.workspace }}/install"
+      - name: Configure pkg-config consumer
+        run: |
+          PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/x86_64-linux-gnu/pkgconfig" \
+            cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=11
+      - name: Build pkg-config consumer
+        run: cmake --build build-pkg-config

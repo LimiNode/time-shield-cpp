@@ -1,4 +1,4 @@
-<!-- HTML header for doxygen 1.11.0-->
+<!-- HTML header for doxygen 1.12.0 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="$langISO">
 <head>
@@ -17,8 +17,12 @@
 <!--END DISABLE_INDEX-->
 <script type="text/javascript" src="$relpath^jquery.js"></script>
 <script type="text/javascript" src="$relpath^dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="$relpath^clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
 <script type="text/javascript" src="$relpath^doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="$relpath^doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="$relpath^theme-toggle.js"></script>
 <script type="text/javascript">
 	DoxygenAwesomeDarkModeToggle.init()
 	DoxygenAwesomeParagraphLink.init()
@@ -26,6 +30,7 @@
 $treeview
 $search
 $mathjax
+$darkmode
 <link href="$relpath^$stylesheet" rel="stylesheet" type="text/css" />
 $extrastylesheet
 </head>
@@ -75,6 +80,7 @@ $extrastylesheet
   <!--END SEARCHENGINE-->
  </tbody>
 </table>
+<div id="time-shield-theme-toggle" aria-label="Color theme"></div>
 </div>
 <!--END TITLEAREA-->
 <!-- end header part -->

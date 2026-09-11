@@ -1425,7 +1425,10 @@ HTML_EXTRA_STYLESHEET  = .github/doxygen-awesome-css/doxygen-awesome.css \
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
 HTML_EXTRA_FILES       = .github/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-                         .github/doxygen-awesome-css/doxygen-awesome-paragraph-link.js
+                         .github/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+                         .github/doxygen-custom/theme-toggle.js
+
+HTML_COPY_CLIPBOARD    = YES
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
@@ -1793,7 +1796,7 @@ ENUM_VALUES_PER_LINE   = 4
 # Minimum value: 0, maximum value: 1500, default value: 250.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-TREEVIEW_WIDTH         = 250
+TREEVIEW_WIDTH         = 335
 
 # If the EXT_LINKS_IN_WINDOW option is set to YES, doxygen will open links to
 # external symbols imported via tag files in a separate window.

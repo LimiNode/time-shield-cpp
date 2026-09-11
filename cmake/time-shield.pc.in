@@ -1,4 +1,4 @@
-prefix=${pcfiledir}/../..
+prefix=${pcfiledir}/@TIME_SHIELD_PKG_CONFIG_PREFIX@
 includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
 
 Name: time-shield

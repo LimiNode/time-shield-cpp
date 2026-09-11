@@ -12,7 +12,21 @@ div.contents {
 }
 
 #titlearea {
+    position: relative;
     padding: 1.25rem 1.5rem;
+}
+
+#time-shield-theme-toggle {
+    position: absolute;
+    top: var(--spacing-medium);
+    right: var(--spacing-medium);
+    z-index: 2;
+    width: var(--searchbar-height);
+    height: var(--searchbar-height);
+}
+
+#time-shield-theme-toggle > doxygen-awesome-dark-mode-toggle {
+    margin: 0;
 }
 
 #projectbrief {
@@ -42,6 +56,14 @@ div.fragment {
 }
 
 @media screen and (min-width: 768px) {
+    #MSearchBox {
+        width: calc(var(--side-nav-fixed-width) - calc(2 * var(--spacing-medium))) !important;
+    }
+
+    #MSearchField {
+        width: calc(var(--side-nav-fixed-width) - calc(2 * var(--spacing-medium)) - 65px) !important;
+    }
+
     #top {
         height: var(--top-nav-height);
     }
