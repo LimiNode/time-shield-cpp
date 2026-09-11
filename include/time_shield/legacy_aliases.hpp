@@ -50,7 +50,7 @@ namespace time_shield {
 
     /// \brief Legacy alias for unix_day_to_ts_ms.
     /// \copydoc unix_day_to_ts_ms
-    template<class T = ts_ms_t>
+    template<class T = ts_t>
     TIME_SHIELD_CONSTEXPR T unix_day_to_timestamp_ms(dse_t unix_day) noexcept {
         return unix_day_to_ts_ms<T>(unix_day);
     }
@@ -78,7 +78,8 @@ namespace time_shield {
 
     /// \brief Legacy alias for weekday_of_date.
     /// \copydoc weekday_of_date
-    template<class T1 = Weekday, class T2>
+    template<class T1 = Weekday, class T2,
+             typename std::enable_if<std::is_class<T2>::value, int>::type = 0>
     TIME_SHIELD_CONSTEXPR T1 get_weekday_from_date(const T2& date) {
         return weekday_of_date<T1>(date);
     }
