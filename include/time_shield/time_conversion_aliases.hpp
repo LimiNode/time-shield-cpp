@@ -50,6 +50,14 @@ namespace time_shield {
     }
 
 
+    /// \brief Short alias for days_since_epoch.
+    /// \copydoc days_since_epoch
+    template<class T = dse_t>
+    TIME_SHIELD_CONSTEXPR T dse(ts_t ts = time_shield::ts()) noexcept {
+        return days_since_epoch<T>(ts);
+    }
+
+
     /// \brief Alias for days_since_epoch function.
     /// \copydoc days_since_epoch
     template<class T = dse_t>
@@ -84,6 +92,14 @@ namespace time_shield {
     }
 
 
+    /// \brief Short alias for days_since_epoch_ms.
+    /// \copydoc days_since_epoch_ms
+    template<class T = dse_t>
+    TIME_SHIELD_CONSTEXPR T dse_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
+        return days_since_epoch_ms<T>(t_ms);
+    }
+
+
     /// \brief Alias for days_since_epoch function.
     /// \copydoc days_since_epoch
     template<class T = dse_t>
@@ -108,6 +124,13 @@ namespace time_shield {
         return unix_day_to_ts<T>(unix_day);
     }
 
+    /// \brief Short alias for unix_day_to_ts.
+    /// \copydoc unix_day_to_ts
+    template<class T = ts_t>
+    TIME_SHIELD_CONSTEXPR T dse_to_ts(dse_t unix_day) noexcept {
+        return unix_day_to_ts<T>(unix_day);
+    }
+
     /// \brief Alias for unix_day_to_ts function.
     /// \copydoc unix_day_to_ts
     template<class T = ts_t>
@@ -129,6 +152,13 @@ namespace time_shield {
     template<class T = ts_t>
     TIME_SHIELD_CONSTEXPR T unixday_to_ts_ms(dse_t unix_day) noexcept {
         return unix_day_to_ts_ms(unix_day);
+    }
+
+    /// \brief Short alias for unix_day_to_ts_ms.
+    /// \copydoc unix_day_to_ts_ms
+    template<class T = ts_ms_t>
+    TIME_SHIELD_CONSTEXPR T dse_to_ts_ms(dse_t unix_day) noexcept {
+        return unix_day_to_ts_ms<T>(unix_day);
     }
 
     /// \brief Alias for unix_day_to_ts_ms function.

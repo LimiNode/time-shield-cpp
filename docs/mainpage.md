@@ -68,6 +68,8 @@ All public symbols are declared inside the `time_shield` namespace.
   microsecond precision available through conversions.
 - `fts_t` stores time as double precision seconds; conversions maintain
   microsecond accuracy.
+- `dse`, `dse_ms`, `dse_to_ts`, and `dse_to_ts_ms` provide concise aliases for
+  days-since-epoch conversions.
 - ISO8601 parsing assumes the proleptic Gregorian calendar without leap seconds.
 - Functions avoid throwing exceptions and use no dynamic memory internally;
   utilities returning `std::string` rely on the caller for allocations.

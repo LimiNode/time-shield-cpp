@@ -48,12 +48,14 @@ int main() {
     // unix_time_conversions and aliases
     const ts_t unix_day_two_ts = unix_day_to_ts(2);
     TIME_SHIELD_TEST_CHECK(unix_day_to_ts(2) == unix_day_two_ts);
+    TIME_SHIELD_TEST_CHECK(dse_to_ts(2) == unix_day_two_ts);
     TIME_SHIELD_TEST_CHECK(unixday_to_ts(2) == unix_day_two_ts);
     TIME_SHIELD_TEST_CHECK(uday_to_ts(2) == unix_day_two_ts);
     TIME_SHIELD_TEST_CHECK(start_of_day_from_unix_day(2) == unix_day_two_ts);
 
     const ts_ms_t unix_day_two_ms = unix_day_to_ts_ms(2);
     TIME_SHIELD_TEST_CHECK(unix_day_to_ts_ms(2) == unix_day_two_ms);
+    TIME_SHIELD_TEST_CHECK(dse_to_ts_ms(2) == unix_day_two_ms);
     TIME_SHIELD_TEST_CHECK(unixday_to_ts_ms(2) == unix_day_two_ms);
     TIME_SHIELD_TEST_CHECK(uday_to_ts_ms(2) == unix_day_two_ms);
     TIME_SHIELD_TEST_CHECK(start_of_day_from_unix_day_ms(2) == unix_day_two_ms);
@@ -71,6 +73,7 @@ int main() {
     TIME_SHIELD_TEST_CHECK(next_day_unixday_ms(0) == MS_PER_DAY);
 
     TIME_SHIELD_TEST_CHECK(days_since_epoch(SEC_PER_DAY) == 1);
+    TIME_SHIELD_TEST_CHECK(dse(SEC_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(get_unixday(SEC_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unix_day(SEC_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unixday(SEC_PER_DAY) == 1);
@@ -78,6 +81,7 @@ int main() {
     TIME_SHIELD_TEST_CHECK(days_since_epoch(SEC_PER_DAY) == 1);
 
     TIME_SHIELD_TEST_CHECK(days_since_epoch_ms(MS_PER_DAY) == 1);
+    TIME_SHIELD_TEST_CHECK(dse_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(get_unixday_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unix_day_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unixday_ms(MS_PER_DAY) == 1);

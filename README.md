@@ -115,6 +115,8 @@ constants because the MQL4 language does not provide namespaces.
 - `year_t` — signed 64-bit year.
 - `dse_t` / `unix_day_t` / `unixday_t` — count of days since 1970-01-01. The
   signedness of the type determines correctness for dates before the epoch.
+- `dse`, `dse_ms`, `dse_to_ts`, and `dse_to_ts_ms` provide concise convenience
+  names for days-since-epoch conversions.
 - ISO 8601 utilities use the proleptic Gregorian calendar and do not account
   for leap seconds.
 - Core conversions and “hot” functions aim for `noexcept` and no dynamic
