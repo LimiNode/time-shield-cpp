@@ -1,7 +1,7 @@
 //+------------------------------------------------------------------+
 //|                                                   TimeShield.mqh |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_MQH_INCLUDED
@@ -11,7 +11,7 @@
 /// \brief Main MQL5 header file for the Time Shield library.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 /// \defgroup mql5 MQL5 TimeShield API

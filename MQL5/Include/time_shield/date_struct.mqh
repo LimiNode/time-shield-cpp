@@ -2,7 +2,7 @@
 //|                                                  date_struct.mqh |
 //|                                Time Shield - MQL5 Date Structure |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_DATE_STRUCT_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_DATE_STRUCT_MQH_INCLUDED
@@ -15,7 +15,7 @@
 /// to create `DateStruct` instances for working with calendar dates in MQL5.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 namespace time_shield {

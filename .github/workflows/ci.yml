@@ -42,6 +42,12 @@ jobs:
         run: cmake -S tests/install_consumer -B build-consumer -DCMAKE_PREFIX_PATH=${{ github.workspace }}/install -DCMAKE_CXX_STANDARD=${{ matrix.std }}
       - name: Build consumer project
         run: cmake --build build-consumer
+      - name: Configure pkg-config consumer
+        run: |
+          PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/pkgconfig" \
+            cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=${{ matrix.std }}
+      - name: Build pkg-config consumer
+        run: cmake --build build-pkg-config
 
   windows:
     runs-on: windows-latest
@@ -129,7 +135,7 @@ jobs:
       - name: Validate port
         run: ./vcpkg/vcpkg install time-shield-cpp --overlay-ports=vcpkg-overlay/ports
       - name: Configure consumer project
-        run: cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
+        run: cmake -B build -S tests/vcpkg_consumer -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
       - name: Build consumer project
         run: cmake --build build
 
@@ -149,3 +155,9 @@ jobs:
         run: cmake -S tests/install_consumer -B build-consumer -DCMAKE_PREFIX_PATH=${{ github.workspace }}/install -DCMAKE_CXX_STANDARD=11
       - name: Build installed consumer
         run: cmake --build build-consumer
+      - name: Configure pkg-config consumer without NTP
+        run: |
+          PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/pkgconfig" \
+            cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=11
+      - name: Build pkg-config consumer without NTP
+        run: cmake --build build-pkg-config

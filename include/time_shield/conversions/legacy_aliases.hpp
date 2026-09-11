@@ -35,7 +35,8 @@ namespace time_shield {
     }
 
     /// \brief Legacy alias for days_since_epoch_ms.
-    /// \copydoc days_since_epoch_ms
+    /// \param ts_ms Timestamp in milliseconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T get_unix_day_ms(ts_ms_t ts_ms = time_shield::ts_ms()) noexcept {
         return days_since_epoch_ms<T>(ts_ms);

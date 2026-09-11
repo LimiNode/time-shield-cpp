@@ -1,6 +1,9 @@
-prefix=@CMAKE_INSTALL_PREFIX@
+prefix=${pcfiledir}/../..
 includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
 
 Name: time-shield
 Version: @PROJECT_VERSION@
-Cflags: -I${includedir}
+Description: Header-only C++ library for time conversions, formatting, and utilities.
+URL: https://github.com/LimiNode/time-shield-cpp
+Cflags: -I${includedir} -DTIME_SHIELD_ENABLE_NTP_CLIENT=@TIME_SHIELD_PKG_CONFIG_NTP_DEFINE@
+Libs: @TIME_SHIELD_PKG_CONFIG_LIBS@

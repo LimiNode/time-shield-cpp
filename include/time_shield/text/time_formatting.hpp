@@ -467,7 +467,9 @@ namespace time_shield {
     }
 
     /// \brief Alias for to_string function.
-    /// \copydoc to_string
+    /// \param format_str Format string with custom parameters.
+    /// \param timestamp Timestamp in seconds.
+    /// \param utc_offset UTC offset in seconds.
     template<class T = ts_t>
     inline const std::string to_str(
             const std::string& format_str,
@@ -551,7 +553,9 @@ namespace time_shield {
     }
 
     /// \brief Alias for to_string function.
-    /// \copydoc to_string
+    /// \param format_str Format string with custom parameters.
+    /// \param timestamp Timestamp in milliseconds.
+    /// \param utc_offset UTC offset in seconds.
     template<class T = ts_t>
     inline const std::string to_str_ms(
             const std::string& format_str,

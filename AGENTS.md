@@ -75,5 +75,6 @@ Use the following order for repository changes and reviews:
 7. Preserve convenient public aliases. Short or alternative names are not legacy merely because a canonical equivalent exists. Classify an API as legacy only when it has been historically renamed or superseded, or when a deliberate replacement is introduced. When replacing a useful short alias, provide an equally practical preferred alias. Move a confirmed legacy alias to `legacy_aliases.hpp` and make it available only through `TIME_SHIELD_ENABLE_LEGACY_ALIASES`.
 8. Keep documentation source templates version-neutral. Do not commit generated
    documentation version substitutions; publish.yaml injects the effective version
-   during publication.
+   during publication. Main-branch documentation uses the CMake version with a
+   `-dev` suffix; release-tag documentation uses the matching tag version.
 9. Finish with `git diff --check`, a status review, and a concise summary of remaining risks or unverified platform-specific checks.

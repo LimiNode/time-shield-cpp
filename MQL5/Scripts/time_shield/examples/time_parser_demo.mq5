@@ -2,7 +2,7 @@
 //|                                     time_parser_demo.mq5 |
 //|                   Time Shield - Parsing Examples         |
 //|                      Copyright 2025, NewYaroslav          |
-//|              https://github.com/NewYaroslav/time-shield-cpp |
+//|              https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #property script_show_inputs
 #property strict

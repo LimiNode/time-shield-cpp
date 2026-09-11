@@ -2,7 +2,7 @@
 //|                                                  time_parser.mqh |
 //|                                   Time Shield - MQL5 Time Parser |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_TIME_PARSER_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_TIME_PARSER_MQH_INCLUDED
@@ -17,7 +17,7 @@
 /// timestamp representations.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 #include <time_shield/enums.mqh>
@@ -283,7 +283,8 @@ namespace time_shield {
     }
 
     /// \brief Alias for parse_time_zone function.
-    /// \copydoc parse_time_zone
+    /// \param tz_str Time zone offset in ±HH:MM format.
+    /// \param tz Receives the parsed time zone.
     bool parse_tz(string tz_str, TimeZoneStruct &tz) { return parse_time_zone(tz_str, tz); }
 
 //------------------------------------------------------------------------------

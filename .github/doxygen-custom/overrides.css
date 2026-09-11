@@ -2,6 +2,45 @@ html {
     --top-nav-height: 150px
 }
 
+body {
+    line-height: 1.6;
+}
+
+#main-content,
+div.contents {
+    max-width: 1120px;
+}
+
+#titlearea {
+    padding: 1.25rem 1.5rem;
+}
+
+#projectbrief {
+    max-width: 70rem;
+}
+
+div.contents h1,
+div.contents h2,
+div.contents h3 {
+    margin-top: 1.6em;
+}
+
+div.fragment {
+    border-radius: 0.45rem;
+}
+
+.ts-hero {
+    margin: 0 0 2rem;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--separator-color, #d0d7de);
+    border-radius: 0.6rem;
+    background: var(--page-secondary-foreground-color, #f6f8fa);
+}
+
+.ts-hero p:last-child {
+    margin-bottom: 0;
+}
+
 @media screen and (min-width: 768px) {
     #top {
         height: var(--top-nav-height);

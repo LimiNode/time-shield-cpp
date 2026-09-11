@@ -2,7 +2,7 @@
 //|                                                   time_utils.mqh |
 //|                                Time Shield - MQL5 Time Utilities |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_TIME_UTILS_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_TIME_UTILS_MQH_INCLUDED
@@ -15,7 +15,7 @@
 /// timestamp in different formats and extracting sub-second components in MQL5.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 #include "constants.mqh"

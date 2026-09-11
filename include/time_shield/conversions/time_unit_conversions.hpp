@@ -126,7 +126,6 @@ namespace time_shield {
     /// \brief Helper function for converting seconds to milliseconds (floating-point version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in seconds.
-    /// \param tag std::true_type indicates a floating-point type.
     /// \return ts_ms_t Timestamp in milliseconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_ms_t sec_to_ms_impl(T t, std::true_type) noexcept {
@@ -136,7 +135,6 @@ namespace time_shield {
     /// \brief Helper function for converting seconds to milliseconds (integral version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in seconds.
-    /// \param tag std::false_type indicates a non-floating-point type.
     /// \return ts_ms_t Timestamp in milliseconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_ms_t sec_to_ms_impl(T t, std::false_type) noexcept {
@@ -201,7 +199,6 @@ namespace time_shield {
     /// \brief Helper function for converting minutes to milliseconds (floating-point version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in minutes.
-    /// \param tag std::true_type indicates a floating-point type (double or float).
     /// \return ts_ms_t Timestamp in milliseconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_ms_t min_to_ms_impl(T t, std::true_type) noexcept {
@@ -211,7 +208,6 @@ namespace time_shield {
     /// \brief Helper function for converting minutes to milliseconds (integral version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in minutes.
-    /// \param tag std::false_type indicates a non-floating-point type.
     /// \return ts_ms_t Timestamp in milliseconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_ms_t min_to_ms_impl(T t, std::false_type) noexcept {
@@ -260,7 +256,6 @@ namespace time_shield {
     /// \brief Helper function for converting minutes to seconds (floating-point version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in minutes.
-    /// \param tag std::true_type indicates a floating-point type (double or float).
     /// \return ts_t Timestamp in seconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_t min_to_sec_impl(T t, std::true_type) noexcept {
@@ -270,7 +265,6 @@ namespace time_shield {
     /// \brief Helper function for converting minutes to seconds (integral version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in minutes.
-    /// \param tag std::false_type indicates a non-floating-point type.
     /// \return ts_t Timestamp in seconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_t min_to_sec_impl(T t, std::false_type) noexcept {
@@ -338,7 +332,6 @@ namespace time_shield {
     /// \brief Helper function for converting hours to milliseconds (floating-point version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in hours.
-    /// \param tag std::true_type indicates a floating-point type (double or float).
     /// \return ts_ms_t Timestamp in milliseconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_ms_t hour_to_ms_impl(T t, std::true_type) noexcept {
@@ -348,7 +341,6 @@ namespace time_shield {
     /// \brief Helper function for converting hours to milliseconds (integral version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in hours.
-    /// \param tag Type tag used to select the integral overload (must be std::false_type).
     /// \return ts_ms_t Timestamp in milliseconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_ms_t hour_to_ms_impl(T t, std::false_type) noexcept {
@@ -398,7 +390,6 @@ namespace time_shield {
     /// \brief Helper function for converting hours to seconds (floating-point version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in hours.
-    /// \param tag std::true_type indicates a floating-point type (double or float).
     /// \return ts_t Timestamp in seconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_t hour_to_sec_impl(T t, std::true_type) noexcept {
@@ -408,7 +399,6 @@ namespace time_shield {
     /// \brief Helper function for converting hours to seconds (integral version).
     /// \tparam T Type of the input timestamp.
     /// \param t Timestamp in hours.
-    /// \param tag std::false_type indicates a non-floating-point type.
     /// \return ts_t Timestamp in seconds.
     template<class T>
     TIME_SHIELD_CONSTEXPR ts_t hour_to_sec_impl(T t, std::false_type) noexcept {

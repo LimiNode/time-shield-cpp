@@ -2,7 +2,7 @@
 //|                                       test_time_zone_matrix.mq5  |
 //|                      Time Shield - Function Test                 |
 //|                      Copyright 2025, NewYaroslav                |
-//|              https://github.com/NewYaroslav/time-shield-cpp     |
+//|              https://github.com/LimiNode/time-shield-cpp     |
 //+------------------------------------------------------------------+
 #property script_show_inputs
 #property strict

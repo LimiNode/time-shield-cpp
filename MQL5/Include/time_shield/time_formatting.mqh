@@ -2,7 +2,7 @@
 //|                                              time_formatting.mqh |
 //|                               Time Shield - MQL5 Time Formatting |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_TIME_FORMATTING_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_TIME_FORMATTING_MQH_INCLUDED
@@ -16,7 +16,7 @@
 /// string representations including ISO8601 and MQL5 specific formats.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 #include "enums.mqh"
@@ -277,7 +277,9 @@ namespace time_shield {
     }
 
     /// \brief Alias for \ref to_string.
-    /// \copydoc to_string
+    /// \param format_str Format string with custom parameters.
+    /// \param timestamp Timestamp in seconds.
+    /// \param utc_offset UTC offset in seconds.
     string to_str(string format_str, long timestamp, int utc_offset=0) {
        return to_string(format_str, timestamp, utc_offset);
     }
@@ -332,7 +334,9 @@ namespace time_shield {
     }
 
     /// \brief Alias for \ref to_string_ms.
-    /// \copydoc to_string_ms(const string &, long, int)
+    /// \param format_str Format string with custom parameters.
+    /// \param timestamp_ms Timestamp in milliseconds.
+    /// \param utc_offset UTC offset in seconds.
     string to_str_ms(string format_str, long timestamp_ms, int utc_offset=0) {
        return to_string_ms(format_str, timestamp_ms, utc_offset);
     }

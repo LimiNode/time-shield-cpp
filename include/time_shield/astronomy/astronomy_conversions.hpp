@@ -89,25 +89,25 @@ namespace time_shield {
         return calculator.quarter_instants_unix(static_cast<double>(ts));
     }
 
-    /// \brief Check if timestamp falls into the new moon window (default \pm12h).
+    /// \brief Check if timestamp falls into the new moon window (default ±12 h).
     inline bool is_new_moon_window(fts_t ts, double window_seconds = astronomy::MoonPhase::kDefaultQuarterWindow_s) noexcept {
         static const astronomy::MoonPhase calculator{};
         return calculator.is_new_moon_window(static_cast<double>(ts), window_seconds);
     }
 
-    /// \brief Check if timestamp falls into the full moon window (default \pm12h).
+    /// \brief Check if timestamp falls into the full moon window (default ±12 h).
     inline bool is_full_moon_window(fts_t ts, double window_seconds = astronomy::MoonPhase::kDefaultQuarterWindow_s) noexcept {
         static const astronomy::MoonPhase calculator{};
         return calculator.is_full_moon_window(static_cast<double>(ts), window_seconds);
     }
 
-    /// \brief Check if timestamp falls into the first quarter window (default \pm12h).
+    /// \brief Check if timestamp falls into the first quarter window (default ±12 h).
     inline bool is_first_quarter_window(fts_t ts, double window_seconds = astronomy::MoonPhase::kDefaultQuarterWindow_s) noexcept {
         static const astronomy::MoonPhase calculator{};
         return calculator.is_first_quarter_window(static_cast<double>(ts), window_seconds);
     }
 
-    /// \brief Check if timestamp falls into the last quarter window (default \pm12h).
+    /// \brief Check if timestamp falls into the last quarter window (default ±12 h).
     inline bool is_last_quarter_window(fts_t ts, double window_seconds = astronomy::MoonPhase::kDefaultQuarterWindow_s) noexcept {
         static const astronomy::MoonPhase calculator{};
         return calculator.is_last_quarter_window(static_cast<double>(ts), window_seconds);

@@ -73,6 +73,18 @@ install(FILES
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/TimeShield
 )
 
+if(TIME_SHIELD_ENABLE_NTP_CLIENT)
+    set(TIME_SHIELD_PKG_CONFIG_NTP_DEFINE 1)
+else()
+    set(TIME_SHIELD_PKG_CONFIG_NTP_DEFINE 0)
+endif()
+
+if(WIN32 AND TIME_SHIELD_ENABLE_NTP_CLIENT)
+    set(TIME_SHIELD_PKG_CONFIG_LIBS "-lws2_32")
+else()
+    set(TIME_SHIELD_PKG_CONFIG_LIBS "")
+endif()
+
 configure_file(cmake/time-shield.pc.in ${CMAKE_CURRENT_BINARY_DIR}/time-shield.pc @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/time-shield.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
