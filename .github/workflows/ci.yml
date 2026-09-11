@@ -173,7 +173,7 @@ jobs:
       - name: Verify relocatable pkg-config prefix
         run: |
           export PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/x86_64-linux-gnu/pkgconfig"
-          test "$(pkg-config --variable=prefix time-shield)" = "${{ github.workspace }}/install"
+          test "$(realpath "$(pkg-config --variable=prefix time-shield)")" = "$(realpath install)"
       - name: Configure pkg-config consumer
         run: |
           PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/x86_64-linux-gnu/pkgconfig" \
