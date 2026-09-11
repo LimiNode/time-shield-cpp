@@ -1,3 +1,5 @@
+cmake_policy(VERSION 3.15)
+
 if(NOT DEFINED TIME_SHIELD_SOURCE_DIR)
     message(FATAL_ERROR "TIME_SHIELD_SOURCE_DIR is required")
 endif()
