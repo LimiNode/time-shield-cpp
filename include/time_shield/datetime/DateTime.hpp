@@ -1,25 +1,14 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_DATETIME_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_DATETIME_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_DATETIME_DATETIME_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_TIME_SHIELD_DATETIME_DATETIME_HPP_INCLUDED
 
 /// \file DateTime.hpp
 /// \brief Value-type wrapper for timestamps with fixed UTC offset.
 
-#include "config.hpp"
-#include "constants.hpp"
-#include "date_conversions.hpp"
-#include "date_time_conversions.hpp"
-#include "date_time_struct.hpp"
-#include "iso_week_conversions.hpp"
-#include "time_formatting.hpp"
-#include "time_parser.hpp"
-#include "time_struct.hpp"
-#include "time_utils.hpp"
-#include "time_zone_offset_conversions.hpp"
-#include "time_zone_struct.hpp"
-#include "types.hpp"
-#include "validation.hpp"
+#include <time_shield/core.hpp>
+#include <time_shield/conversions.hpp>
+#include <time_shield/text.hpp>
 
 #include <cstdint>
 #include <cstring>
@@ -711,4 +700,4 @@ namespace time_shield {
 
 } // namespace time_shield
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_DATETIME_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_TIME_SHIELD_DATETIME_DATETIME_HPP_INCLUDED

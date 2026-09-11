@@ -1,6 +1,6 @@
 #define TIME_SHIELD_ENABLE_LEGACY_ALIASES
-#include <time_shield/time_conversions.hpp>
-#include <time_shield/time_unit_conversions.hpp>
+#include <time_shield/conversions.hpp>
+#include <time_shield/conversions/time_unit_conversions.hpp>
 
 #include "test_assert.hpp"
 #include <cmath>

@@ -1,5 +1,5 @@
-#include <time_shield/time_conversions.hpp>
-#include <time_shield/detail/floor_math.hpp>
+#include <time_shield/conversions.hpp>
+#include <time_shield/conversions/detail/floor_math.hpp>
 
 #include <array>
 #include "test_assert.hpp"

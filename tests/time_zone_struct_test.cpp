@@ -1,4 +1,4 @@
-#include <time_shield/time_zone_struct.hpp>
+#include <time_shield/core/time_zone_struct.hpp>
 #include "test_assert.hpp"
 
 /// \brief Basic checks for time zone conversion helpers.

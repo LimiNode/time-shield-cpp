@@ -1,0 +1,179 @@
+// SPDX-License-Identifier: MIT
+#pragma once
+#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_NTP_NTP_CLIENT_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_TIME_SHIELD_NTP_NTP_CLIENT_HPP_INCLUDED
+
+/// \file ntp_client.hpp
+/// \brief Simple NTP client for querying time offset from NTP servers.
+///
+/// Feature availability is controlled by `TIME_SHIELD_ENABLE_NTP_CLIENT`.
+/// \ingroup ntp
+
+#include <time_shield/core.hpp>
+
+#if TIME_SHIELD_ENABLE_NTP_CLIENT
+
+#include "detail/ntp_client_core.hpp"
+#include "detail/ntp_packet.hpp"
+#include "detail/udp_transport.hpp"
+
+#if TIME_SHIELD_PLATFORM_WINDOWS
+#   include "detail/udp_transport_win.hpp"
+#elif TIME_SHIELD_PLATFORM_UNIX
+#   include "detail/udp_transport_posix.hpp"
+#endif
+
+#include <atomic>
+#include <cstdint>
+#include <string>
+
+namespace time_shield {
+
+#if TIME_SHIELD_PLATFORM_WINDOWS
+    namespace detail { using PlatformUdpTransport = UdpTransportWin; }
+#elif TIME_SHIELD_PLATFORM_UNIX
+    namespace detail { using PlatformUdpTransport = UdpTransportPosix; }
+#endif
+
+#if TIME_SHIELD_PLATFORM_WINDOWS || TIME_SHIELD_PLATFORM_UNIX
+
+    /// \ingroup ntp
+    /// \brief NTP client for measuring time offset.
+    class NtpClient {
+    public:
+        /// \brief Constructs NTP client with specified host and port.
+        /// \param server NTP server host name.
+        /// \param port NTP server port.
+        NtpClient(std::string server = "pool.ntp.org", int port = 123)
+            : m_host(std::move(server))
+            , m_port(port)
+            , m_offset_us(0)
+            , m_delay_us(0)
+            , m_stratum(-1)
+            , m_is_success(false) {
+            now_realtime_us();
+        }
+
+        /// \brief Queries the NTP server and updates the local offset.
+        /// \return True when response parsed successfully.
+        /// \note Requires network connectivity and a reachable server.
+        bool query() {
+            last_error_code_slot() = 0;
+
+#if TIME_SHIELD_PLATFORM_WINDOWS
+            if (!WsaGuard::instance().success()) {
+                last_error_code_slot() = WsaGuard::instance().ret_code();
+                m_is_success = false;
+                return false;
+            }
+#endif
+
+            detail::PlatformUdpTransport transport;
+            detail::NtpClientCore core;
+
+            int error_code = 0;
+            int64_t offset = 0;
+            int64_t delay = 0;
+            int stratum = -1;
+
+            const bool ok = core.query(
+                transport,
+                m_host,
+                m_port,
+                k_default_timeout_ms,
+                error_code,
+                offset,
+                delay,
+                stratum
+            );
+
+            last_error_code_slot() = error_code;
+
+            if (!ok) {
+                m_delay_us = 0;
+                m_stratum = -1;
+                m_is_success = false;
+                return false;
+            }
+
+            m_offset_us = offset;
+            m_delay_us = delay;
+            m_stratum = stratum;
+            m_is_success = true;
+            return true;
+        }
+
+        /// \brief Returns whether the last NTP query was successful.
+        /// \return True when the last query updated internal state.
+        bool success() const noexcept { return m_is_success.load(); }
+
+        /// \brief Returns the last measured offset in microseconds.
+        /// \return Offset in microseconds (UTC - local realtime).
+        int64_t offset_us() const noexcept { return m_offset_us; }
+
+        /// \brief Returns the last measured delay in microseconds.
+        /// \return Round-trip delay estimate in microseconds.
+        int64_t delay_us() const noexcept { return m_delay_us; }
+
+        /// \brief Returns the last received stratum value.
+        /// \return NTP stratum value.
+        int stratum() const noexcept { return m_stratum; }
+
+        /// \brief Returns current UTC time in microseconds based on last NTP offset.
+        /// \return UTC time in microseconds using last offset.
+        int64_t utc_time_us() const noexcept { return now_realtime_us() + m_offset_us.load(); }
+
+        /// \brief Returns current UTC time in milliseconds based on last NTP offset.
+        /// \return UTC time in milliseconds using last offset.
+        int64_t utc_time_ms() const noexcept { return utc_time_us() / 1000; }
+
+        /// \brief Returns current UTC time as time_t (seconds since Unix epoch).
+        /// \return UTC time in seconds since Unix epoch.
+        time_t utc_time_sec() const noexcept { return static_cast<time_t>(utc_time_us() / 1000000); }
+
+        /// \brief Returns last socket error code (if any).
+        /// \return Error code from last query attempt.
+        int last_error_code() const noexcept { return last_error_code_slot(); }
+
+    private:
+        std::string          m_host;
+        int                  m_port;
+        std::atomic<int64_t> m_offset_us;
+        std::atomic<int64_t> m_delay_us;
+        std::atomic<int>     m_stratum;
+        std::atomic<bool>    m_is_success;
+        static const int k_default_timeout_ms = 5000;
+
+        static int& last_error_code_slot() noexcept {
+            static TIME_SHIELD_THREAD_LOCAL int value = 0;
+            return value;
+        }
+    };
+
+#else
+
+    class NtpClient {
+    public:
+        NtpClient() {
+            static_assert(sizeof(void*) == 0, "NtpClient is disabled by configuration.");
+        }
+    };
+
+#endif // platform switch
+
+} // namespace time_shield
+
+#else // TIME_SHIELD_ENABLE_NTP_CLIENT
+
+namespace time_shield {
+    class NtpClient {
+    public:
+        NtpClient() {
+            static_assert(sizeof(void*) == 0, "NtpClient is disabled by configuration.");
+        }
+    };
+} // namespace time_shield
+
+#endif // TIME_SHIELD_ENABLE_NTP_CLIENT
+
+#endif // TIME_SHIELD_HEADER_TIME_SHIELD_NTP_NTP_CLIENT_HPP_INCLUDED

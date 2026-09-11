@@ -1,6 +1,6 @@
-#include <time_shield/iso_week_conversions.hpp>
-#include <time_shield/time_conversions.hpp>
-#include <time_shield/time_parser.hpp>
+#include <time_shield/conversions/iso_week_conversions.hpp>
+#include <time_shield/conversions.hpp>
+#include <time_shield/text/time_parser.hpp>
 
 #include "test_assert.hpp"
 #include <array>

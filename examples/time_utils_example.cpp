@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-#include <time_shield/time_utils.hpp>
+#include <time_shield/core/time_utils.hpp>
 
 int main() {
     using namespace time_shield;

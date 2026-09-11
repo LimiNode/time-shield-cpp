@@ -1,8 +1,8 @@
-#include <time_shield/config.hpp>
+#include <time_shield/core/config.hpp>
 
 #if TIME_SHIELD_ENABLE_NTP_CLIENT
 #define TIME_SHIELD_TEST_FAKE_NTP
-#include <time_shield/ZonedClock.hpp>
+#include <time_shield/timezone/ZonedClock.hpp>
 
 #include "test_assert.hpp"
 #include <cstdlib>

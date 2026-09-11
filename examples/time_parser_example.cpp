@@ -1,10 +1,10 @@
 /// \file time_parser_example.cpp
 /// \brief Demonstrates ISO8601, ISO week-date, and custom-format parsing helpers.
 
-#include <time_shield/DateTime.hpp>
-#include <time_shield/time_format_parser.hpp>
-#include <time_shield/time_formatting.hpp>
-#include <time_shield/time_parser.hpp>
+#include <time_shield/datetime/DateTime.hpp>
+#include <time_shield/text/time_format_parser.hpp>
+#include <time_shield/text/time_formatting.hpp>
+#include <time_shield/text/time_parser.hpp>
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 /// \file time_formatting_showcase_example.cpp
 /// \brief Demonstrates a broader set of formatter helpers.
 
-#include <time_shield/time_formatting.hpp>
+#include <time_shield/text/time_formatting.hpp>
 
 #include <iostream>
 

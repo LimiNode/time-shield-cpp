@@ -1,4 +1,4 @@
-#include <time_shield/time_parser.hpp>
+#include <time_shield/text/time_parser.hpp>
 #include "test_assert.hpp"
 
 /// \brief Negative parsing tests for malformed ISO8601 strings.

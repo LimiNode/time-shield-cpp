@@ -39,7 +39,14 @@ install(TARGETS time_shield EXPORT TimeShieldTargets
 if(TIME_SHIELD_ENABLE_NTP_CLIENT)
     install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 else()
-    install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} PATTERN "ntp_client*" EXCLUDE)
+    install(
+        DIRECTORY include/
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        PATTERN "ntp" EXCLUDE
+        PATTERN "ntp.hpp" EXCLUDE
+        PATTERN "ntp_client*" EXCLUDE
+        PATTERN "ntp_time_service.hpp" EXCLUDE
+    )
 endif()
 install(
     EXPORT TimeShieldTargets
@@ -102,6 +109,12 @@ endif()
 
 if(TIME_SHIELD_CPP_BUILD_TESTS)
     enable_testing()
+    add_test(
+        NAME header_include_policy
+        COMMAND ${CMAKE_COMMAND}
+            -DTIME_SHIELD_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
+            -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/check_header_include_policy.cmake
+    )
     file(GLOB TEST_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp)
     foreach(test_src ${TEST_SOURCES})
         get_filename_component(test_name ${test_src} NAME_WE)

@@ -1,5 +1,5 @@
-#include <time_shield/time_parser.hpp>
-#include <time_shield/time_zone_offset_conversions.hpp>
+#include <time_shield/text/time_parser.hpp>
+#include <time_shield/conversions/time_zone_offset_conversions.hpp>
 
 #include "test_assert.hpp"
 #include <cstdlib>

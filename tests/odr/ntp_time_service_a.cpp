@@ -1,8 +1,8 @@
-#include <time_shield/config.hpp>
+#include <time_shield/core/config.hpp>
 
 #if TIME_SHIELD_ENABLE_NTP_CLIENT
 #define TIME_SHIELD_TEST_FAKE_NTP
-#include <time_shield/ntp_time_service.hpp>
+#include <time_shield/ntp/ntp_time_service.hpp>
 
 #include "../test_assert.hpp"
 #include <cstdint>

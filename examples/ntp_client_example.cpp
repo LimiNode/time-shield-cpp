@@ -9,10 +9,10 @@
 #include <iomanip>
 #include <chrono>
 #include <ctime>
-#include <time_shield/config.hpp>
+#include <time_shield/core/config.hpp>
 #if TIME_SHIELD_ENABLE_NTP_CLIENT
-#   include <time_shield/initialization.hpp>
-#   include <time_shield/ntp_client.hpp>
+#   include <time_shield/core/initialization.hpp>
+#   include <time_shield/ntp/ntp_client.hpp>
 
 int main() {
     using namespace time_shield;

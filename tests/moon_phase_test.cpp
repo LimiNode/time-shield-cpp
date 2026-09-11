@@ -1,5 +1,5 @@
-#include <time_shield/MoonPhase.hpp>
-#include <time_shield/astronomy_conversions.hpp>
+#include <time_shield/astronomy/MoonPhase.hpp>
+#include <time_shield/astronomy/astronomy_conversions.hpp>
 
 #include "test_assert.hpp"
 #include <cmath>

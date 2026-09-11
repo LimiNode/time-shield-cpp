@@ -1,5 +1,5 @@
-#include <time_shield/DeadlineTimer.hpp>
-#include <time_shield/ElapsedTimer.hpp>
+#include <time_shield/timers/DeadlineTimer.hpp>
+#include <time_shield/timers/ElapsedTimer.hpp>
 
 #include "test_assert.hpp"
 #include <chrono>

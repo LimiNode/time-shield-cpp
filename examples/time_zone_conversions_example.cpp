@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#include <time_shield/time_formatting.hpp>
-#include <time_shield/time_zone_conversions.hpp>
+#include <time_shield/text/time_formatting.hpp>
+#include <time_shield/timezone/time_zone_conversions.hpp>
 
 int main() {
     using namespace time_shield;

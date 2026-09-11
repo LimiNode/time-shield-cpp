@@ -132,3 +132,20 @@ jobs:
         run: cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
       - name: Build consumer project
         run: cmake --build build
+
+  install-no-ntp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure without NTP
+        run: cmake -S . -B build -DTIME_SHIELD_CPP_BUILD_TESTS=ON -DTIME_SHIELD_ENABLE_NTP_CLIENT=OFF -DCMAKE_CXX_STANDARD=11
+      - name: Build without NTP
+        run: cmake --build build
+      - name: Test without NTP
+        run: ctest --test-dir build --output-on-failure
+      - name: Install without NTP
+        run: cmake --install build --prefix install
+      - name: Configure installed consumer
+        run: cmake -S tests/install_consumer -B build-consumer -DCMAKE_PREFIX_PATH=${{ github.workspace }}/install -DCMAKE_CXX_STANDARD=11
+      - name: Build installed consumer
+        run: cmake --build build-consumer

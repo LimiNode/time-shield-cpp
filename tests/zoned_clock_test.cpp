@@ -1,4 +1,4 @@
-#include <time_shield/ZonedClock.hpp>
+#include <time_shield/timezone/ZonedClock.hpp>
 
 #include "test_assert.hpp"
 #include <cstdlib>

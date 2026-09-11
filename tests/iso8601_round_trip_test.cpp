@@ -1,6 +1,6 @@
-#include <time_shield/time_formatting.hpp>
-#include <time_shield/time_parser.hpp>
-#include <time_shield/time_conversions.hpp>
+#include <time_shield/text/time_formatting.hpp>
+#include <time_shield/text/time_parser.hpp>
+#include <time_shield/conversions.hpp>
 #include "test_assert.hpp"
 
 /// \brief ISO8601 round-trip tests for various offsets and precisions.

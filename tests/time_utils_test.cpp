@@ -1,5 +1,5 @@
-#include <time_shield/CpuTickTimer.hpp>
-#include <time_shield/time_utils.hpp>
+#include <time_shield/timers/CpuTickTimer.hpp>
+#include <time_shield/core/time_utils.hpp>
 
 #include "test_assert.hpp"
 #include <cmath>

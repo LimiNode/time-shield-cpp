@@ -1,4 +1,4 @@
-#include <time_shield/time_formatting.hpp>
+#include <time_shield/text/time_formatting.hpp>
 #include "test_assert.hpp"
 
 /// \brief Basic checks for time formatting helpers.

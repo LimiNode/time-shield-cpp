@@ -36,7 +36,7 @@ portable, and suitable for scenarios like logging, serialization, MQL5 usage, an
 
 \section config_sec Configuration
 
-Compile-time macros in `time_shield/config.hpp` allow adapting the library to
+Compile-time macros in `time_shield/core/config.hpp` allow adapting the library to
 the target platform and toggling optional modules:
 
 - `TIME_SHIELD_PLATFORM_WINDOWS` / `TIME_SHIELD_PLATFORM_UNIX` — platform
@@ -61,6 +61,15 @@ exists. Legacy status requires repository history, documentation, an explicit
 rename, or an established replacement.
 
 All public symbols are declared inside the `time_shield` namespace.
+
+\section headers_sec Public header layout
+
+Public headers are grouped by domain. The preferred entry points are
+`time_shield/core.hpp`, `time_shield/conversions.hpp`, `time_shield/text.hpp`,
+`time_shield/datetime.hpp`, `time_shield/timezone.hpp`,
+`time_shield/astronomy.hpp`, `time_shield/timers.hpp`, and the optional
+`time_shield/ntp.hpp`. Root-level header paths remain available as compatibility
+forwarders.
 
 \section invariants_sec API Invariants
 
@@ -177,8 +186,8 @@ selection with optional MAD trimming and exponential smoothing.
 
 ### Basic usage
 \code{.cpp}
-#include <time_shield/ntp_client.hpp>
-#include <time_shield/ntp_time_service.hpp>
+#include <time_shield/ntp/ntp_client.hpp>
+#include <time_shield/ntp/ntp_time_service.hpp>
 
 using namespace time_shield;
 
@@ -209,9 +218,9 @@ Convert between Unix timestamps and Excel/COM OA dates, or derive basic
 astronomical values from calendar inputs:
 
 \code{.cpp}
-#include <time_shield/ole_automation_conversions.hpp>
-#include <time_shield/julian_conversions.hpp>
-#include <time_shield/astronomy_conversions.hpp>
+#include <time_shield/conversions/ole_automation_conversions.hpp>
+#include <time_shield/astronomy/julian_conversions.hpp>
+#include <time_shield/astronomy/astronomy_conversions.hpp>
 
 using namespace time_shield;
 
@@ -234,7 +243,7 @@ The `MoonPhaseCalculator` class (`time_shield::astronomy::MoonPhase`) builds on 
 Basic class usage for bespoke calculations:
 
 \code{.cpp}
-#include <time_shield/MoonPhase.hpp>
+#include <time_shield/astronomy/MoonPhase.hpp>
 
 using namespace time_shield;
 
@@ -253,8 +262,8 @@ bool near_full = calculator.is_full_moon_window(ts, 3600.0);
 Check whether a moment falls on a business day using timestamps, calendar components, or ISO8601 strings:
 
 \code{.cpp}
-#include <time_shield/validation.hpp>
-#include <time_shield/time_parser.hpp>
+#include <time_shield/core/validation.hpp>
+#include <time_shield/text/time_parser.hpp>
 
 using namespace time_shield;
 
@@ -287,7 +296,7 @@ The string overloads recognise the same ISO8601 formats handled by \ref time_shi
 Locate the boundaries of the first and last workdays when preparing trading windows or settlement cutoffs:
 
 \code{.cpp}
-#include <time_shield/time_conversions.hpp>
+#include <time_shield/conversions.hpp>
 
 using namespace time_shield;
 

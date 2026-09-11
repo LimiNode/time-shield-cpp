@@ -28,6 +28,21 @@ bool monday = is_workday(now);
 Используйте `#include <time_shield.hpp>` для полного API или подключайте
 отдельные заголовки для минимальной сборки.
 
+Публичные заголовки сгруппированы по доменам. Для целевого подключения
+рекомендуются следующие umbrella-заголовки:
+
+- `time_shield/core.hpp` — базовые типы, структуры, проверки и утилиты;
+- `time_shield/conversions.hpp` — преобразования временных и календарных значений;
+- `time_shield/text.hpp` — разбор и форматирование;
+- `time_shield/datetime.hpp` — тип `DateTime`;
+- `time_shield/timezone.hpp` — именованные зоны и фиксированные смещения;
+- `time_shield/astronomy.hpp` — Julian- и лунные helper-ы;
+- `time_shield/timers.hpp` — таймеры и планировщик;
+- `time_shield/ntp.hpp` — необязательные NTP-клиент и сервис времени.
+
+Прежние пути корневых заголовков сохраняются как compatibility-forwarders.
+Переход на доменные пути не требует изменения имён API.
+
 ## Зачем Time Shield?
 
 **Time Shield** создавался как практичный инструмент для работы с временем в C++, ориентированный на прикладные и инженерные задачи. В отличие от стандартной `std::chrono` или более академичных решений вроде `HowardHinnant/date`, библиотека:
@@ -57,7 +72,7 @@ bool monday = is_workday(now);
 
 ## Конфигурация
 
-Компиляционные флаги в `time_shield/config.hpp` позволяют адаптировать библиотеку под платформу и отключать необязательные модули:
+Компиляционные флаги в `time_shield/core/config.hpp` позволяют адаптировать библиотеку под платформу и отключать необязательные модули:
 
 - `TIME_SHIELD_PLATFORM_WINDOWS` / `TIME_SHIELD_PLATFORM_UNIX` — определение целевой платформы.
 - `TIME_SHIELD_HAS_WINSOCK` — наличие WinSock API.
@@ -287,7 +302,7 @@ ts_ms_t tokyo_local_ms = ntp_tokyo.local_time_ms();
 Преобразования OA совместимы с Excel/COM (базовая дата 1899-12-30), выполняются в UTC и корректно обрабатывают специальную семантику отрицательных дробных OA serials до базовой даты.
 
 ```cpp
-#include <time_shield/ole_automation_conversions.hpp>
+#include <time_shield/conversions/ole_automation_conversions.hpp>
 
 using namespace time_shield;
 
@@ -302,8 +317,8 @@ oadate_t from_parts = to_oadate(2024, Month::MAY, 2, 12, 0); // 2024-05-02 12:00
 Хелперы Julian Date используют пролептический григорианский календарь и ориентированы на аналитические значения (JD, MJD, JDN), а не на высокоточные эфемериды. Лунные helper-ы по-прежнему доступны через astronomy entry header.
 
 ```cpp
-#include <time_shield/julian_conversions.hpp>
-#include <time_shield/astronomy_conversions.hpp>
+#include <time_shield/astronomy/julian_conversions.hpp>
+#include <time_shield/astronomy/astronomy_conversions.hpp>
 
 using namespace time_shield;
 
@@ -331,7 +346,7 @@ bool is_near_new = is_new_moon_window(fts());  // попадание в окно
 > - видимость (первый серп/наблюдаемость) — уже про атмосферу/высоту над горизонтом и т.п.
 
 ```cpp
-#include <time_shield/MoonPhase.hpp>
+#include <time_shield/astronomy/MoonPhase.hpp>
 
 using namespace time_shield;
 
@@ -364,8 +379,8 @@ ts_t myt = convert_time_zone(ist, TimeZone::IST, TimeZone::MYT);
 ### NTP‑клиент, пул и сервис времени
 
 ```cpp
-#include <time_shield/ntp_client_pool.hpp>
-#include <time_shield/ntp_time_service.hpp>
+#include <time_shield/ntp/ntp_client_pool.hpp>
+#include <time_shield/ntp/ntp_time_service.hpp>
 
 using namespace time_shield;
 

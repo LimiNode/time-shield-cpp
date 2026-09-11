@@ -32,6 +32,21 @@ bool monday = is_workday(now);
 Use `#include <time_shield.hpp>` for the full API, or include specific headers
 for a minimal build.
 
+Public headers are grouped by domain. Domain umbrellas provide the preferred
+entry points for focused use:
+
+- `time_shield/core.hpp` — core types, structures, validation, and utilities;
+- `time_shield/conversions.hpp` — timestamp, calendar, and offset conversions;
+- `time_shield/text.hpp` — parsing and formatting;
+- `time_shield/datetime.hpp` — the `DateTime` value type;
+- `time_shield/timezone.hpp` — named-zone and fixed-offset clocks;
+- `time_shield/astronomy.hpp` — Julian and lunar helpers;
+- `time_shield/timers.hpp` — timers and scheduling;
+- `time_shield/ntp.hpp` — optional NTP client and time service.
+
+The former root-level header paths remain available as compatibility forwarding
+headers. New code can migrate to domain paths without changing API symbols.
+
 ## Why Time Shield?
 
 **Time Shield** was created as a practical tool for handling time in C++ with a
@@ -83,7 +98,7 @@ more academic solutions like `HowardHinnant/date`, the library:
 
 ## Configuration
 
-Compile-time flags in `time_shield/config.hpp` control optional parts of the
+Compile-time flags in `time_shield/core/config.hpp` control optional parts of the
 library and report platform capabilities:
 
 - `TIME_SHIELD_PLATFORM_WINDOWS` / `TIME_SHIELD_PLATFORM_UNIX` — detected
@@ -408,8 +423,8 @@ ts_ms_t tokyo_local_ms = ntp_tokyo.local_time_ms();
 ### Checking workdays
 
 ```cpp
-#include <time_shield/validation.hpp>
-#include <time_shield/time_parser.hpp>
+#include <time_shield/core/validation.hpp>
+#include <time_shield/text/time_parser.hpp>
 
 using namespace time_shield;
 
@@ -424,7 +439,7 @@ The string helpers accept the same ISO 8601 formats as `str_to_ts` / `str_to_ts_
 ### Locating first and last workdays
 
 ```cpp
-#include <time_shield/time_conversions.hpp>
+#include <time_shield/conversions.hpp>
 
 using namespace time_shield;
 
@@ -441,7 +456,7 @@ The helpers reuse the `start_of_day` / `end_of_day` semantics and therefore retu
 OA conversions are Excel/COM compatible (base date 1899-12-30), operate in UTC, and preserve the special negative-fraction semantics used by OA serials before the base date.
 
 ```cpp
-#include <time_shield/ole_automation_conversions.hpp>
+#include <time_shield/conversions/ole_automation_conversions.hpp>
 
 using namespace time_shield;
 
@@ -456,8 +471,8 @@ oadate_t from_parts = to_oadate(2024, Month::MAY, 2, 12, 0); // 2024-05-02 12:00
 The Julian helpers use the proleptic Gregorian calendar and provide lightweight analytics-oriented values (JD, MJD, JDN) rather than high-precision ephemerides. The lunar helpers remain analytics-oriented and are exposed through the astronomy entry header.
 
 ```cpp
-#include <time_shield/julian_conversions.hpp>
-#include <time_shield/astronomy_conversions.hpp>
+#include <time_shield/astronomy/julian_conversions.hpp>
+#include <time_shield/astronomy/astronomy_conversions.hpp>
 
 using namespace time_shield;
 
@@ -485,7 +500,7 @@ bool is_near_new = is_new_moon_window(fts());  // inside +/-12h new moon window
 > - visibility (e.g., first crescent) driven by atmosphere/horizon/altitude rather than the geocentric phase itself.
 
 ```cpp
-#include <time_shield/MoonPhase.hpp>
+#include <time_shield/astronomy/MoonPhase.hpp>
 
 using namespace time_shield;
 
@@ -545,8 +560,8 @@ occurrence/offset was used.
 ### NTP client, pool, and time service
 
 ```cpp
-#include <time_shield/ntp_client_pool.hpp>
-#include <time_shield/ntp_time_service.hpp>
+#include <time_shield/ntp/ntp_client_pool.hpp>
+#include <time_shield/ntp/ntp_time_service.hpp>
 
 using namespace time_shield;
 

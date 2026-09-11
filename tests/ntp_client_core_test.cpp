@@ -1,11 +1,11 @@
-#include <time_shield/config.hpp>
+#include <time_shield/core/config.hpp>
 
 #if TIME_SHIELD_ENABLE_NTP_CLIENT
 
-#include <time_shield/time_utils.hpp>
-#include <time_shield/ntp_client/ntp_client_core.hpp>
-#include <time_shield/ntp_client/ntp_packet.hpp>
-#include <time_shield/ntp_client/udp_transport.hpp>
+#include <time_shield/core/time_utils.hpp>
+#include <time_shield/ntp/detail/ntp_client_core.hpp>
+#include <time_shield/ntp/detail/ntp_packet.hpp>
+#include <time_shield/ntp/detail/udp_transport.hpp>
 
 #include "test_assert.hpp"
 #include <cstdint>
