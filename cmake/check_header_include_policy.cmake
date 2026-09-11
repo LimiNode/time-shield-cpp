@@ -49,6 +49,14 @@ foreach(header IN LISTS TIME_SHIELD_CANONICAL_HEADERS)
             endif()
 
             if(target_domain)
+                if(target MATCHES "/" AND NOT target_domain STREQUAL source_domain)
+                    message(FATAL_ERROR
+                        "Cross-domain leaf include is forbidden: ${relative_header}: ${line}")
+                endif()
+                if(target MATCHES "^[^/]+\\.hpp$" AND target_domain STREQUAL source_domain)
+                    message(FATAL_ERROR
+                        "Domain leaf must not include its own umbrella: ${relative_header}: ${line}")
+                endif()
                 set(allowed FALSE)
                 set(allowed_domains "${TIME_SHIELD_DOMAIN_DEPENDENCIES_${source_domain}}")
                 if(target_domain STREQUAL source_domain OR target_domain IN_LIST allowed_domains)
@@ -91,6 +99,10 @@ foreach(umbrella IN LISTS TIME_SHIELD_DOMAIN_UMBRELLAS)
                 set(target_domain "")
             endif()
             if(target_domain)
+                if(target MATCHES "/" AND NOT target_domain STREQUAL source_domain)
+                    message(FATAL_ERROR
+                        "Umbrella must include domain umbrellas, not leaves: ${umbrella}: ${line}")
+                endif()
                 set(allowed_domains "${TIME_SHIELD_DOMAIN_DEPENDENCIES_${source_domain}}")
                 if(NOT target_domain STREQUAL source_domain AND NOT target_domain IN_LIST allowed_domains)
                     message(FATAL_ERROR
