@@ -1,4 +1,4 @@
-#include <time_shield/time_conversions.hpp>
+#include <time_shield/conversions.hpp>
 
 #if defined(_WIN32)
 #   ifdef min

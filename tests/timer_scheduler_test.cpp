@@ -1,4 +1,4 @@
-#include <time_shield/TimerScheduler.hpp>
+#include <time_shield/timers/TimerScheduler.hpp>
 
 #include <atomic>
 #include "test_assert.hpp"

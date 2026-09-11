@@ -1,9 +1,9 @@
-#include <time_shield/config.hpp>
+#include <time_shield/core/config.hpp>
 
 #if TIME_SHIELD_ENABLE_NTP_CLIENT && TIME_SHIELD_PLATFORM_UNIX
 
-#include <time_shield/initialization.hpp>
-#include <time_shield/ntp_client.hpp>
+#include <time_shield/core/initialization.hpp>
+#include <time_shield/ntp/ntp_client.hpp>
 
 #include <atomic>
 #include <chrono>

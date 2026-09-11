@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: MIT
+#pragma once
+#ifndef TIME_SHIELD_HEADER_CONVERSIONS_DETAIL_FLOOR_MATH_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_CONVERSIONS_DETAIL_FLOOR_MATH_HPP_INCLUDED
+
+/// \file floor_math.hpp
+/// \brief Floor division and modulus helpers.
+
+namespace time_shield {
+namespace detail {
+
+    /// \brief Floor division for positive divisor.
+    template<class T>
+    TIME_SHIELD_CONSTEXPR inline T floor_div(T a, T b) noexcept {
+        return static_cast<T>((a / b) - (((a % b) != 0 && a < 0) ? 1 : 0));
+    }
+
+    /// \brief Floor-mod for positive modulus (returns r in [0..b)).
+    template<class T>
+    TIME_SHIELD_CONSTEXPR inline T floor_mod(T a, T b) noexcept {
+        return static_cast<T>((a % b) + (((a % b) < 0) ? b : 0));
+    }
+
+} // namespace detail
+} // namespace time_shield
+
+#endif // TIME_SHIELD_HEADER_CONVERSIONS_DETAIL_FLOOR_MATH_HPP_INCLUDED

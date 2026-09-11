@@ -1,4 +1,4 @@
-#include <time_shield/julian_conversions.hpp>
+#include <time_shield/astronomy/julian_conversions.hpp>
 
 #include "test_assert.hpp"
 #include <cmath>

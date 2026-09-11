@@ -1,5 +1,5 @@
-#include <time_shield/time_zone_conversions.hpp>
-#include <time_shield/time_conversions.hpp>
+#include <time_shield/timezone/time_zone_conversions.hpp>
+#include <time_shield/conversions.hpp>
 #include "test_assert.hpp"
 
 /// \brief Round-trip tests for GMT and CET/EET conversions around DST boundaries.

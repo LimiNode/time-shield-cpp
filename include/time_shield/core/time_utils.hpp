@@ -1,0 +1,349 @@
+// SPDX-License-Identifier: MIT
+#pragma once
+#ifndef TIME_SHIELD_HEADER_CORE_TIME_UTILS_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_CORE_TIME_UTILS_HPP_INCLUDED
+
+/// \file time_utils.hpp
+/// \brief Header file with time-related utility functions.
+///
+/// This file contains various functions used for time calculations and conversions.
+
+#include "config.hpp"
+#include "types.hpp"
+#include "constants.hpp"
+
+#include <chrono>
+#include <limits>       // For std::numeric_limits
+#include <ctime>        // For clock_t and timespec (POSIX)
+#include <time.h>       // For clock(), times(), etc.
+#include <mutex>        // For std::once_flag
+
+#if TIME_SHIELD_PLATFORM_WINDOWS
+#   ifndef WIN32_LEAN_AND_MEAN
+#       define WIN32_LEAN_AND_MEAN
+#   endif
+#   ifndef NOMINMAX
+#       define NOMINMAX
+#   endif
+#   include <Windows.h>
+#elif TIME_SHIELD_PLATFORM_UNIX
+#   include <unistd.h>
+#   include <sys/resource.h>
+#   include <sys/times.h>
+#   include <time.h>
+#else
+#   error "Unsupported platform for get_cpu_time()"
+#endif
+
+namespace time_shield {
+
+    /// \ingroup time_utils
+    /// \brief Get the current timespec.
+    /// \return struct timespec The current timespec.
+    inline struct timespec get_timespec_impl() noexcept {
+        // https://en.cppreference.com/w/c/chrono/timespec_get
+        struct timespec ts;
+#       if defined(CLOCK_REALTIME)
+        clock_gettime(CLOCK_REALTIME, &ts); // POSIX implementation
+#       else
+        timespec_get(&ts, TIME_UTC);
+#       endif
+        return ts;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get current real time in microseconds using a platform-specific method.
+    ///
+    /// On Windows this function combines `QueryPerformanceCounter`
+    /// (high-resolution monotonic clock) with `GetSystemTimeAsFileTime` to compute an accurate,
+    /// stable UTC timestamp. The base time is initialized only once per process (lazy init).
+    /// On Unix-like systems a realtime anchor is captured once and combined with a
+    /// high-resolution monotonic clock to compute stable timestamps.
+    ///
+    /// \return Current UTC timestamp in microseconds.
+    inline int64_t now_realtime_us() {
+#       if TIME_SHIELD_PLATFORM_WINDOWS
+        static std::once_flag init_flag;
+        static int64_t s_perf_freq = 0;
+        static int64_t s_anchor_perf = 0;
+        static int64_t s_anchor_realtime_us = 0;
+
+        std::call_once(init_flag, []() {
+            LARGE_INTEGER freq = {};
+            LARGE_INTEGER counter = {};
+            ::QueryPerformanceFrequency(&freq);
+            ::QueryPerformanceCounter(&counter);
+
+            s_perf_freq   = static_cast<int64_t>(freq.QuadPart);
+            s_anchor_perf = static_cast<int64_t>(counter.QuadPart);
+
+            FILETIME ft;
+            ::GetSystemTimeAsFileTime(&ft);
+
+            ULARGE_INTEGER uli;
+            uli.LowPart  = ft.dwLowDateTime;
+            uli.HighPart = ft.dwHighDateTime;
+
+            // 100ns ticks since 1601-01-01 to 1970-01-01 (signed constant!)
+            const int64_t k_epoch_diff_100ns = 116444736000000000LL;
+
+            const int64_t filetime_100ns = static_cast<int64_t>(uli.QuadPart);
+            // Convert 100ns since 1601 -> us since 1970
+            s_anchor_realtime_us = (filetime_100ns - k_epoch_diff_100ns) / 10;
+        });
+
+        LARGE_INTEGER now = {};
+        ::QueryPerformanceCounter(&now);
+
+        const int64_t now_ticks   = static_cast<int64_t>(now.QuadPart);
+        const int64_t delta_ticks = now_ticks - s_anchor_perf;
+
+        // Avoid overflow of (delta_ticks * 1000000)
+        const int64_t q = delta_ticks / s_perf_freq;
+        const int64_t r = delta_ticks % s_perf_freq;
+
+        const int64_t delta_us =
+            q * 1000000LL + (r * 1000000LL) / s_perf_freq;
+
+        return s_anchor_realtime_us + delta_us;
+#       else
+        static std::once_flag init_flag;
+        static int64_t s_anchor_realtime_us = 0;
+        static int64_t s_anchor_mono_ns = 0;
+
+        std::call_once(init_flag, []() {
+            struct timespec realtime_ts{};
+            struct timespec mono_ts{};
+
+#           if defined(CLOCK_MONOTONIC_RAW)
+            clock_gettime(CLOCK_MONOTONIC_RAW, &mono_ts);
+#           else
+            clock_gettime(CLOCK_MONOTONIC, &mono_ts);
+#           endif
+            clock_gettime(CLOCK_REALTIME, &realtime_ts);
+
+            s_anchor_realtime_us = static_cast<int64_t>(realtime_ts.tv_sec) * 1000000LL
+                                 + realtime_ts.tv_nsec / 1000;
+            s_anchor_mono_ns = static_cast<int64_t>(mono_ts.tv_sec) * 1000000000LL
+                             + mono_ts.tv_nsec;
+        });
+
+        struct timespec mono_now_ts{};
+#       if defined(CLOCK_MONOTONIC_RAW)
+        clock_gettime(CLOCK_MONOTONIC_RAW, &mono_now_ts);
+#       else
+        clock_gettime(CLOCK_MONOTONIC, &mono_now_ts);
+#       endif
+
+        const int64_t mono_now_ns = static_cast<int64_t>(mono_now_ts.tv_sec) * 1000000000LL
+                                  + mono_now_ts.tv_nsec;
+        const int64_t delta_ns = mono_now_ns - s_anchor_mono_ns;
+        return s_anchor_realtime_us + delta_ns / 1000;
+#       endif
+    }
+
+    /// \ingroup time_utils
+    /// \brief Return monotonic seconds from a process-local reference.
+    ///
+    /// Uses `std::chrono::steady_clock` and returns an opaque monotonic value
+    /// that is only suitable for measuring intervals and deadlines.
+    ///
+    /// \return Monotonic seconds from a process-local reference.
+    inline ts_t monotonic_sec() noexcept {
+        const auto ticks = std::chrono::steady_clock::now().time_since_epoch();
+        return static_cast<ts_t>(std::chrono::duration_cast<std::chrono::seconds>(ticks).count());
+    }
+
+    /// \ingroup time_utils
+    /// \brief Return monotonic milliseconds from a process-local reference.
+    ///
+    /// Uses `std::chrono::steady_clock` and returns an opaque monotonic value
+    /// that is only suitable for measuring intervals and deadlines.
+    ///
+    /// \return Monotonic milliseconds from a process-local reference.
+    inline ts_ms_t monotonic_ms() noexcept {
+        const auto ticks = std::chrono::steady_clock::now().time_since_epoch();
+        return static_cast<ts_ms_t>(std::chrono::duration_cast<std::chrono::milliseconds>(ticks).count());
+    }
+
+    /// \ingroup time_utils
+    /// \brief Return monotonic microseconds from a process-local reference.
+    ///
+    /// Uses `std::chrono::steady_clock` and returns an opaque monotonic value
+    /// that is only suitable for measuring intervals and deadlines.
+    ///
+    /// \return Monotonic microseconds from a process-local reference.
+    inline ts_us_t monotonic_us() noexcept {
+        const auto ticks = std::chrono::steady_clock::now().time_since_epoch();
+        return static_cast<ts_us_t>(std::chrono::duration_cast<std::chrono::microseconds>(ticks).count());
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the nanosecond part of the current second.
+    /// \tparam T Type of the returned value (default is int).
+    /// \return T Nanosecond part of the current second.
+    template<class T = int>
+    inline T ns_of_sec() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return static_cast<T>(ts.tv_nsec);
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the microsecond part of the current second.
+    /// \tparam T Type of the returned value (default is int).
+    /// \return T Microsecond part of the current second.
+    template<class T = int>
+    inline T us_of_sec() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return static_cast<T>(ts.tv_nsec / NS_PER_US);
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the millisecond part of the current second.
+    /// \tparam T Type of the returned value (default is int).
+    /// \return T Millisecond part of the current second.
+    template<class T = int>
+    inline T ms_of_sec() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return static_cast<T>(ts.tv_nsec / NS_PER_MS);
+    }
+
+    /// \brief Get the current UTC timestamp in seconds.
+    /// \return ts_t Current UTC timestamp in seconds.
+    inline ts_t ts() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return ts.tv_sec;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in seconds.
+    /// \return ts_t Current UTC timestamp in seconds.
+    inline ts_t timestamp() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return ts.tv_sec;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in floating-point seconds.
+    /// \return fts_t Current UTC timestamp in floating-point seconds.
+    inline fts_t fts() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return static_cast<fts_t>(ts.tv_sec) + static_cast<fts_t>(ts.tv_nsec) / static_cast<fts_t>(NS_PER_SEC);
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in floating-point seconds.
+    /// \return fts_t Current UTC timestamp in floating-point seconds.
+    inline fts_t ftimestamp() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return static_cast<fts_t>(ts.tv_sec) + static_cast<fts_t>(ts.tv_nsec) / static_cast<fts_t>(NS_PER_SEC);
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in milliseconds.
+    /// \return ts_ms_t Current UTC timestamp in milliseconds.
+    inline ts_ms_t ts_ms() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return MS_PER_SEC * ts.tv_sec + ts.tv_nsec / NS_PER_MS;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in milliseconds.
+    /// \return ts_ms_t Current UTC timestamp in milliseconds.
+    inline ts_ms_t timestamp_ms() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return MS_PER_SEC * ts.tv_sec + ts.tv_nsec / NS_PER_MS;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in milliseconds.
+    /// \return ts_ms_t Current UTC timestamp in milliseconds.
+    inline ts_ms_t now() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return MS_PER_SEC * ts.tv_sec + ts.tv_nsec / NS_PER_MS;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in microseconds.
+    /// \return ts_us_t Current UTC timestamp in microseconds.
+    inline ts_us_t ts_us() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return US_PER_SEC * ts.tv_sec + ts.tv_nsec / NS_PER_US;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the current UTC timestamp in microseconds.
+    /// \return ts_us_t Current UTC timestamp in microseconds.
+    inline ts_us_t timestamp_us() noexcept {
+        const struct timespec ts = get_timespec_impl();
+        return US_PER_SEC * ts.tv_sec + ts.tv_nsec / NS_PER_US;
+    }
+
+    /// \ingroup time_utils
+    /// \brief Get the CPU time used by the current process.
+    /// \return CPU time in seconds, or NaN if not available.
+    /// \note This function attempts multiple fallback methods depending on platform capabilities.
+    /// \see https://habr.com/ru/articles/282301/ — original implementation idea
+    inline double get_cpu_time() noexcept {
+#   if TIME_SHIELD_PLATFORM_WINDOWS
+        FILETIME create_time{}, exit_time{}, kernel_time{}, user_time{};
+        if (GetProcessTimes(GetCurrentProcess(), &create_time, &exit_time, &kernel_time, &user_time)) {
+            ULARGE_INTEGER li{};
+            li.LowPart = user_time.dwLowDateTime;
+            li.HighPart = user_time.dwHighDateTime;
+            return static_cast<double>(li.QuadPart) / 10000000.0;
+        }
+#   elif   TIME_SHIELD_PLATFORM_UNIX
+        // AIX, BSD, Cygwin, HP-UX, Linux, OSX, and Solaris
+#       if defined(_POSIX_TIMERS) && (_POSIX_TIMERS > 0)
+            clockid_t id = (clockid_t)-1;
+#           if defined(_POSIX_CPUTIME) && (_POSIX_CPUTIME > 0)
+                if (clock_getcpuclockid(0, &id) != 0) {
+#                   if defined(CLOCK_PROCESS_CPUTIME_ID)
+                        id = CLOCK_PROCESS_CPUTIME_ID;
+#                   elif defined(CLOCK_VIRTUAL)
+                        id = CLOCK_VIRTUAL;
+#                   endif
+                }
+#           elif defined(CLOCK_PROCESS_CPUTIME_ID)
+                id = CLOCK_PROCESS_CPUTIME_ID;
+#           elif defined(CLOCK_VIRTUAL)
+                id = CLOCK_VIRTUAL;
+#           endif
+            if (id != (clockid_t)-1) {
+                struct timespec ts;
+                if (clock_gettime(id, &ts) == 0) {
+                    return static_cast<double>(ts.tv_sec) + static_cast<double>(ts.tv_nsec) / 1e9;
+                }
+            }
+#       endif
+
+#       if defined(RUSAGE_SELF)
+            struct rusage usage{};
+            if (getrusage(RUSAGE_SELF, &usage) == 0) {
+                return static_cast<double>(usage.ru_utime.tv_sec) + static_cast<double>(usage.ru_utime.tv_usec) / 1e6;
+            }
+#       endif
+
+#       if defined(_SC_CLK_TCK)
+            struct tms t{};
+            if (times(&t) != (clock_t)-1) {
+                return static_cast<double>(t.tms_utime) / static_cast<double>(sysconf(_SC_CLK_TCK));
+            }
+#       endif
+
+#       if defined(CLOCKS_PER_SEC)
+            clock_t cl = clock();
+            if (cl != (clock_t)-1) {
+                return static_cast<double>(cl) / static_cast<double>(CLOCKS_PER_SEC);
+            }
+#       endif
+#   else
+#       warning "get_cpu_time() may not work correctly: unsupported platform"
+#   endif
+        return std::numeric_limits<double>::quiet_NaN();
+    }
+
+}; // namespace time_shield
+
+#endif // TIME_SHIELD_HEADER_CORE_TIME_UTILS_HPP_INCLUDED

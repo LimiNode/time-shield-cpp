@@ -30,6 +30,17 @@ Global rules:
 
 Additional policy:
 
+- Public C++ headers are organized by domain under `include/time_shield`.
+  Prefer domain umbrellas (`core.hpp`, `conversions.hpp`, `text.hpp`,
+  `date_time.hpp`, `timezone.hpp`, `astronomy.hpp`, `timers.hpp`, and
+  optional `ntp.hpp`) for cross-domain includes. Same-domain leaf includes may
+  use local paths. Do not use `../` includes or include another domain's leaf
+  header directly. Root-level compatibility headers and documented legacy
+  paths are forwarding shells and are exempt from the domain dependency rule.
+- Keep domain dependencies acyclic: lower-level domains must not include
+  higher-level domain headers. Detail headers belong to their owning domain
+  and are not public cross-domain dependencies.
+
 - For reusable `.hpp` / `.ipp` / `.tpp` ownership and include-structure policy, prefer:
   - developer doc: `docs/header-implementation-guidelines.md`
   - agent playbook: `agents/header-implementation-guidelines.md`

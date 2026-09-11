@@ -1,5 +1,5 @@
-#include <time_shield/validation.hpp>
-#include <time_shield/time_parser.hpp>
+#include <time_shield/core/validation.hpp>
+#include <time_shield/text/time_parser.hpp>
 #include "test_assert.hpp"
 #include <string>
 

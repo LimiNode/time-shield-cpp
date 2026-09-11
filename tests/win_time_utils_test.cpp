@@ -1,4 +1,4 @@
-#include <time_shield/time_utils.hpp>
+#include <time_shield/core/time_utils.hpp>
 #include "test_assert.hpp"
 
 /// \brief Windows specific checks for high resolution timers.
