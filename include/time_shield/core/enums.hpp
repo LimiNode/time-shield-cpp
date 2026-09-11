@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_CORE_ENUMS_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_CORE_ENUMS_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_CORE_ENUMS_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_CORE_ENUMS_HPP_INCLUDED
 
 /// \file enums.hpp
 /// \ingroup time_enums
@@ -309,4 +309,4 @@ namespace time_shield {
 
 }; // namespace time_shield
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_CORE_ENUMS_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_CORE_ENUMS_HPP_INCLUDED

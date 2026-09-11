@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_CONVERSIONS_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_CONVERSIONS_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_CONVERSIONS_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_CONVERSIONS_HPP_INCLUDED
 
 #include <time_shield/core.hpp>
 #include <time_shield/conversions/time_unit_conversions.hpp>
@@ -19,4 +19,4 @@
 #   include <time_shield/conversions/legacy_aliases.hpp>
 #endif
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_CONVERSIONS_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_CONVERSIONS_HPP_INCLUDED

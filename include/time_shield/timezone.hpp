@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_TIMEZONE_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_TIMEZONE_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_TIMEZONE_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_TIMEZONE_HPP_INCLUDED
 
 #include <time_shield/core.hpp>
 #include <time_shield/conversions.hpp>
@@ -13,4 +13,4 @@
 #include <time_shield/timezone/time_zone_conversions.hpp>
 #include <time_shield/timezone/ZonedClock.hpp>
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_TIMEZONE_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_TIMEZONE_HPP_INCLUDED

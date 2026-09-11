@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_NTP_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_NTP_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_NTP_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_NTP_HPP_INCLUDED
 
 #include <time_shield/core.hpp>
 
@@ -12,4 +12,4 @@
 #   include <time_shield/ntp/ntp_time_service.hpp>
 #endif
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_NTP_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_NTP_HPP_INCLUDED

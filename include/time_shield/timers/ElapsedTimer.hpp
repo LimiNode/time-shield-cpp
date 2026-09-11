@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_TIMERS_ELAPSEDTIMER_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_TIMERS_ELAPSEDTIMER_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_TIMERS_ELAPSEDTIMER_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_TIMERS_ELAPSEDTIMER_HPP_INCLUDED
 
 /// \file ElapsedTimer.hpp
 /// \brief High-precision elapsed time measurement helper similar to Qt's QElapsedTimer.
@@ -184,4 +184,4 @@ namespace time_shield {
 
 } // namespace time_shield
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_TIMERS_ELAPSEDTIMER_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_TIMERS_ELAPSEDTIMER_HPP_INCLUDED

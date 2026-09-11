@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_CORE_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_CORE_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_CORE_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_CORE_HPP_INCLUDED
 
 #include <time_shield/core/config.hpp>
 #include <time_shield/core/types.hpp>
@@ -16,4 +16,4 @@
 #include <time_shield/core/time_utils.hpp>
 #include <time_shield/core/initialization.hpp>
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_CORE_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_CORE_HPP_INCLUDED

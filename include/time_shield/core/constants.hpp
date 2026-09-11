@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_CORE_CONSTANTS_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_CORE_CONSTANTS_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_CORE_CONSTANTS_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_CORE_CONSTANTS_HPP_INCLUDED
 
 /// \file constants.hpp
 /// \brief Header file with time-related constants.
@@ -166,4 +166,4 @@ namespace time_shield {
 
 }; // namespace time_shield
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_CORE_CONSTANTS_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_CORE_CONSTANTS_HPP_INCLUDED

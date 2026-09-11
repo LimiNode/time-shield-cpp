@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_TIMEZONE_ZONEDCLOCK_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_TIMEZONE_ZONEDCLOCK_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_TIMEZONE_ZONEDCLOCK_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_TIMEZONE_ZONEDCLOCK_HPP_INCLUDED
 
 /// \file ZonedClock.hpp
 /// \brief Header-only clock wrapper for named zones, fixed offsets, and optional NTP-backed UTC time.
@@ -366,4 +366,4 @@ namespace time_shield {
 
 } // namespace time_shield
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_TIMEZONE_ZONEDCLOCK_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_TIMEZONE_ZONEDCLOCK_HPP_INCLUDED

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 #pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_SHIELD_TEXT_TIME_FORMAT_PARSER_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_SHIELD_TEXT_TIME_FORMAT_PARSER_HPP_INCLUDED
+#ifndef TIME_SHIELD_HEADER_TEXT_TIME_FORMAT_PARSER_HPP_INCLUDED
+#define TIME_SHIELD_HEADER_TEXT_TIME_FORMAT_PARSER_HPP_INCLUDED
 
 /// \file time_format_parser.hpp
 /// \brief Header file for fast parsing with formatter-compatible custom patterns.
@@ -1155,4 +1155,4 @@ namespace time_shield {
 
 } // namespace time_shield
 
-#endif // TIME_SHIELD_HEADER_TIME_SHIELD_TEXT_TIME_FORMAT_PARSER_HPP_INCLUDED
+#endif // TIME_SHIELD_HEADER_TEXT_TIME_FORMAT_PARSER_HPP_INCLUDED
