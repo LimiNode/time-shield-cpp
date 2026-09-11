@@ -9,7 +9,7 @@
 #include <time_shield/core.hpp>
 #include <time_shield/conversions.hpp>
 #include <time_shield/text.hpp>
-#include <time_shield/datetime.hpp>
+#include <time_shield/date_time.hpp>
 #include "time_zone_conversions.hpp"
 
 #if TIME_SHIELD_ENABLE_NTP_CLIENT

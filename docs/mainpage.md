@@ -66,7 +66,7 @@ All public symbols are declared inside the `time_shield` namespace.
 
 Public headers are grouped by domain. The preferred entry points are
 `time_shield/core.hpp`, `time_shield/conversions.hpp`, `time_shield/text.hpp`,
-`time_shield/datetime.hpp`, `time_shield/timezone.hpp`,
+`time_shield/date_time.hpp`, `time_shield/timezone.hpp`,
 `time_shield/astronomy.hpp`, `time_shield/timers.hpp`, and the optional
 `time_shield/ntp.hpp`. Root-level header paths remain available as compatibility
 forwarders.

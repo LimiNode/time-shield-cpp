@@ -11,7 +11,7 @@
 #include "time_shield/core.hpp"         ///< Core types, constants, validation, and utilities.
 #include "time_shield/conversions.hpp"  ///< Timestamp, calendar, and offset conversions.
 #include "time_shield/text.hpp"         ///< Parsing and formatting helpers.
-#include "time_shield/datetime.hpp"     ///< Fixed-offset date-time value type.
+#include "time_shield/date_time.hpp"    ///< Fixed-offset date-time value type.
 #include "time_shield/astronomy.hpp"    ///< Julian and lunar astronomy helpers.
 #include "time_shield/timers.hpp"       ///< Timer and scheduling utilities.
 #if TIME_SHIELD_ENABLE_NTP_CLIENT

@@ -10,7 +10,6 @@
 /// `time_conversions.hpp` to make the aliases available.
 
 #include <time_shield/conversions.hpp>
-#include <time_shield/astronomy.hpp>
 
 #include <type_traits>
 
@@ -126,41 +125,6 @@ namespace time_shield {
     template<class T = ts_ms_t>
     TIME_SHIELD_CONSTEXPR T next_day_unixday_ms(dse_t unix_day) noexcept {
         return start_of_next_day_from_unix_day_ms(unix_day);
-    }
-
-    /// \brief Legacy day-first Gregorian Julian Date conversion.
-    /// \details Use gregorian_ymd_to_jd for the preferred year-first API.
-    inline jd_t gregorian_to_jd(double day, int64_t month, int64_t year) noexcept {
-        return detail::gregorian_dmy_to_jd_unchecked(day, month, year);
-    }
-
-    /// \brief Legacy day-first Gregorian Julian Date conversion.
-    /// \details Use gregorian_ymd_to_jd for the preferred year-first API.
-    inline jd_t gregorian_to_jd(
-            uint32_t day,
-            uint32_t month,
-            uint32_t year,
-            uint32_t hour,
-            uint32_t minute,
-            uint32_t second = 0,
-            uint32_t millisecond = 0) noexcept {
-        return detail::gregorian_dmy_to_jd_unchecked(
-                static_cast<double>(day) + detail::day_fraction_from_hms(
-                        static_cast<int>(hour),
-                        static_cast<int>(minute),
-                        static_cast<int>(second),
-                        static_cast<int>(millisecond)),
-                static_cast<int64_t>(month),
-                static_cast<int64_t>(year));
-    }
-
-    /// \brief Legacy day-first Gregorian Julian Day Number conversion.
-    /// \details Use gregorian_ymd_to_jdn for the preferred year-first API.
-    inline jdn_t gregorian_to_jdn(uint32_t day, uint32_t month, uint32_t year) noexcept {
-        return detail::gregorian_dmy_to_jdn_unchecked(
-                static_cast<int64_t>(day),
-                static_cast<int64_t>(month),
-                static_cast<int64_t>(year));
     }
 
 /// \}

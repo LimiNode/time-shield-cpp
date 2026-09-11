@@ -34,7 +34,7 @@ bool monday = is_workday(now);
 - `time_shield/core.hpp` — базовые типы, структуры, проверки и утилиты;
 - `time_shield/conversions.hpp` — преобразования временных и календарных значений;
 - `time_shield/text.hpp` — разбор и форматирование;
-- `time_shield/datetime.hpp` — тип `DateTime`;
+- `time_shield/date_time.hpp` — тип `DateTime`;
 - `time_shield/timezone.hpp` — именованные зоны и фиксированные смещения;
 - `time_shield/astronomy.hpp` — Julian- и лунные helper-ы;
 - `time_shield/timers.hpp` — таймеры и планировщик;

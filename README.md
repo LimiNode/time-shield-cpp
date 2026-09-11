@@ -38,7 +38,7 @@ entry points for focused use:
 - `time_shield/core.hpp` — core types, structures, validation, and utilities;
 - `time_shield/conversions.hpp` — timestamp, calendar, and offset conversions;
 - `time_shield/text.hpp` — parsing and formatting;
-- `time_shield/datetime.hpp` — the `DateTime` value type;
+- `time_shield/date_time.hpp` — the `DateTime` value type;
 - `time_shield/timezone.hpp` — named-zone and fixed-offset clocks;
 - `time_shield/astronomy.hpp` — Julian and lunar helpers;
 - `time_shield/timers.hpp` — timers and scheduling;
