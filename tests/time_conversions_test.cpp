@@ -1,13 +1,17 @@
 #include <time_shield/time_conversions.hpp>
 #include "test_assert.hpp"
+#include <type_traits>
+
+static_assert(std::is_same<decltype(time_shield::start_of_next_day_from_unix_day(0)), time_shield::ts_t>::value,
+              "seconds next-day conversion must default to ts_t");
 
 /// \brief Basic checks for time conversion helpers.
 int main() {
     using namespace time_shield;
 
-    TIME_SHIELD_TEST_CHECK(get_unix_day_ms(86400000) == 1);
-    TIME_SHIELD_TEST_CHECK(unix_day_to_timestamp(2) == 2 * SEC_PER_DAY);
-    TIME_SHIELD_TEST_CHECK(unix_day_to_timestamp_ms(2) == 2 * MS_PER_DAY);
+    TIME_SHIELD_TEST_CHECK(days_since_epoch_ms(86400000) == 1);
+    TIME_SHIELD_TEST_CHECK(unix_day_to_ts(2) == 2 * SEC_PER_DAY);
+    TIME_SHIELD_TEST_CHECK(unix_day_to_ts_ms(2) == 2 * MS_PER_DAY);
     TIME_SHIELD_TEST_CHECK(end_of_day_from_unix_day(0) == SEC_PER_DAY - 1);
     TIME_SHIELD_TEST_CHECK(start_of_next_day_from_unix_day(0) == SEC_PER_DAY);
 

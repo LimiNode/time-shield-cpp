@@ -58,6 +58,7 @@ Do not mix incompatible compile-time configuration for the same final program.
 In particular:
 
 - all consumers in one program should agree on whether `TIME_SHIELD_ENABLE_NTP_CLIENT` is enabled
+- all consumers in one program should agree on whether `TIME_SHIELD_ENABLE_LEGACY_ALIASES` is enabled
 - public behavior that depends on compile-time configuration must stay consistent across static libraries and the final executable
 
 ## Practical Checklist

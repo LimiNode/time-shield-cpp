@@ -13,7 +13,6 @@
 /// Notes:
 /// - JD and MJD are returned as double (jd_t/mjd_t).
 /// - These functions are intended for utility/analytics, not for high-precision astronomy.
-/// - Legacy `gregorian_to_*` overloads use `day, month, year` order for compatibility.
 
 #include "config.hpp"
 #include "types.hpp"
@@ -82,42 +81,6 @@ namespace time_shield {
         return fts_to_jd(static_cast<fts_t>(ts));
     }
 
-    /// \brief Convert Gregorian date (with optional fractional day) to Julian Date (JD).
-    /// \param day Day of month (may include fractional part).
-    /// \param month Month [1..12].
-    /// \param year Full year in the proleptic Gregorian calendar.
-    /// \return Julian Date value.
-    inline jd_t gregorian_to_jd(double day, int64_t month, int64_t year) noexcept {
-        return detail::gregorian_dmy_to_jd_unchecked(day, month, year);
-    }
-
-    /// \brief Convert Gregorian date/time components to Julian Date (JD).
-    /// \param day Day of month [1..31].
-    /// \param month Month [1..12].
-    /// \param year Full year in the proleptic Gregorian calendar.
-    /// \param hour Hour of day [0..23].
-    /// \param minute Minute of hour [0..59].
-    /// \param second Second of minute [0..59].
-    /// \param millisecond Millisecond of second [0..999].
-    /// \return Julian Date value.
-    inline jd_t gregorian_to_jd(
-            uint32_t day,
-            uint32_t month,
-            uint32_t year,
-            uint32_t hour,
-            uint32_t minute,
-            uint32_t second = 0,
-            uint32_t millisecond = 0) noexcept {
-        return detail::gregorian_dmy_to_jd_unchecked(
-                static_cast<double>(day) + detail::day_fraction_from_hms(
-                        static_cast<int>(hour),
-                        static_cast<int>(minute),
-                        static_cast<int>(second),
-                        static_cast<int>(millisecond)),
-                static_cast<int64_t>(month),
-                static_cast<int64_t>(year));
-    }
-
     /// \brief Convert Gregorian date/time components to Julian Date (JD) using year-first order.
     /// \param year Full year in the proleptic Gregorian calendar.
     /// \param month Month [1..12].
@@ -153,19 +116,6 @@ namespace time_shield {
     /// \return Modified Julian Date value.
     inline mjd_t ts_to_mjd(ts_t ts) noexcept {
         return static_cast<mjd_t>(fts_to_mjd(static_cast<fts_t>(ts)));
-    }
-
-    /// \brief Convert Gregorian date to Julian Day Number (JDN).
-    /// \details JDN is an integer day count with no fractional part.
-    /// \param day Day of month [1..31].
-    /// \param month Month [1..12].
-    /// \param year Full year in the proleptic Gregorian calendar.
-    /// \return Julian Day Number value.
-    inline jdn_t gregorian_to_jdn(uint32_t day, uint32_t month, uint32_t year) noexcept {
-        return detail::gregorian_dmy_to_jdn_unchecked(
-                static_cast<int64_t>(day),
-                static_cast<int64_t>(month),
-                static_cast<int64_t>(year));
     }
 
     /// \brief Convert Gregorian date to Julian Day Number (JDN) using year-first order.

@@ -31,18 +31,11 @@ namespace time_shield {
         return years_since_epoch<T>(ts);
     }
     
-    /// \brief Alias for years_since_epoch function.
-    /// \copydoc years_since_epoch
-    template<class T = year_t>
-    TIME_SHIELD_CONSTEXPR T get_unix_year(ts_t ts) noexcept {
-        return years_since_epoch<T>(ts);
-    }
-
 //------------------------------------------------------------------------------
 
 
-    /// \brief Alias for get_unix_day function.
-    /// \copydoc get_unix_day
+    /// \brief Alias for days_since_epoch function.
+    /// \copydoc days_since_epoch
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T get_unixday(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
@@ -69,13 +62,6 @@ namespace time_shield {
     /// \copydoc days_since_epoch
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T uday(ts_t ts = time_shield::ts()) noexcept {
-        return days_since_epoch<T>(ts);
-    }
-    
-    /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
-    template<class T = dse_t>
-    TIME_SHIELD_CONSTEXPR T get_unix_day(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
     }
     
@@ -113,21 +99,7 @@ namespace time_shield {
         return days_since_epoch_ms<T>(t_ms);
     }
 
-    /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
-    template<class T = dse_t>
-    TIME_SHIELD_CONSTEXPR T get_unix_day_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
-        return days_since_epoch_ms<T>(t_ms);
-    }
-    
 //------------------------------------------------------------------------------
-
-    /// \brief Alias for unix_day_to_ts function.
-    /// \copydoc unix_day_to_ts
-    template<class T = ts_t>
-    TIME_SHIELD_CONSTEXPR T unix_day_to_timestamp(dse_t unix_day) noexcept {
-        return unix_day_to_ts<T>(unix_day);
-    }
 
     /// \brief Alias for unix_day_to_ts function.
     /// \copydoc unix_day_to_ts
@@ -151,13 +123,6 @@ namespace time_shield {
     }
     
 //------------------------------------------------------------------------------
-
-    /// \brief Alias for unix_day_to_ts_ms function.
-    /// \copydoc unix_day_to_ts_ms
-    template<class T = ts_t>
-    TIME_SHIELD_CONSTEXPR T unix_day_to_timestamp_ms(dse_t unix_day) noexcept {
-        return unix_day_to_ts_ms(unix_day);
-    }
 
     /// \brief Alias for unix_day_to_ts_ms function.
     /// \copydoc unix_day_to_ts_ms
@@ -189,20 +154,6 @@ namespace time_shield {
         return start_of_next_day_from_unix_day(unix_day);
     }
 
-    /// \brief Alias for start_of_next_day_from_unix_day function.
-    /// \copydoc start_of_next_day_from_unix_day
-    template<class T = ts_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unix_day(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day(unix_day);
-    }
-
-    /// \brief Alias for start_of_next_day_from_unix_day function.
-    /// \copydoc start_of_next_day_from_unix_day
-    template<class T = ts_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unixday(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day(unix_day);
-    }
-    
 //------------------------------------------------------------------------------
 
     /// \brief Alias for start_of_next_day_from_unix_day_ms function.
@@ -212,20 +163,6 @@ namespace time_shield {
         return start_of_next_day_from_unix_day_ms(unix_day);
     }
 
-    /// \brief Alias for start_of_next_day_from_unix_day_ms function.
-    /// \copydoc start_of_next_day_from_unix_day_ms
-    template<class T = ts_ms_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unix_day_ms(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day_ms(unix_day);
-    }
-
-    /// \brief Alias for start_of_next_day_from_unix_day_ms function.
-    /// \copydoc start_of_next_day_from_unix_day_ms
-    template<class T = ts_ms_t>
-    TIME_SHIELD_CONSTEXPR T next_day_unixday_ms(dse_t unix_day) noexcept {
-        return start_of_next_day_from_unix_day_ms(unix_day);
-    }
-    
 //------------------------------------------------------------------------------
 
     /// \brief Alias for min_since_epoch function.
@@ -256,13 +193,6 @@ namespace time_shield {
         return min_since_epoch<T>(ts);
     }
     
-    /// \brief Alias for min_since_epoch function.
-    /// \copydoc min_since_epoch
-    template<class T = int64_t>
-    TIME_SHIELD_CONSTEXPR T get_unix_min(ts_t ts = time_shield::ts()) {
-        return min_since_epoch<T>(ts);
-    }
-
 //------------------------------------------------------------------------------
 
     /// \ingroup time_structures
@@ -1599,13 +1529,6 @@ namespace time_shield {
         return year_of<T>(ts);
     }
     
-    /// \brief Alias for year_of function.
-    /// \copydoc year_of
-    template<class T = year_t>
-    TIME_SHIELD_CONSTEXPR inline T get_year(ts_t ts = time_shield::ts()) {
-        return year_of<T>(ts);
-    }
-
 //------------------------------------------------------------------------------
 
     /// \brief Alias for year_of_ms function.
@@ -1619,13 +1542,6 @@ namespace time_shield {
     /// \copydoc year_of_ms
     template<class T = year_t>
     TIME_SHIELD_CONSTEXPR inline T to_year_ms(ts_ms_t ts_ms = time_shield::ts_ms()) {
-        return year_of_ms<T>(ts_ms);
-    }
-    
-    /// \brief Alias for year_of_ms function.
-    /// \copydoc year_of_ms
-    template<class T = year_t>
-    TIME_SHIELD_CONSTEXPR inline T get_year_ms(ts_ms_t ts_ms = time_shield::ts_ms()) {
         return year_of_ms<T>(ts_ms);
     }
     
@@ -1895,14 +1811,6 @@ namespace time_shield {
     /// \brief Alias for weekday_of_date
     /// \copydoc weekday_of_date
     template<class T1 = Weekday, class T2, typename std::enable_if<std::is_class<T2>::value, int>::type = 0>
-    TIME_SHIELD_CONSTEXPR inline T1 get_weekday_from_date(const T2& date) {
-        return weekday_of_date<T1>(date);
-    }
-
-    /// \ingroup time_structures
-    /// \brief Alias for weekday_of_date
-    /// \copydoc weekday_of_date
-    template<class T1 = Weekday, class T2, typename std::enable_if<std::is_class<T2>::value, int>::type = 0>
     TIME_SHIELD_CONSTEXPR T1 get_dow(const T2& date) {
         return weekday_of_date<T1>(date);
     }
@@ -1976,13 +1884,6 @@ namespace time_shield {
     /// \copydoc weekday_of_ts
     template<class T = Weekday, class U, typename std::enable_if<std::is_integral<U>::value, int>::type = 0>
     TIME_SHIELD_CONSTEXPR T get_dow_from_ts(U ts) noexcept {
-        return weekday_of_ts<T>(ts);
-    }
-
-    /// \brief Alias for weekday_of_ts
-    /// \copydoc weekday_of_ts
-    template<class T = Weekday, class U, typename std::enable_if<std::is_integral<U>::value, int>::type = 0>
-    TIME_SHIELD_CONSTEXPR T get_weekday_from_ts(U ts) noexcept {
         return weekday_of_ts<T>(ts);
     }
 

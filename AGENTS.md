@@ -61,7 +61,7 @@ Use the following order for repository changes and reviews:
 4. Run CTest in both Debug and Release configurations. Runtime test checks must remain active in Release builds.
 5. Check C++11, C++14, and C++17 compatibility, installation consumers, and ODR tests when public headers change.
 6. Treat MQL5 scripts as manual tests unless a MetaEditor compiler is available. Manual scripts report an aggregate pass/fail result.
-7. Preserve convenient public aliases. Move an alias to an opt-in legacy header only when its legacy status is confirmed by history and documentation.
+7. Preserve convenient public aliases. Short or alternative names are not legacy merely because a canonical equivalent exists. Classify an API as legacy only when it has been historically renamed or superseded, or when a deliberate replacement is introduced. When replacing a useful short alias, provide an equally practical preferred alias. Move a confirmed legacy alias to `legacy_aliases.hpp` and make it available only through `TIME_SHIELD_ENABLE_LEGACY_ALIASES`.
 8. Keep documentation source templates version-neutral. Do not commit generated
    documentation version substitutions; publish.yaml injects the effective version
    during publication.

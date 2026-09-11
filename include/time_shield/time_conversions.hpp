@@ -26,4 +26,8 @@
 #include "astronomy_conversions.hpp"
 #include "time_conversion_aliases.hpp"
 
+#if defined(TIME_SHIELD_ENABLE_LEGACY_ALIASES)
+#   include "legacy_aliases.hpp"
+#endif
+
 #endif // TIME_SHIELD_HEADER_TIME_SHIELD_TIME_CONVERSIONS_HPP_INCLUDED

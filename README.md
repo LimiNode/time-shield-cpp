@@ -91,6 +91,9 @@ library and report platform capabilities:
 - `TIME_SHIELD_HAS_WINSOCK` — set when WinSock APIs are available.
 - `TIME_SHIELD_ENABLE_NTP_CLIENT` — enables the optional `NtpClient` module
   (defaults to `1` on supported platforms).
+- `TIME_SHIELD_ENABLE_LEGACY_ALIASES` enables compatibility aliases for
+  confirmed renamed conversion helpers. Define it before including Time Shield
+  headers; it is disabled by default.
 
 C++ and MQL5 public headers place their declarations inside the `time_shield`
 namespace. Use `time_shield::` or `using namespace time_shield;` to access that
@@ -118,12 +121,30 @@ constants because the MQL4 language does not provide namespaces.
   allocations; string/parsing routines and some high-level helpers may allocate
   and/or throw (as documented per function).
 
-## Versioning
+## Versioning and API stability
 
-Time Shield follows [Semantic Versioning](https://semver.org). Patch releases
-contain only backward-compatible fixes. Minor versions add
-backward-compatible features. Major versions may include breaking changes. The
-public API comprises headers under `include/time_shield`.
+Time Shield uses semantic-style version numbers with API stability tiers rather
+than a strict feature restriction for every patch release. The public API has
+three levels:
+
+- **Canonical API** — primary documented types and functions. Breaking source
+  changes require an explicit compatibility and versioning decision.
+- **Convenience API** — supported alternative names and short aliases for
+  common operations. An alias is not legacy merely because a canonical
+  equivalent exists.
+- **Legacy compatibility API** — historically renamed or superseded names with
+  an established replacement. Legacy names may be disabled by default when an
+  explicit compatibility opt-in such as
+  `TIME_SHIELD_ENABLE_LEGACY_ALIASES` is available.
+
+Patch releases may contain fixes, internal refactoring, documentation changes,
+small additive features, and compatibility cleanup. Minor releases cover
+larger feature additions or broader API evolution. Major versions are reserved
+for deliberate, substantial changes to the canonical API.
+
+An API symbol is not legacy solely because it is redundant, verbose, short, or
+stylistically inconsistent. Legacy status is supported by repository history,
+documentation, an explicit rename, or a clearly established replacement.
 
 ## Installation
 

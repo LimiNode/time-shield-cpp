@@ -1,3 +1,4 @@
+#define TIME_SHIELD_ENABLE_LEGACY_ALIASES
 #include <time_shield/time_conversions.hpp>
 #include <time_shield/time_unit_conversions.hpp>
 
@@ -46,13 +47,13 @@ int main() {
 
     // unix_time_conversions and aliases
     const ts_t unix_day_two_ts = unix_day_to_ts(2);
-    TIME_SHIELD_TEST_CHECK(unix_day_to_timestamp(2) == unix_day_two_ts);
+    TIME_SHIELD_TEST_CHECK(unix_day_to_ts(2) == unix_day_two_ts);
     TIME_SHIELD_TEST_CHECK(unixday_to_ts(2) == unix_day_two_ts);
     TIME_SHIELD_TEST_CHECK(uday_to_ts(2) == unix_day_two_ts);
     TIME_SHIELD_TEST_CHECK(start_of_day_from_unix_day(2) == unix_day_two_ts);
 
     const ts_ms_t unix_day_two_ms = unix_day_to_ts_ms(2);
-    TIME_SHIELD_TEST_CHECK(unix_day_to_timestamp_ms(2) == unix_day_two_ms);
+    TIME_SHIELD_TEST_CHECK(unix_day_to_ts_ms(2) == unix_day_two_ms);
     TIME_SHIELD_TEST_CHECK(unixday_to_ts_ms(2) == unix_day_two_ms);
     TIME_SHIELD_TEST_CHECK(uday_to_ts_ms(2) == unix_day_two_ms);
     TIME_SHIELD_TEST_CHECK(start_of_day_from_unix_day_ms(2) == unix_day_two_ms);
@@ -74,14 +75,14 @@ int main() {
     TIME_SHIELD_TEST_CHECK(unix_day(SEC_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unixday(SEC_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(uday(SEC_PER_DAY) == 1);
-    TIME_SHIELD_TEST_CHECK(get_unix_day(SEC_PER_DAY) == 1);
+    TIME_SHIELD_TEST_CHECK(days_since_epoch(SEC_PER_DAY) == 1);
 
     TIME_SHIELD_TEST_CHECK(days_since_epoch_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(get_unixday_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unix_day_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(unixday_ms(MS_PER_DAY) == 1);
     TIME_SHIELD_TEST_CHECK(uday_ms(MS_PER_DAY) == 1);
-    TIME_SHIELD_TEST_CHECK(get_unix_day_ms(MS_PER_DAY) == 1);
+    TIME_SHIELD_TEST_CHECK(days_since_epoch_ms(MS_PER_DAY) == 1);
 
     TIME_SHIELD_TEST_CHECK(days_between(0, SEC_PER_DAY * 3) == 3);
 
@@ -94,7 +95,7 @@ int main() {
     TIME_SHIELD_TEST_CHECK(unix_min(minute_mark) == 5);
     TIME_SHIELD_TEST_CHECK(to_unix_min(minute_mark) == 5);
     TIME_SHIELD_TEST_CHECK(umin(minute_mark) == 5);
-    TIME_SHIELD_TEST_CHECK(get_unix_min(minute_mark) == 5);
+    TIME_SHIELD_TEST_CHECK(min_since_epoch(minute_mark) == 5);
 
     TIME_SHIELD_TEST_CHECK(sec_of_day(SEC_PER_DAY + 10) == 10);
     TIME_SHIELD_TEST_CHECK(sec_of_day_ms(MS_PER_DAY + 2000) == 2);
@@ -205,7 +206,6 @@ int main() {
     TIME_SHIELD_TEST_CHECK(day_of_week_date<>(2024, 6, 30) == SUN);
     TIME_SHIELD_TEST_CHECK(weekday_of_date<>(sample_date) == SUN);
     TIME_SHIELD_TEST_CHECK(weekday_from_date<>(sample_date) == SUN);
-    TIME_SHIELD_TEST_CHECK(get_weekday_from_date<>(sample_date) == SUN);
     TIME_SHIELD_TEST_CHECK(wd<>(sample_date) == SUN);
 
     // date_time_conversions and aliases
@@ -261,9 +261,7 @@ int main() {
     TIME_SHIELD_TEST_CHECK(num_days_in_month_ts(sample_ts) == 30);
 
     TIME_SHIELD_TEST_CHECK(weekday_of_ts(day_start) == SUN);
-    TIME_SHIELD_TEST_CHECK(get_weekday_from_ts(day_start) == SUN);
     TIME_SHIELD_TEST_CHECK(weekday_of_ts_ms(sec_to_ms(day_start)) == SUN);
-    TIME_SHIELD_TEST_CHECK(get_weekday_from_ts_ms(sec_to_ms(day_start)) == SUN);
     TIME_SHIELD_TEST_CHECK(wd_ts(day_start) == SUN);
     TIME_SHIELD_TEST_CHECK(wd_ms(sec_to_ms(day_start)) == SUN);
 

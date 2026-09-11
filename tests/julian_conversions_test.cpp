@@ -20,11 +20,6 @@ int main() {
     TIME_SHIELD_TEST_CHECK(almost_equal(ts_to_jd(static_cast<ts_t>(-SEC_PER_DAY)), 2440586.5));
     TIME_SHIELD_TEST_CHECK(gregorian_ymd_to_jdn(1969, 12, 31) == static_cast<jdn_t>(2440587));
 
-    TIME_SHIELD_TEST_CHECK(almost_equal(gregorian_to_jd(2.5, 5, 2024), gregorian_ymd_to_jd(2024, 5, 2, 12, 0)));
-
-    TIME_SHIELD_TEST_CHECK(almost_equal(gregorian_to_jd(2U, 5U, 2024U, 12U, 0U, 0U, 0U), gregorian_ymd_to_jd(2024, 5, 2, 12, 0)));
-    TIME_SHIELD_TEST_CHECK(gregorian_to_jdn(2U, 5U, 2024U) == gregorian_ymd_to_jdn(2024, 5, 2));
-
     jd_t jd_value = -1.0;
     TIME_SHIELD_TEST_CHECK(try_gregorian_ymd_to_jd(2024, 5, 2, 12, 0, 0, 0, jd_value));
     TIME_SHIELD_TEST_CHECK(almost_equal(jd_value, 2460433.0));
