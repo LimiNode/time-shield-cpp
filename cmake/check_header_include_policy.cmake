@@ -5,6 +5,15 @@ if(NOT DEFINED TIME_SHIELD_SOURCE_DIR)
 endif()
 
 set(TIME_SHIELD_INCLUDE_DIR "${TIME_SHIELD_SOURCE_DIR}/include/time_shield")
+set(TIME_SHIELD_DOMAINS
+    astronomy
+    conversions
+    core
+    datetime
+    ntp
+    text
+    timers
+    timezone)
 set(TIME_SHIELD_ROOT_HEADERS
     astronomy.hpp
     conversions.hpp
@@ -49,8 +58,11 @@ foreach(header IN LISTS TIME_SHIELD_CANONICAL_HEADERS)
     string(REGEX MATCH "^([^/]+)/" domain_match "${relative_header}")
     set(source_domain "${CMAKE_MATCH_1}")
 
-    if(source_domain STREQUAL "detail" OR source_domain STREQUAL "ntp_client")
-        continue()
+    if(NOT source_domain IN_LIST TIME_SHIELD_DOMAINS)
+        if(source_domain STREQUAL "detail" OR source_domain STREQUAL "ntp_client")
+            continue()
+        endif()
+        message(FATAL_ERROR "Unknown header domain: ${source_domain}")
     endif()
     if(relative_header MATCHES "(^|/)legacy_aliases\\.hpp$")
         continue()
@@ -136,6 +148,17 @@ foreach(umbrella IN LISTS TIME_SHIELD_DOMAIN_UMBRELLAS)
             endif()
         endif()
     endforeach()
+endforeach()
+
+file(STRINGS "${TIME_SHIELD_SOURCE_DIR}/include/time_shield.hpp" TIME_SHIELD_MAIN_HEADER_LINES)
+foreach(line IN LISTS TIME_SHIELD_MAIN_HEADER_LINES)
+    if(line MATCHES "#include[ \t]+[\"<]time_shield/([^>\"]+)[>\"]")
+        set(target "${CMAKE_MATCH_1}")
+        if(NOT target IN_LIST TIME_SHIELD_ROOT_HEADERS)
+            message(FATAL_ERROR
+                "Main umbrella must include root domain umbrellas only: ${line}")
+        endif()
+    endif()
 endforeach()
 
 message(STATUS "Header include policy passed")

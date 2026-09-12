@@ -6,8 +6,9 @@
 /// \file legacy_aliases.hpp
 /// \brief Opt-in compatibility aliases for renamed time-conversion helpers.
 ///
-/// Define `TIME_SHIELD_ENABLE_LEGACY_ALIASES` before including this header or
-/// `time_conversions.hpp` to make the aliases available.
+/// Define `TIME_SHIELD_ENABLE_LEGACY_ALIASES` before including this header,
+/// `time_shield/conversions.hpp`, or `time_shield.hpp` to make the aliases
+/// available.
 
 #include <time_shield/conversions.hpp>
 

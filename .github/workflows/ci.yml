@@ -128,6 +128,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Pin overlay port to the checked-out revision
+        env:
+          TIME_SHIELD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$TIME_SHIELD_REF"
+          archive_url="https://github.com/LimiNode/time-shield-cpp/archive/${TIME_SHIELD_REF}.tar.gz"
+          sha512=$(curl -fsSL "$archive_url" | sha512sum | awk '{print $1}')
+          sed -i -E "s/^    REF .*/    REF ${TIME_SHIELD_REF}/" vcpkg-overlay/ports/time-shield-cpp/portfile.cmake
+          sed -i -E "s/^    SHA512 .*/    SHA512 ${sha512}/" vcpkg-overlay/ports/time-shield-cpp/portfile.cmake
       - name: Install vcpkg
         run: |
           git clone https://github.com/microsoft/vcpkg.git
