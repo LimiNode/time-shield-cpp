@@ -9,6 +9,11 @@ Use the repository guidance in this order:
 5. `docs/singleton-storage-guidelines.md`
 6. `agents/singleton-storage-guidelines.md`
 
+For directory-specific contracts, read the owning module guide from the
+[agent documentation index](agents/README.md) before editing. The index covers
+public headers, tests, documentation, CI/publication, packaging, and MQL
+sources. Keep this root file limited to repository-wide rules and routing.
+
 Optional local settings:
 
 - If `agents/local-machine-settings.json` exists, read it after the tracked repository guidance.
