@@ -1,5 +1,6 @@
 html {
-    --top-nav-height: 150px
+    --top-nav-height: 150px;
+    --side-nav-fixed-width: 460px;
 }
 
 #titlearea {

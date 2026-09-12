@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_ZONE_OFFSET_CONVERSIONS_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_ZONE_OFFSET_CONVERSIONS_HPP_INCLUDED
-
-#include <time_shield/conversions/time_zone_offset_conversions.hpp>
-
-#endif // TIME_SHIELD_HEADER_TIME_ZONE_OFFSET_CONVERSIONS_HPP_INCLUDED

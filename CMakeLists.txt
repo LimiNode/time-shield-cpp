@@ -44,7 +44,6 @@ else()
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         PATTERN "ntp" EXCLUDE
         PATTERN "ntp.hpp" EXCLUDE
-        PATTERN "ntp_client*" EXCLUDE
         PATTERN "ntp_time_service.hpp" EXCLUDE
     )
 endif()

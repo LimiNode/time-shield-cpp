@@ -5,8 +5,31 @@ if(NOT DEFINED TIME_SHIELD_SOURCE_DIR)
 endif()
 
 set(TIME_SHIELD_INCLUDE_DIR "${TIME_SHIELD_SOURCE_DIR}/include/time_shield")
+set(TIME_SHIELD_ROOT_HEADERS
+    astronomy.hpp
+    conversions.hpp
+    core.hpp
+    date_time.hpp
+    ntp.hpp
+    text.hpp
+    timers.hpp
+    timezone.hpp)
 set(TIME_SHIELD_DOMAIN_UMBRELLAS
-    core.hpp conversions.hpp text.hpp date_time.hpp astronomy.hpp timers.hpp ntp.hpp timezone.hpp)
+    ${TIME_SHIELD_ROOT_HEADERS})
+
+file(GLOB TIME_SHIELD_ROOT_HEADER_FILES RELATIVE "${TIME_SHIELD_INCLUDE_DIR}"
+    "${TIME_SHIELD_INCLUDE_DIR}/*.hpp")
+foreach(root_header IN LISTS TIME_SHIELD_ROOT_HEADER_FILES)
+    if(NOT root_header IN_LIST TIME_SHIELD_ROOT_HEADERS)
+        message(FATAL_ERROR
+            "Unexpected root-level header: ${root_header}. Use a domain directory.")
+    endif()
+endforeach()
+list(LENGTH TIME_SHIELD_ROOT_HEADER_FILES TIME_SHIELD_ROOT_HEADER_COUNT)
+list(LENGTH TIME_SHIELD_ROOT_HEADERS TIME_SHIELD_EXPECTED_ROOT_HEADER_COUNT)
+if(NOT TIME_SHIELD_ROOT_HEADER_COUNT EQUAL TIME_SHIELD_EXPECTED_ROOT_HEADER_COUNT)
+    message(FATAL_ERROR "Root-level header inventory does not match the domain layout")
+endif()
 
 set(TIME_SHIELD_DOMAIN_DEPENDENCIES_core "")
 set(TIME_SHIELD_DOMAIN_DEPENDENCIES_conversions core)

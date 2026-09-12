@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_DATE_STRUCT_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_DATE_STRUCT_HPP_INCLUDED
-
-#include <time_shield/core/date_struct.hpp>
-
-#endif // TIME_SHIELD_HEADER_DATE_STRUCT_HPP_INCLUDED

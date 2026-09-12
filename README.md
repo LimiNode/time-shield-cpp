@@ -44,8 +44,8 @@ entry points for focused use:
 - `time_shield/timers.hpp` — timers and scheduling;
 - `time_shield/ntp.hpp` — optional NTP client and time service.
 
-The former root-level header paths remain available as compatibility forwarding
-headers. New code can migrate to domain paths without changing API symbols.
+The domain paths are the only supported public header paths. Include the
+domain umbrella or leaf header that owns the required API.
 
 ## Why Time Shield?
 

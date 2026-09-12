@@ -74,8 +74,7 @@ Public headers are grouped by domain. The preferred entry points are
 `time_shield/core.hpp`, `time_shield/conversions.hpp`, `time_shield/text.hpp`,
 `time_shield/date_time.hpp`, `time_shield/timezone.hpp`,
 `time_shield/astronomy.hpp`, `time_shield/timers.hpp`, and the optional
-`time_shield/ntp.hpp`. Root-level header paths remain available as compatibility
-forwarders.
+`time_shield/ntp.hpp`. Domain paths are the supported public header paths.
 
 \section invariants_sec API Invariants
 

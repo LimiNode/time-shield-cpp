@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_TIME_FORMAT_PARSER_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_TIME_FORMAT_PARSER_HPP_INCLUDED
-
-#include <time_shield/text/time_format_parser.hpp>
-
-#endif // TIME_SHIELD_HEADER_TIME_FORMAT_PARSER_HPP_INCLUDED
