@@ -2,9 +2,9 @@ var annotated_dup =
 [
     [ "time_shield", "namespacetime__shield.html", [
       [ "astronomy", "namespacetime__shield_1_1astronomy.html", [
+        [ "MoonPhase", "classtime__shield_1_1astronomy_1_1MoonPhase.html", "classtime__shield_1_1astronomy_1_1MoonPhase" ],
         [ "MoonPhaseResult", "structtime__shield_1_1astronomy_1_1MoonPhaseResult.html", "structtime__shield_1_1astronomy_1_1MoonPhaseResult" ],
-        [ "MoonQuarterInstants", "structtime__shield_1_1astronomy_1_1MoonQuarterInstants.html", "structtime__shield_1_1astronomy_1_1MoonQuarterInstants" ],
-        [ "MoonPhase", "classtime__shield_1_1astronomy_1_1MoonPhase.html", "classtime__shield_1_1astronomy_1_1MoonPhase" ]
+        [ "MoonQuarterInstants", "structtime__shield_1_1astronomy_1_1MoonQuarterInstants.html", "structtime__shield_1_1astronomy_1_1MoonQuarterInstants" ]
       ] ],
       [ "detail", "namespacetime__shield_1_1detail.html", [
         [ "format_parse", "namespacetime__shield_1_1detail_1_1format__parse.html", [

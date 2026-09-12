@@ -1,29 +1,7 @@
 var group__ntp =
 [
-    [ "ntp_client.hpp", "ntp__client_8hpp.html", null ],
     [ "wsa_guard.hpp", "wsa__guard_8hpp.html", null ],
-    [ "time_shield::NtpClient", "classtime__shield_1_1NtpClient.html", [
-      [ "NtpClient", "classtime__shield_1_1NtpClient.html#a2cf713875a2e4a932906fa1d91023b88", null ],
-      [ "NtpClient", "classtime__shield_1_1NtpClient.html#aa9eb58412d784043722bd8f68e22522c", null ],
-      [ "NtpClient", "classtime__shield_1_1NtpClient.html#aa9eb58412d784043722bd8f68e22522c", null ],
-      [ "delay_us", "classtime__shield_1_1NtpClient.html#ad6dcee487c7fdea337c2e18688d271fc", null ],
-      [ "last_error_code", "classtime__shield_1_1NtpClient.html#aa932f6b7e50c77d1fee6741a2bfb4a86", null ],
-      [ "last_error_code_slot", "classtime__shield_1_1NtpClient.html#ad1cd8e7ce5d82bfbd482502951d0fac7", null ],
-      [ "offset_us", "classtime__shield_1_1NtpClient.html#a0e35b8e95047daa69908148d604c0555", null ],
-      [ "query", "classtime__shield_1_1NtpClient.html#aec57675f3cf62878d7fa628f9e512ab1", null ],
-      [ "stratum", "classtime__shield_1_1NtpClient.html#af191bf300db7e7ed967bd9b253738e5f", null ],
-      [ "success", "classtime__shield_1_1NtpClient.html#a21ca9c846b63cc0af6f12c890772f608", null ],
-      [ "utc_time_ms", "classtime__shield_1_1NtpClient.html#a16064378df6c333f7c4874fff8bd8969", null ],
-      [ "utc_time_sec", "classtime__shield_1_1NtpClient.html#a554f90d6b248b921875ad2ef0689674c", null ],
-      [ "utc_time_us", "classtime__shield_1_1NtpClient.html#ab6f16f2b93a0ab0dba3f30655850b71f", null ],
-      [ "k_default_timeout_ms", "classtime__shield_1_1NtpClient.html#a1d2d0b850a100ade519010c13deed82e", null ],
-      [ "m_delay_us", "classtime__shield_1_1NtpClient.html#a4df0e16e3fac078b550bb45278a0ba77", null ],
-      [ "m_host", "classtime__shield_1_1NtpClient.html#aeb9800a2df9e1ad7bdec2911e77299ce", null ],
-      [ "m_is_success", "classtime__shield_1_1NtpClient.html#ae821578b13e82212a24e01cc282c269a", null ],
-      [ "m_offset_us", "classtime__shield_1_1NtpClient.html#ad6157bfcd0894359f8f4e061fc933c9c", null ],
-      [ "m_port", "classtime__shield_1_1NtpClient.html#a9b7ed40e51e8922a4ef9e87680af8482", null ],
-      [ "m_stratum", "classtime__shield_1_1NtpClient.html#aa57833acd288b36e14681338e3f7c8f6", null ]
-    ] ],
+    [ "ntp_client.hpp", "ntp__client_8hpp.html", null ],
     [ "time_shield::detail::NtpPacket", "structtime__shield_1_1detail_1_1NtpPacket.html", [
       [ "li_vn_mode", "structtime__shield_1_1detail_1_1NtpPacket.html#a3475c646f34f4253da765118f46d693d", null ],
       [ "orig_ts_frac", "structtime__shield_1_1detail_1_1NtpPacket.html#a93db290c4efc7692651c353726c4f6eb", null ],
@@ -52,6 +30,28 @@ var group__ntp =
       [ "success", "classtime__shield_1_1WsaGuard.html#aa2744a80dd498c86daf4b0cb073d7ab5", null ],
       [ "m_ret_code", "classtime__shield_1_1WsaGuard.html#a03c31ab43f36010a8b8aa447df7ac0b3", null ],
       [ "m_wsa_data", "classtime__shield_1_1WsaGuard.html#a7706c2f8d59d89e8da5b8f2737789d89", null ]
+    ] ],
+    [ "time_shield::NtpClient", "classtime__shield_1_1NtpClient.html", [
+      [ "NtpClient", "classtime__shield_1_1NtpClient.html#a2cf713875a2e4a932906fa1d91023b88", null ],
+      [ "NtpClient", "classtime__shield_1_1NtpClient.html#aa9eb58412d784043722bd8f68e22522c", null ],
+      [ "NtpClient", "classtime__shield_1_1NtpClient.html#aa9eb58412d784043722bd8f68e22522c", null ],
+      [ "delay_us", "classtime__shield_1_1NtpClient.html#ad6dcee487c7fdea337c2e18688d271fc", null ],
+      [ "last_error_code", "classtime__shield_1_1NtpClient.html#aa932f6b7e50c77d1fee6741a2bfb4a86", null ],
+      [ "last_error_code_slot", "classtime__shield_1_1NtpClient.html#ad1cd8e7ce5d82bfbd482502951d0fac7", null ],
+      [ "offset_us", "classtime__shield_1_1NtpClient.html#a0e35b8e95047daa69908148d604c0555", null ],
+      [ "query", "classtime__shield_1_1NtpClient.html#aec57675f3cf62878d7fa628f9e512ab1", null ],
+      [ "stratum", "classtime__shield_1_1NtpClient.html#af191bf300db7e7ed967bd9b253738e5f", null ],
+      [ "success", "classtime__shield_1_1NtpClient.html#a21ca9c846b63cc0af6f12c890772f608", null ],
+      [ "utc_time_ms", "classtime__shield_1_1NtpClient.html#a16064378df6c333f7c4874fff8bd8969", null ],
+      [ "utc_time_sec", "classtime__shield_1_1NtpClient.html#a554f90d6b248b921875ad2ef0689674c", null ],
+      [ "utc_time_us", "classtime__shield_1_1NtpClient.html#ab6f16f2b93a0ab0dba3f30655850b71f", null ],
+      [ "k_default_timeout_ms", "classtime__shield_1_1NtpClient.html#a1d2d0b850a100ade519010c13deed82e", null ],
+      [ "m_delay_us", "classtime__shield_1_1NtpClient.html#a4df0e16e3fac078b550bb45278a0ba77", null ],
+      [ "m_host", "classtime__shield_1_1NtpClient.html#aeb9800a2df9e1ad7bdec2911e77299ce", null ],
+      [ "m_is_success", "classtime__shield_1_1NtpClient.html#ae821578b13e82212a24e01cc282c269a", null ],
+      [ "m_offset_us", "classtime__shield_1_1NtpClient.html#ad6157bfcd0894359f8f4e061fc933c9c", null ],
+      [ "m_port", "classtime__shield_1_1NtpClient.html#a9b7ed40e51e8922a4ef9e87680af8482", null ],
+      [ "m_stratum", "classtime__shield_1_1NtpClient.html#aa57833acd288b36e14681338e3f7c8f6", null ]
     ] ],
     [ "time_shield::NtpSample", "structtime__shield_1_1NtpSample.html", [
       [ "delay_us", "structtime__shield_1_1NtpSample.html#a28ed19c2c35179b456a9d1bf2c4a5c6f", null ],
@@ -83,7 +83,7 @@ var group__ntp =
       [ "sample_servers", "structtime__shield_1_1NtpPoolConfig.html#af669f7df5c819a41ffb04ed521d4c82a", null ],
       [ "smoothing_alpha", "structtime__shield_1_1NtpPoolConfig.html#af4e9f83fd5baa37cab2549a5eed3d4a6", null ]
     ] ],
-    [ "time_shield::NtpClientPoolT&lt; ClientT &gt;", "classtime__shield_1_1NtpClientPoolT.html", [
+    [ "time_shield::NtpClientPoolT< ClientT >", "classtime__shield_1_1NtpClientPoolT.html", [
       [ "ServerState", "structtime__shield_1_1NtpClientPoolT_1_1ServerState.html", [
         [ "backoff", "structtime__shield_1_1NtpClientPoolT_1_1ServerState.html#ae3a8b33098e85efa052753a506a58cf6", null ],
         [ "cfg", "structtime__shield_1_1NtpClientPoolT_1_1ServerState.html#a357b6d6e91515792d85b02e31d5b4cc2", null ],
@@ -129,7 +129,7 @@ var group__ntp =
       [ "m_rng", "classtime__shield_1_1NtpClientPoolT.html#aa2a36afc59442bcc3eaf0d9b3e9bc29d", null ],
       [ "m_servers", "classtime__shield_1_1NtpClientPoolT.html#a9255b2b696a33a6cdde68f69c6797347", null ]
     ] ],
-    [ "time_shield::BasicPoolRunner&lt; PoolT &gt;", "classtime__shield_1_1BasicPoolRunner.html", [
+    [ "time_shield::BasicPoolRunner< PoolT >", "classtime__shield_1_1BasicPoolRunner.html", [
       [ "BasicPoolRunner", "classtime__shield_1_1BasicPoolRunner.html#aaf63841c1d0dd73110cd1233129b8706", null ],
       [ "~BasicPoolRunner", "classtime__shield_1_1BasicPoolRunner.html#a226548e89fa1fef571c4d6ea87393437", null ],
       [ "do_measure", "classtime__shield_1_1BasicPoolRunner.html#af3bf4c339a611ae8a7ffbc0581527bda", null ],
@@ -164,7 +164,7 @@ var group__ntp =
       [ "m_pool_mtx", "classtime__shield_1_1BasicPoolRunner.html#aa03206618f4509b869b1fcb2b7223bfe", null ],
       [ "m_thread", "classtime__shield_1_1BasicPoolRunner.html#afef2ed9c35bd4e7c644cac69a46e298d", null ]
     ] ],
-    [ "time_shield::NtpTimeServiceT&lt; RunnerT &gt;", "classtime__shield_1_1NtpTimeServiceT.html", [
+    [ "time_shield::NtpTimeServiceT< RunnerT >", "classtime__shield_1_1NtpTimeServiceT.html", [
       [ "ProcessState", "classtime__shield_1_1NtpTimeServiceT.html#a48bc6fe5cd85f213303ca23542fc2e14", [
         [ "alive", "classtime__shield_1_1NtpTimeServiceT.html#a48bc6fe5cd85f213303ca23542fc2e14a7bd3d5f5b3cdb13aed632121206e729c", null ],
         [ "shutting_down", "classtime__shield_1_1NtpTimeServiceT.html#a48bc6fe5cd85f213303ca23542fc2e14a3fda132ec997ca296e81601dde1daf98", null ]

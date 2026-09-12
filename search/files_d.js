@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]]
+  ['singleton_2dstorage_2dguidelines_2emd_0',['singleton-storage-guidelines.md',['../singleton-storage-guidelines_8md.html',1,'']]]
 ];
