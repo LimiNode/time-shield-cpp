@@ -15,11 +15,6 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-file(REMOVE_RECURSE
-    "${CURRENT_PACKAGES_DIR}/debug/include"
-    "${CURRENT_PACKAGES_DIR}/debug/lib/pkgconfig"
-)
-
 vcpkg_cmake_config_fixup(
     PACKAGE_NAME TimeShield
     CONFIG_PATH lib/cmake/TimeShield
@@ -27,8 +22,4 @@ vcpkg_cmake_config_fixup(
 
 vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE")
 
-file(REMOVE_RECURSE
-    "${CURRENT_PACKAGES_DIR}/debug/include"
-    "${CURRENT_PACKAGES_DIR}/debug/lib"
-    "${CURRENT_PACKAGES_DIR}/debug/share/${PORT}"
-)
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug")
