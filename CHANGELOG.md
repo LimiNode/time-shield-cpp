@@ -2,14 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.0.6] - Unreleased
+## [v2.0.0] - Unreleased
 - Added `dse`, `dse_ms`, `dse_to_ts`, and `dse_to_ts_ms` convenience aliases for days-since-epoch conversions.
 - Corrected the default return type of `unix_day_to_ts_ms` to the millisecond timestamp type.
 - Added `ZonedClock` with reusable named-zone and fixed-offset local-time helpers, including explicit resolution of ambiguous and nonexistent local times.
 - Added an MQL4 `TimeShield` facade and aligned MQL4/MQL5 umbrella-header compatibility.
 - Completed ISO week-date parsing support and formatter/parser round-trip coverage.
 - Added timeframe parsing helpers for trading and engineering strings in C++ and MQL5, with docs, examples, and tests.
-- Split Julian conversions into a dedicated header while preserving the public include surface.
+- Split Julian conversions into the astronomy domain and added dedicated canonical headers.
 - Extended parser and formatting examples and refreshed README coverage for newer APIs.
 - Accepted ISO-style offsets in `%z` custom-format parsing.
 - Restored C++11 `constexpr` compatibility in affected header-owned APIs.
