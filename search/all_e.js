@@ -1,9 +1,9 @@
 var searchData=
 [
   ['name_0',['name',['../structtime__shield_1_1detail_1_1ZoneNameEntry.html#a0b3a7cc5ed118c02972fa06f19c0c2a4',1,'time_shield::detail::ZoneNameEntry']]],
-  ['naming_1',['Macro Naming',['../md_docs_2singleton-storage-guidelines.html#autotoc_md71',1,'']]],
+  ['naming_1',['Macro Naming',['../md_docs_2singleton-storage-guidelines.html#autotoc_md78',1,'']]],
   ['new_5fmoon_2',['NEW_MOON',['../group__time__enums.html#gga5fa51beb76e014adfffcd028fe1804aca2cb677eb7b38cba5d4e07595313cc99a',1,'time_shield']]],
-  ['newer_3',['C++17 and newer',['../md_docs_2singleton-storage-guidelines.html#autotoc_md67',1,'']]],
+  ['newer_3',['C++17 and newer',['../md_docs_2singleton-storage-guidelines.html#autotoc_md74',1,'']]],
   ['next_5fallowed_4',['next_allowed',['../structtime__shield_1_1NtpClientPoolT_1_1ServerState.html#ac707c1ec227546b6e91e605cb885b69d',1,'time_shield::NtpClientPoolT::ServerState']]],
   ['next_5fday_5',['next_day',['../group__time__structures.html#ga68d1ff04ff2ba9651a8fdd073c7d7607',1,'time_shield::next_day(ts_t ts, T days=1) noexcept'],['../group__time__conversions.html#gac720b2bf2323c3117ca88d0a1a1d8727',1,'time_shield::next_day(long ts, int days=1)']]],
   ['next_5fday_5ffrom_5funix_5fday_6',['next_day_from_unix_day',['../group__time__conversions.html#gaeef7df0f9b9a6f2d0315499e0cb97a92',1,'time_shield::next_day_from_unix_day(dse_t unix_day) noexcept'],['../group__time__conversions.html#ga267557561f95606e66f63ccabf5fc962',1,'time_shield::next_day_from_unix_day(long uday)']]],
@@ -34,7 +34,7 @@ var searchData=
   ['ns_5fper_5fus_31',['NS_PER_US',['../group__time__constants.html#gaad471abbc210ed35d64215f7d33cda3e',1,'time_shield']]],
   ['ntp_20client_32',['NTP Client',['../group__ntp.html',1,'']]],
   ['ntp_20client_20pool_20and_20time_20service_33',['NTP client, pool, and time service',['../index.html#ntp_sec',1,'']]],
-  ['ntp_20service_20contract_34',['NTP Service Contract',['../md_docs_2library-integration-guidelines.html#autotoc_md58',1,'']]],
+  ['ntp_20service_20contract_34',['NTP Service Contract',['../md_docs_2library-integration-guidelines.html#autotoc_md65',1,'']]],
   ['ntp_2ehpp_35',['ntp.hpp',['../ntp_8hpp.html',1,'']]],
   ['ntp_5factive_36',['ntp_active',['../classtime__shield_1_1ZonedClock.html#a3b2f023b13c57e8720fe52736d167d41',1,'time_shield::ZonedClock']]],
   ['ntp_5fclient_2ehpp_37',['ntp_client.hpp',['../ntp__client_8hpp.html',1,'']]],

@@ -122,10 +122,10 @@ $(function(){initNavTree('md_docs_2header-implementation-guidelines.html',''); i
   <div class="headertitle"><div class="title">Header / Implementation Ownership Guidelines</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md34"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md41"></a></p>
 <p>This document defines a reusable policy for structuring <code>.hpp</code>, <code>.ipp</code>, and <code>.tpp</code> files in C++ projects.</p>
 <p>The guidance is intentionally generic so it can be copied into other repositories with minimal changes.</p>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md42"></a>
 Canonical Language</h1>
 <p>English is the canonical version of this document.</p>
 <p>Russian localization:</p><ul>
@@ -135,7 +135,7 @@ Canonical Language</h1>
 <li><code>agents/header-implementation-guidelines.md</code></li>
 <li><code>agents/header-implementation-guidelines-RU.md</code></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md36"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 Purpose</h1>
 <p>Use this guidance when deciding:</p>
 <ul>
@@ -145,9 +145,9 @@ Purpose</h1>
 <li>when forward declarations help and when they only add noise</li>
 <li>how to keep implementation-only helpers local to the real implementation boundary</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md37"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 File Roles</h1>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 <code>.hpp</code></h2>
 <p>Use <code>.hpp</code> for:</p>
 <ul>
@@ -161,7 +161,7 @@ File Roles</h1>
 <li>a standalone leaf header</li>
 <li>or part of an aggregate-first subsystem</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 <code>.tpp</code></h2>
 <p>Use <code>.tpp</code> for template-visible implementation.</p>
 <p>Rules:</p>
@@ -170,7 +170,7 @@ File Roles</h1>
 <li>place such code either directly in <code>.hpp</code> or in a <code>.tpp</code> that is always included from <code>.hpp</code></li>
 <li>do not hide consumer-instantiated templates behind implementation-only include paths</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 <code>.ipp</code></h2>
 <p>Use <code>.ipp</code> for non-template implementation that should stay close to the declaration.</p>
 <p>Common uses:</p>
@@ -179,9 +179,9 @@ File Roles</h1>
 <li>inline-capable helper bodies</li>
 <li>out-of-class member definitions that conceptually belong with the header</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md48"></a>
 Ownership Model</h1>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 Always-included implementation</h2>
 <p>Use always-included implementation only when the code is naturally header-owned:</p>
 <ul>
@@ -191,7 +191,7 @@ Always-included implementation</h2>
 <li>logic that is intentionally consumer-visible in every translation unit</li>
 </ul>
 <p>This model is a good fit when a file is expected to behave like a true standalone leaf header.</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 Ownership-controlled implementation</h2>
 <p>Use explicit ownership when implementation should not be distributed to every consumer TU:</p>
 <ul>
@@ -205,10 +205,10 @@ Ownership-controlled implementation</h2>
 <li>the implementation file lives nearby</li>
 <li>the compiled ownership TU is responsible for single-TU emission in non-header-only builds</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md44"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 Aggregate Entry Header vs Leaf Header</h1>
 <p>Choose one primary include strategy per subsystem.</p>
-<h2><a class="anchor" id="autotoc_md45"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 Aggregate-first subsystem</h2>
 <p>Use an aggregate entry header when:</p>
 <ul>
@@ -222,7 +222,7 @@ Aggregate-first subsystem</h2>
 <li>shared STL and domain includes may be centralized there</li>
 <li>leaf headers do not need to be artificially optimized into standalone public entrypoints</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 Standalone-leaf-first subsystem</h2>
 <p>Use standalone leaf headers when:</p>
 <ul>
@@ -235,9 +235,9 @@ Standalone-leaf-first subsystem</h2>
 <li>each leaf header should own the dependencies needed for its public contract</li>
 <li>always-included implementation is more acceptable when the leaf is intentionally self-contained</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md54"></a>
 Dependency Placement</h1>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 Shared STL and domain includes</h2>
 <p>Centralize shared includes only when the subsystem intentionally uses a canonical aggregate entry header.</p>
 <p>That approach is appropriate when:</p>
@@ -247,7 +247,7 @@ Shared STL and domain includes</h2>
 <li>centralization reduces duplication without obscuring ownership</li>
 </ul>
 <p>Do not centralize dependencies merely to save a few include lines if the subsystem is designed around standalone leaf headers.</p>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 Implementation-only helpers</h2>
 <p>Build-mode helpers, implementation macros, and similar infrastructure should stay at the implementation boundary.</p>
 <p>Preferred placement:</p>
@@ -256,7 +256,7 @@ Implementation-only helpers</h2>
 <li>or in the direct owning <code>.hpp</code> if that is the narrowest correct boundary</li>
 </ul>
 <p>Avoid spreading such helpers through broad aggregate headers unless every valid usage path truly depends on that aggregate.</p>
-<h1><a class="anchor" id="autotoc_md50"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Forward Declarations</h1>
 <p>Use forward declarations when they provide a real structural benefit:</p>
 <ul>
@@ -271,7 +271,7 @@ Forward Declarations</h1>
 <li>add visual noise without meaningful architectural benefit</li>
 </ul>
 <p>If a subsystem already has a canonical aggregate entry header, prefer a clear and flat dependency structure over mechanically maximizing forward declarations.</p>
-<h1><a class="anchor" id="autotoc_md51"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Private / Vendor Boundaries</h1>
 <p>Application code should not include private implementation files from dependencies in order to bypass public API boundaries.</p>
 <p>If a needed capability is not available through public headers:</p>
@@ -280,7 +280,7 @@ Private / Vendor Boundaries</h1>
 <li>or keep the missing ownership local to the application</li>
 </ul>
 <p>Do not patch around the boundary by including vendor <code>.ipp</code> or other private implementation details from application code.</p>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Test Contract Guidance</h1>
 <p>Tests should validate the include contract that the project actually intends to support.</p>
 <p>For aggregate-first subsystems:</p>
@@ -294,7 +294,7 @@ Test Contract Guidance</h1>
 <li>such tests should declare their own prerequisites explicitly</li>
 <li>internal tests must not silently redefine the public include policy for the subsystem</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md53"></a>
+<h1><a class="anchor" id="autotoc_md60"></a>
 Practical Checklist</h1>
 <p>Before finalizing a new header layout, verify:</p>
 <ul>

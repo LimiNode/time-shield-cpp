@@ -22,7 +22,7 @@ var searchData=
   ['why_20time_20shield_19',['Why Time Shield?',['../index.html#motivation_sec',1,'']]],
   ['wib_20',['WIB',['../group__time__enums.html#ggad8cb858fb6cedcf76c4f0630d56e042bad7dd78819f2b7d05d374cd449728be8e',1,'time_shield']]],
   ['wib_5fto_5fgmt_21',['wib_to_gmt',['../namespacetime__shield.html#aaa3f96e1a7f2c6ed6515bb7c03da9532',1,'time_shield::wib_to_gmt(ts_t wib)'],['../namespacetime__shield.html#af0f903675e506ff9ac5a86dd3099729d',1,'time_shield::wib_to_gmt(const datetime wib)']]],
-  ['windows_20linking_22',['Windows Linking',['../md_docs_2library-integration-guidelines.html#autotoc_md59',1,'']]],
+  ['windows_20linking_22',['Windows Linking',['../md_docs_2library-integration-guidelines.html#autotoc_md66',1,'']]],
   ['wit_23',['WIT',['../group__time__enums.html#ggad8cb858fb6cedcf76c4f0630d56e042ba5b14dad37c9a54b6c51118c977ccff77',1,'time_shield']]],
   ['wit_5fto_5fgmt_24',['wit_to_gmt',['../namespacetime__shield.html#a836980fdc5f40e44b00d4643390c17df',1,'time_shield::wit_to_gmt(ts_t wit)'],['../namespacetime__shield.html#ad700f0f8d712b5f428c20f4e41499070',1,'time_shield::wit_to_gmt(const datetime wit)']]],
   ['wita_25',['WITA',['../group__time__enums.html#ggad8cb858fb6cedcf76c4f0630d56e042ba72546d94c6abb4fffcad0da47b4fe0c9',1,'time_shield']]],

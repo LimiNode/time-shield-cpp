@@ -67,7 +67,7 @@ var searchData=
   ['m_5futc_5fms_64',['m_utc_ms',['../classtime__shield_1_1DateTime.html#a2471df37f474a8cdcfcb6be962a1bf03',1,'time_shield::DateTime::m_utc_ms'],['../classtime__shield_1_1DateTime.html#af600b97c3f63bfcb231e2cfc38fb0742',1,'time_shield::DateTime::m_utc_ms']]],
   ['m_5fwsa_5fdata_65',['m_wsa_data',['../classtime__shield_1_1WsaGuard.html#a7706c2f8d59d89e8da5b8f2737789d89',1,'time_shield::WsaGuard']]],
   ['m_5fzone_66',['m_zone',['../classtime__shield_1_1ZonedClock.html#a75b1f3054b0ba6baa930b73602f90fe6',1,'time_shield::ZonedClock']]],
-  ['macro_20naming_67',['Macro Naming',['../md_docs_2singleton-storage-guidelines.html#autotoc_md71',1,'']]],
+  ['macro_20naming_67',['Macro Naming',['../md_docs_2singleton-storage-guidelines.html#autotoc_md78',1,'']]],
   ['main_68',['main',['../date__time__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;date_time_example.cpp'],['../ntp__client__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;ntp_client_example.cpp'],['../ntp__time__service__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;ntp_time_service_example.cpp'],['../time__conversions__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;time_conversions_example.cpp'],['../time__formatting__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;time_formatting_example.cpp'],['../time__formatting__showcase__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;time_formatting_showcase_example.cpp'],['../time__parser__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;time_parser_example.cpp'],['../time__utils__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;time_utils_example.cpp'],['../time__zone__conversions__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;time_zone_conversions_example.cpp']]],
   ['mainpage_2emd_69',['mainpage.md',['../mainpage_8md.html',1,'']]],
   ['make_5flocal_5ftime_5fresolution_70',['make_local_time_resolution',['../namespacetime__shield_1_1detail.html#a4a996b4ca963dda8c6d0f16b609fd57e',1,'time_shield::detail']]],
@@ -131,8 +131,8 @@ var searchData=
   ['minute_128',['minute',['../structtime__shield_1_1detail_1_1format__parse_1_1FormatParseState.html#a0ead19f89d56812aa6cc8fcbf56bbaf9',1,'time_shield::detail::format_parse::FormatParseState::minute'],['../classtime__shield_1_1DateTime.html#a934a226f094c312d6f3dff10c2d6b343',1,'time_shield::DateTime::minute()']]],
   ['minutes_5fsince_5fepoch_129',['minutes_since_epoch',['../group__time__conversions.html#gaa553b31d14cb31b8d5914cbbe26ce784',1,'time_shield']]],
   ['mjd_5ft_130',['mjd_t',['../group__time__types.html#gac2c43d72af642bbab55e7c68ca268237',1,'time_shield']]],
-  ['model_131',['Ownership Model',['../md_docs_2header-implementation-guidelines.html#autotoc_md41',1,'']]],
-  ['modes_132',['Failure Modes',['../md_docs_2singleton-storage-guidelines.html#autotoc_md72',1,'']]],
+  ['model_131',['Ownership Model',['../md_docs_2header-implementation-guidelines.html#autotoc_md48',1,'']]],
+  ['modes_132',['Failure Modes',['../md_docs_2singleton-storage-guidelines.html#autotoc_md79',1,'']]],
   ['mon_133',['MON',['../group__time__enums.html#ggadf684443100352064316f6134bbe44f8a5b11118a7636fdc29afca49294441398',1,'time_shield']]],
   ['mon_134',['mon',['../structtime__shield_1_1DateStruct.html#a0aa2a3675979770835c274be169b185a',1,'time_shield::DateStruct::mon'],['../structtime__shield_1_1DateTimeStruct.html#ad3704de6007b827ccc9e2850f930c364',1,'time_shield::DateTimeStruct::mon'],['../structtime__shield_1_1DateStruct.html#af14b89c1c9d7e1ba6ba379074ee6bf12',1,'time_shield::DateStruct::mon']]],
   ['monotonic_5fms_135',['monotonic_ms',['../group__time__utils.html#gaa4d331946c44f40821c649ee70e8f421',1,'time_shield']]],
@@ -205,7 +205,7 @@ var searchData=
   ['mul_5fhi_5fu64_5fconstexpr_202',['mul_hi_u64_constexpr',['../namespacetime__shield_1_1detail.html#a5e3de882b3ea0aecee3f5db51ce8c5a6',1,'time_shield::detail']]],
   ['mul_5fshift_5fu64_203',['mul_shift_u64',['../namespacetime__shield_1_1detail.html#a1ab6dcd11256fecab0b344c57622ac61',1,'time_shield::detail']]],
   ['mul_5fshift_5fu64_5fconstexpr_204',['mul_shift_u64_constexpr',['../namespacetime__shield_1_1detail.html#a81b1741ca85a3c2fbe58d8021d4dc63d',1,'time_shield::detail']]],
-  ['multiple_20static_20libraries_205',['Multiple Static Libraries',['../md_docs_2library-integration-guidelines.html#autotoc_md57',1,'']]],
+  ['multiple_20static_20libraries_205',['Multiple Static Libraries',['../md_docs_2library-integration-guidelines.html#autotoc_md64',1,'']]],
   ['myt_206',['MYT',['../group__time__enums.html#ggad8cb858fb6cedcf76c4f0630d56e042ba7b293c4d7ae8848d0cae5d52478fe2a7',1,'time_shield']]],
   ['myt_5fto_5fgmt_207',['myt_to_gmt',['../namespacetime__shield.html#affbab7026478f6c258a0890f183e133f',1,'time_shield::myt_to_gmt(ts_t myt)'],['../namespacetime__shield.html#abb66466ca4d33cc96fb5f9f4ad46bd8f',1,'time_shield::myt_to_gmt(const datetime myt)']]]
 ];

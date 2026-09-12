@@ -122,10 +122,10 @@ $(function(){initNavTree('md_docs_2singleton-storage-guidelines.html',''); initR
   <div class="headertitle"><div class="title">Header-only Singleton / Service Storage Guidelines</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md63"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md70"></a></p>
 <p>This document defines a reusable policy for singleton-style service storage in header-oriented C++ projects.</p>
 <p>The guidance is intentionally generic so it can be copied into other repositories with minimal changes.</p>
-<h1><a class="anchor" id="autotoc_md64"></a>
+<h1><a class="anchor" id="autotoc_md71"></a>
 Canonical Language</h1>
 <p>English is the canonical version of this document.</p>
 <p>Russian localization:</p><ul>
@@ -135,7 +135,7 @@ Canonical Language</h1>
 <li><code>agents/singleton-storage-guidelines.md</code></li>
 <li><code>agents/singleton-storage-guidelines-RU.md</code></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md65"></a>
+<h1><a class="anchor" id="autotoc_md72"></a>
 Purpose</h1>
 <p>Use this guidance when deciding:</p>
 <ul>
@@ -146,10 +146,10 @@ Purpose</h1>
 <li>how to keep raw storage out of the public API</li>
 <li>how to name storage-definition macros consistently</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md66"></a>
+<h1><a class="anchor" id="autotoc_md73"></a>
 Core Rule</h1>
 <p>Use this policy to avoid ODR issues while keeping a single instance per program.</p>
-<h1><a class="anchor" id="autotoc_md67"></a>
+<h1><a class="anchor" id="autotoc_md74"></a>
 C++17 and newer</h1>
 <p>Prefer <code>static inline</code> storage inside the class:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Service {</div>
@@ -168,7 +168,7 @@ C++17 and newer</h1>
 <li>inline storage is available for the target standard</li>
 <li>there is no need to move emission into a dedicated ownership TU</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md68"></a>
+<h1><a class="anchor" id="autotoc_md75"></a>
 C++11/14</h1>
 <p>Most C++11/14 singleton storage patterns need exactly one owning translation unit (TU).</p>
 <p>Define storage in exactly one TU using a macro.</p>
@@ -212,7 +212,7 @@ C++11/14</h1>
 <div class="line"><span class="preprocessor">#include &quot;Service.hpp&quot;</span></div>
 </div><!-- fragment --><p>All other <code>.cpp</code> files should include the header without the macro:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Service.hpp&quot;</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md69"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md76"></a>
 C++11/14 exception for late-teardown-safe services</h1>
 <p>When a service must remain callable during static destruction, a header-only immortal singleton is also acceptable in C++11/14.</p>
 <p>Typical shape:</p>
@@ -244,7 +244,7 @@ C++11/14 exception for late-teardown-safe services</h1>
 <li>late calls must not restart background work during process teardown</li>
 </ul>
 <p><code>NtpTimeService</code> in this repository uses this immortal-singleton model instead of the older one-TU macro pattern.</p>
-<h1><a class="anchor" id="autotoc_md70"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 Ownership Boundaries</h1>
 <p>Keep raw storage out of the public API by placing it in <code>detail</code>.</p>
 <p>This is the preferred model when:</p>
@@ -254,7 +254,7 @@ Ownership Boundaries</h1>
 <li>ownership must stay explicit in non-header-only builds</li>
 </ul>
 <p>If many services need C++11/14 storage, prefer a single TU such as <code>project_singletons.cpp</code> that defines all <code>*_DEFINE_STORAGE</code> macros.</p>
-<h1><a class="anchor" id="autotoc_md71"></a>
+<h1><a class="anchor" id="autotoc_md78"></a>
 Macro Naming</h1>
 <p>Use one of these naming patterns for the storage-definition macro:</p>
 <ul>
@@ -262,14 +262,14 @@ Macro Naming</h1>
 <li><code>FOO_IMPLEMENTATION</code></li>
 </ul>
 <p>Exactly one TU must define the chosen macro.</p>
-<h1><a class="anchor" id="autotoc_md72"></a>
+<h1><a class="anchor" id="autotoc_md79"></a>
 Failure Modes</h1>
 <ul>
 <li>If the macro is not defined anywhere in C++11/14 builds, you will get an undefined reference error.</li>
 <li>If it is defined in multiple TUs, you will get multiple definition errors.</li>
 <li>In C++17+, the macro is unnecessary, but leaving it defined is harmless if the implementation is written accordingly.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md73"></a>
+<h1><a class="anchor" id="autotoc_md80"></a>
 Practical Checklist</h1>
 <p>Before finalizing a singleton-style service:</p>
 <ul>

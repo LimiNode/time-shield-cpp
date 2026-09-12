@@ -35,7 +35,7 @@ var NAVTREE =
     [ "NTP client, pool, and time service", "index.html#ntp_sec", [
       [ "Components", "index.html#ntp_components_sec", null ],
       [ "Offset computation", "index.html#ntp_offset_sec", [
-        [ "Basic usage", "index.html#autotoc_md62", null ]
+        [ "Basic usage", "index.html#autotoc_md69", null ]
       ] ],
       [ "OA date and astronomy helpers", "index.html#oa_and_astronomy", null ],
       [ "Workday helpers", "index.html#workday_helpers", null ]
@@ -49,51 +49,60 @@ var NAVTREE =
     [ "Online Documentation", "index.html#docs_sec", null ],
     [ "Repository", "index.html#repo_sec", null ],
     [ "License", "index.html#license_sec", null ],
+    [ "Public Header Guide", "md_include_2AGENTS.html", [
+      [ "Canonical layout", "md_include_2AGENTS.html#autotoc_md1", null ],
+      [ "Include policy", "md_include_2AGENTS.html#autotoc_md2", null ],
+      [ "Header implementation and guards", "md_include_2AGENTS.html#autotoc_md3", null ]
+    ] ],
+    [ "Documentation Agent Guide", "md_docs_2AGENTS.html", [
+      [ "Source and generated output", "md_docs_2AGENTS.html#autotoc_md15", null ],
+      [ "Doxygen and site contract", "md_docs_2AGENTS.html#autotoc_md16", null ]
+    ] ],
     [ "Header / Implementation Ownership Guidelines", "md_docs_2header-implementation-guidelines.html", [
-      [ "Canonical Language", "md_docs_2header-implementation-guidelines.html#autotoc_md35", null ],
-      [ "Purpose", "md_docs_2header-implementation-guidelines.html#autotoc_md36", null ],
-      [ "File Roles", "md_docs_2header-implementation-guidelines.html#autotoc_md37", [
-        [ ".hpp", "md_docs_2header-implementation-guidelines.html#autotoc_md38", null ],
-        [ ".tpp", "md_docs_2header-implementation-guidelines.html#autotoc_md39", null ],
-        [ ".ipp", "md_docs_2header-implementation-guidelines.html#autotoc_md40", null ]
+      [ "Canonical Language", "md_docs_2header-implementation-guidelines.html#autotoc_md42", null ],
+      [ "Purpose", "md_docs_2header-implementation-guidelines.html#autotoc_md43", null ],
+      [ "File Roles", "md_docs_2header-implementation-guidelines.html#autotoc_md44", [
+        [ ".hpp", "md_docs_2header-implementation-guidelines.html#autotoc_md45", null ],
+        [ ".tpp", "md_docs_2header-implementation-guidelines.html#autotoc_md46", null ],
+        [ ".ipp", "md_docs_2header-implementation-guidelines.html#autotoc_md47", null ]
       ] ],
-      [ "Ownership Model", "md_docs_2header-implementation-guidelines.html#autotoc_md41", [
-        [ "Always-included implementation", "md_docs_2header-implementation-guidelines.html#autotoc_md42", null ],
-        [ "Ownership-controlled implementation", "md_docs_2header-implementation-guidelines.html#autotoc_md43", null ]
+      [ "Ownership Model", "md_docs_2header-implementation-guidelines.html#autotoc_md48", [
+        [ "Always-included implementation", "md_docs_2header-implementation-guidelines.html#autotoc_md49", null ],
+        [ "Ownership-controlled implementation", "md_docs_2header-implementation-guidelines.html#autotoc_md50", null ]
       ] ],
-      [ "Aggregate Entry Header vs Leaf Header", "md_docs_2header-implementation-guidelines.html#autotoc_md44", [
-        [ "Aggregate-first subsystem", "md_docs_2header-implementation-guidelines.html#autotoc_md45", null ],
-        [ "Standalone-leaf-first subsystem", "md_docs_2header-implementation-guidelines.html#autotoc_md46", null ]
+      [ "Aggregate Entry Header vs Leaf Header", "md_docs_2header-implementation-guidelines.html#autotoc_md51", [
+        [ "Aggregate-first subsystem", "md_docs_2header-implementation-guidelines.html#autotoc_md52", null ],
+        [ "Standalone-leaf-first subsystem", "md_docs_2header-implementation-guidelines.html#autotoc_md53", null ]
       ] ],
-      [ "Dependency Placement", "md_docs_2header-implementation-guidelines.html#autotoc_md47", [
-        [ "Shared STL and domain includes", "md_docs_2header-implementation-guidelines.html#autotoc_md48", null ],
-        [ "Implementation-only helpers", "md_docs_2header-implementation-guidelines.html#autotoc_md49", null ]
+      [ "Dependency Placement", "md_docs_2header-implementation-guidelines.html#autotoc_md54", [
+        [ "Shared STL and domain includes", "md_docs_2header-implementation-guidelines.html#autotoc_md55", null ],
+        [ "Implementation-only helpers", "md_docs_2header-implementation-guidelines.html#autotoc_md56", null ]
       ] ],
-      [ "Forward Declarations", "md_docs_2header-implementation-guidelines.html#autotoc_md50", null ],
-      [ "Private / Vendor Boundaries", "md_docs_2header-implementation-guidelines.html#autotoc_md51", null ],
-      [ "Test Contract Guidance", "md_docs_2header-implementation-guidelines.html#autotoc_md52", null ],
-      [ "Practical Checklist", "md_docs_2header-implementation-guidelines.html#autotoc_md53", null ]
+      [ "Forward Declarations", "md_docs_2header-implementation-guidelines.html#autotoc_md57", null ],
+      [ "Private / Vendor Boundaries", "md_docs_2header-implementation-guidelines.html#autotoc_md58", null ],
+      [ "Test Contract Guidance", "md_docs_2header-implementation-guidelines.html#autotoc_md59", null ],
+      [ "Practical Checklist", "md_docs_2header-implementation-guidelines.html#autotoc_md60", null ]
     ] ],
     [ "Library Integration Guidelines", "md_docs_2library-integration-guidelines.html", [
-      [ "Canonical Language", "md_docs_2library-integration-guidelines.html#autotoc_md55", null ],
-      [ "Supported Integration Shapes", "md_docs_2library-integration-guidelines.html#autotoc_md56", null ],
-      [ "Multiple Static Libraries", "md_docs_2library-integration-guidelines.html#autotoc_md57", null ],
-      [ "NTP Service Contract", "md_docs_2library-integration-guidelines.html#autotoc_md58", null ],
-      [ "Windows Linking", "md_docs_2library-integration-guidelines.html#autotoc_md59", null ],
-      [ "Configuration Consistency", "md_docs_2library-integration-guidelines.html#autotoc_md60", null ],
-      [ "Practical Checklist", "md_docs_2library-integration-guidelines.html#autotoc_md61", null ]
+      [ "Canonical Language", "md_docs_2library-integration-guidelines.html#autotoc_md62", null ],
+      [ "Supported Integration Shapes", "md_docs_2library-integration-guidelines.html#autotoc_md63", null ],
+      [ "Multiple Static Libraries", "md_docs_2library-integration-guidelines.html#autotoc_md64", null ],
+      [ "NTP Service Contract", "md_docs_2library-integration-guidelines.html#autotoc_md65", null ],
+      [ "Windows Linking", "md_docs_2library-integration-guidelines.html#autotoc_md66", null ],
+      [ "Configuration Consistency", "md_docs_2library-integration-guidelines.html#autotoc_md67", null ],
+      [ "Practical Checklist", "md_docs_2library-integration-guidelines.html#autotoc_md68", null ]
     ] ],
     [ "Header-only Singleton / Service Storage Guidelines", "md_docs_2singleton-storage-guidelines.html", [
-      [ "Canonical Language", "md_docs_2singleton-storage-guidelines.html#autotoc_md64", null ],
-      [ "Purpose", "md_docs_2singleton-storage-guidelines.html#autotoc_md65", null ],
-      [ "Core Rule", "md_docs_2singleton-storage-guidelines.html#autotoc_md66", null ],
-      [ "C++17 and newer", "md_docs_2singleton-storage-guidelines.html#autotoc_md67", null ],
-      [ "C++11/14", "md_docs_2singleton-storage-guidelines.html#autotoc_md68", null ],
-      [ "C++11/14 exception for late-teardown-safe services", "md_docs_2singleton-storage-guidelines.html#autotoc_md69", null ],
-      [ "Ownership Boundaries", "md_docs_2singleton-storage-guidelines.html#autotoc_md70", null ],
-      [ "Macro Naming", "md_docs_2singleton-storage-guidelines.html#autotoc_md71", null ],
-      [ "Failure Modes", "md_docs_2singleton-storage-guidelines.html#autotoc_md72", null ],
-      [ "Practical Checklist", "md_docs_2singleton-storage-guidelines.html#autotoc_md73", null ]
+      [ "Canonical Language", "md_docs_2singleton-storage-guidelines.html#autotoc_md71", null ],
+      [ "Purpose", "md_docs_2singleton-storage-guidelines.html#autotoc_md72", null ],
+      [ "Core Rule", "md_docs_2singleton-storage-guidelines.html#autotoc_md73", null ],
+      [ "C++17 and newer", "md_docs_2singleton-storage-guidelines.html#autotoc_md74", null ],
+      [ "C++11/14", "md_docs_2singleton-storage-guidelines.html#autotoc_md75", null ],
+      [ "C++11/14 exception for late-teardown-safe services", "md_docs_2singleton-storage-guidelines.html#autotoc_md76", null ],
+      [ "Ownership Boundaries", "md_docs_2singleton-storage-guidelines.html#autotoc_md77", null ],
+      [ "Macro Naming", "md_docs_2singleton-storage-guidelines.html#autotoc_md78", null ],
+      [ "Failure Modes", "md_docs_2singleton-storage-guidelines.html#autotoc_md79", null ],
+      [ "Practical Checklist", "md_docs_2singleton-storage-guidelines.html#autotoc_md80", null ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
@@ -142,10 +151,10 @@ var NAVTREEINDEX =
 "group__time__conversions.html#gae3a66aa0383f628d960947a44410decb",
 "group__time__enums.html#ggad8cb858fb6cedcf76c4f0630d56e042ba62b4f1dddfbf15eed8ca9771b9cbfe31",
 "group__time__parsing.html#gabb9001e90fe044952f1a2e27001f8dbc",
-"md_docs_2header-implementation-guidelines.html#autotoc_md36",
-"namespacetime__shield.html#af529191e1c745e96ac1a43810b857717",
-"structtime__shield_1_1TimeZoneStruct.html#abe789b40db8bbbc3046dee910ca7804b",
-"text_8hpp_source.html"
+"md_docs_2AGENTS.html#autotoc_md16",
+"namespacetime__shield.html#aeafbb8b596314af22fcebaf0b849293b",
+"structtime__shield_1_1TimeZoneStruct.html",
+"structtime__shield_1_1detail_1_1format__parse_1_1FormatParseState.html#afce6bc3bf775c028c9d15f31a13696f4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

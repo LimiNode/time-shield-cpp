@@ -13,7 +13,7 @@ var searchData=
   ['oadate_5ftrunc_5ftoward_5fzero_10',['oadate_trunc_toward_zero',['../namespacetime__shield_1_1detail.html#a2845b8236e7ad1d8b20c2297e9daee0f',1,'time_shield::detail']]],
   ['oct_11',['OCT',['../group__time__enums.html#ggac2ffd79e06ab94cf1bb50fec432c68a8a2b0de39322461f72c9dee8f2ecb425b9',1,'time_shield']]],
   ['offset_20computation_12',['Offset computation',['../index.html#ntp_offset_sec',1,'']]],
-  ['offset_20computation_3a_13',['Offset computation:',['../group__ntp.html#autotoc_md22',1,'']]],
+  ['offset_20computation_3a_13',['Offset computation:',['../group__ntp.html#autotoc_md29',1,'']]],
   ['offset_5fat_5futc_5fms_14',['offset_at_utc_ms',['../classtime__shield_1_1ZonedClock.html#a02464a90f499ae9b925da7169c82a630',1,'time_shield::ZonedClock']]],
   ['offset_5fhm_15',['offset_hm',['../group__time__conversions.html#ga561676ff8c54502f0d39a14fc2f0e967',1,'time_shield']]],
   ['offset_5fnow_16',['offset_now',['../classtime__shield_1_1ZonedClock.html#a801e0ccdd486893475d9460f48c4cca2',1,'time_shield::ZonedClock']]],
@@ -24,7 +24,7 @@ var searchData=
   ['ole_5fautomation_5fconversions_2ehpp_21',['ole_automation_conversions.hpp',['../ole__automation__conversions_8hpp.html',1,'']]],
   ['ole_5fepoch_22',['OLE_EPOCH',['../group__time__constants.html#ga61d50bb5fe7666932965fc43ff9ed245',1,'time_shield']]],
   ['online_20documentation_23',['Online Documentation',['../index.html#docs_sec',1,'']]],
-  ['only_20helpers_24',['Implementation-only helpers',['../md_docs_2header-implementation-guidelines.html#autotoc_md49',1,'']]],
+  ['only_20helpers_24',['Implementation-only helpers',['../md_docs_2header-implementation-guidelines.html#autotoc_md56',1,'']]],
   ['only_20singleton_20service_20storage_20guidelines_25',['Header-only Singleton / Service Storage Guidelines',['../md_docs_2singleton-storage-guidelines.html',1,'']]],
   ['operator_21_3d_26',['operator!=',['../classtime__shield_1_1DateTime.html#a27d350cb74dbc17ad7eb6559135c1918',1,'time_shield::DateTime']]],
   ['operator_28_29_27',['operator()',['../structtime__shield_1_1detail_1_1ScheduledComparator.html#a42aa415d5fe0497cdb108d079d8430b4',1,'time_shield::detail::ScheduledComparator']]],
@@ -36,9 +36,10 @@ var searchData=
   ['operator_3e_3d_33',['operator&gt;=',['../classtime__shield_1_1DateTime.html#acd9f1d820805ce76a8bfb5bcb5d2759d',1,'time_shield::DateTime']]],
   ['orig_5fts_5ffrac_34',['orig_ts_frac',['../structtime__shield_1_1detail_1_1NtpPacket.html#a93db290c4efc7692651c353726c4f6eb',1,'time_shield::detail::NtpPacket']]],
   ['orig_5fts_5fsec_35',['orig_ts_sec',['../structtime__shield_1_1detail_1_1NtpPacket.html#aa3f0b8bd4830953d51a1359c9304921a',1,'time_shield::detail::NtpPacket']]],
-  ['overlay_36',['vcpkg overlay',['../index.html#install_vcpkg',1,'']]],
-  ['ownership_20boundaries_37',['Ownership Boundaries',['../md_docs_2singleton-storage-guidelines.html#autotoc_md70',1,'']]],
-  ['ownership_20controlled_20implementation_38',['Ownership-controlled implementation',['../md_docs_2header-implementation-guidelines.html#autotoc_md43',1,'']]],
-  ['ownership_20guidelines_39',['Header / Implementation Ownership Guidelines',['../md_docs_2header-implementation-guidelines.html',1,'']]],
-  ['ownership_20model_40',['Ownership Model',['../md_docs_2header-implementation-guidelines.html#autotoc_md41',1,'']]]
+  ['output_36',['Source and generated output',['../md_docs_2AGENTS.html#autotoc_md15',1,'']]],
+  ['overlay_37',['vcpkg overlay',['../index.html#install_vcpkg',1,'']]],
+  ['ownership_20boundaries_38',['Ownership Boundaries',['../md_docs_2singleton-storage-guidelines.html#autotoc_md77',1,'']]],
+  ['ownership_20controlled_20implementation_39',['Ownership-controlled implementation',['../md_docs_2header-implementation-guidelines.html#autotoc_md50',1,'']]],
+  ['ownership_20guidelines_40',['Header / Implementation Ownership Guidelines',['../md_docs_2header-implementation-guidelines.html',1,'']]],
+  ['ownership_20model_41',['Ownership Model',['../md_docs_2header-implementation-guidelines.html#autotoc_md48',1,'']]]
 ];

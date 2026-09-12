@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Time Shield Library: Time Formatting</title>
+<title>Time Shield Library: Public Header Guide</title>
 <link rel="icon" href="icon-64x64.png" type="image/png" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -93,7 +93,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('group__mql5__time__formatting.html',''); initResizable(true); });
+$(function(){initNavTree('md_include_2AGENTS.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -118,47 +118,41 @@ $(function(){initNavTree('group__mql5__time__formatting.html',''); initResizable
 </div>
 </div>
 
-<div class="header">
-  <div class="summary">
-<a href="#groups">Topics</a>  </div>
-  <div class="headertitle"><div class="title">Time Formatting<div class="ingroups"><a class="el" href="group__mql5.html">MQL5 TimeShield API</a></div></div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Public Header Guide</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>A comprehensive set of functions for converting timestamps to formatted strings.  
-<a href="#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
-Topics</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mql5__time__structures__time__formatting.html">Time structure formatting</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>A comprehensive set of functions for converting timestamps to formatted strings. </p>
-<p>This module provides utilities for formatting timestamps into human-readable strings, custom formats, ISO8601, and other standardized formats.</p>
-<h3><a class="anchor" id="autotoc_md39"></a>
-Key Features:</h3>
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Canonical layout</h1>
+<p>Public C++ headers use eight root umbrellas and eight owning domains:</p>
+<div class="fragment"><div class="line">include/time_shield/</div>
+<div class="line">├── astronomy.hpp   ├── astronomy/</div>
+<div class="line">├── conversions.hpp ├── conversions/</div>
+<div class="line">├── core.hpp        ├── core/</div>
+<div class="line">├── date_time.hpp   ├── datetime/</div>
+<div class="line">├── ntp.hpp         ├── ntp/</div>
+<div class="line">├── text.hpp        ├── text/</div>
+<div class="line">├── timers.hpp      ├── timers/</div>
+<div class="line">└── timezone.hpp    └── timezone/</div>
+</div><!-- fragment --><p><code><a class="el" href="time__shield_8hpp.html" title="Main header file for the Time Shield library.">include/time_shield.hpp</a></code> is the full-library entrypoint. Root-level selective headers outside this umbrella set are not part of the public layout. Do not add forwarding headers or recreate removed root directories.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Include policy</h1>
 <ul>
-<li>Custom formatting of timestamps using <code>strftime</code>-like specifiers.</li>
-<li>ISO8601 date and time representation.</li>
-<li>MQL5-compatible date and time formatting.</li>
-<li>Conversion to Windows-compatible filename formats.</li>
-<li>Human-readable timestamp formatting.</li>
+<li>Use a domain umbrella for a cross-domain dependency.</li>
+<li>Use a local leaf include only within the owning domain.</li>
+<li>Keep the domain dependency graph acyclic; lower-level domains do not include higher-level domains.</li>
+<li>Do not use <code>../</code> includes.</li>
+<li>Keep <code>detail/</code> headers inside their owning domain. Tests may include them as white-box implementation tests.</li>
+<li>Keep optional NTP dependencies behind <code>TIME_SHIELD_ENABLE_NTP_CLIENT</code>.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md40"></a>
-Usage Examples:</h3>
-<ul>
-<li>Format a timestamp to a custom string: <div class="fragment"><div class="line">std::string formatted = <a class="code hl_function" href="group__time__structures__time__formatting.html#gad5f9a170d6b3f3330f7a71819490c25f">time_shield::to_string</a>(<span class="stringliteral">&quot;%H:%M:%S&quot;</span>, 1698249600);</div>
-<div class="ttc" id="agroup__time__structures__time__formatting_html_gad5f9a170d6b3f3330f7a71819490c25f"><div class="ttname"><a href="group__time__structures__time__formatting.html#gad5f9a170d6b3f3330f7a71819490c25f">time_shield::to_string</a></div><div class="ttdeci">std::string to_string(const TimeZoneStruct &amp;tz)</div><div class="ttdoc">Alias for time_zone_struct_to_string function.</div><div class="ttdef"><b>Definition</b> <a href="time__zone__struct_8hpp_source.html#l00080">time_zone_struct.hpp:80</a></div></div>
-</div><!-- fragment --></li>
-<li>Convert a timestamp to ISO8601 format: <div class="fragment"><div class="line">std::string iso8601 = <a class="code hl_function" href="group__time__formatting.html#gabb0f16dfbea86ef687537fa8251722d8">time_shield::to_iso8601</a>(1698249600);</div>
-<div class="ttc" id="agroup__time__formatting_html_gabb0f16dfbea86ef687537fa8251722d8"><div class="ttname"><a href="group__time__formatting.html#gabb0f16dfbea86ef687537fa8251722d8">time_shield::to_iso8601</a></div><div class="ttdeci">const std::string to_iso8601(T ts)</div><div class="ttdoc">Converts a timestamp to an ISO8601 string.</div><div class="ttdef"><b>Definition</b> <a href="time__formatting_8hpp_source.html#l00575">time_formatting.hpp:575</a></div></div>
-</div><!-- fragment --></li>
-<li>Generate a Windows-compatible filename: <div class="fragment"><div class="line">std::string filename = <a class="code hl_function" href="group__time__formatting.html#ga4fe4ab8fc88358861f38d88aa1bcd96c">time_shield::to_windows_filename</a>(1698249600);</div>
-<div class="ttc" id="agroup__time__formatting_html_ga4fe4ab8fc88358861f38d88aa1bcd96c"><div class="ttname"><a href="group__time__formatting.html#ga4fe4ab8fc88358861f38d88aa1bcd96c">time_shield::to_windows_filename</a></div><div class="ttdeci">const std::string to_windows_filename(ts_t ts)</div><div class="ttdoc">Converts a timestamp in seconds to a Windows-compatible filename format.</div><div class="ttdef"><b>Definition</b> <a href="time__formatting_8hpp_source.html#l00931">time_formatting.hpp:931</a></div></div>
-</div><!-- fragment --> </li>
-</ul>
-</div><!-- contents -->
+<p>The CMake architecture check is the executable contract for this policy. Run <code>cmake -DTIME_SHIELD_SOURCE_DIR=&lt;repo&gt; -P cmake/check_header_include_policy.cmake</code> after changing the layout or an include.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Header implementation and guards</h1>
+<p>Follow <code><a class="el" href="header-implementation-guidelines_8md.html">docs/header-implementation-guidelines.md</a></code> and <code>agents/header-implementation-guidelines.md</code> for <code>.hpp</code>, <code>.ipp</code>, and <code>.tpp</code> ownership. Every project-owned header starts with <code>#pragma once</code> and a project-prefixed, path-derived non-reserved guard. MQL headers use the MQL guard prefix described in the root guide.</p>
+<p>Preserve the distinction between canonical, convenience, and opt-in legacy APIs. A short name is not legacy merely because a longer canonical name exists. Only historically superseded aliases belong in <code>legacy_aliases.hpp</code>, guarded by <code>TIME_SHIELD_ENABLE_LEGACY_ALIASES</code>. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

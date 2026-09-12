@@ -7,6 +7,6 @@ var searchData=
   ['validation_2ehpp_4',['validation.hpp',['../validation_8hpp.html',1,'']]],
   ['validation_2emqh_5',['validation.mqh',['../validation_8mqh.html',1,'']]],
   ['vcpkg_20overlay_6',['vcpkg overlay',['../index.html#install_vcpkg',1,'']]],
-  ['vendor_20boundaries_7',['Private / Vendor Boundaries',['../md_docs_2header-implementation-guidelines.html#autotoc_md51',1,'']]],
-  ['vs_20leaf_20header_8',['Aggregate Entry Header vs Leaf Header',['../md_docs_2header-implementation-guidelines.html#autotoc_md44',1,'']]]
+  ['vendor_20boundaries_7',['Private / Vendor Boundaries',['../md_docs_2header-implementation-guidelines.html#autotoc_md58',1,'']]],
+  ['vs_20leaf_20header_8',['Aggregate Entry Header vs Leaf Header',['../md_docs_2header-implementation-guidelines.html#autotoc_md51',1,'']]]
 ];

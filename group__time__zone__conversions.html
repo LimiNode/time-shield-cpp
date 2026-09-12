@@ -152,7 +152,7 @@ Files</h2></td></tr>
 <li>generic <code>zone_to_gmt</code>, <code>gmt_to_zone</code>, and <code>convert_time_zone</code> entry points.</li>
 </ul>
 <p>The two-argument local-to-UTC conversion helpers keep their legacy best-effort semantics. Use <code>resolve_local_time_ms</code>, <code>zone_to_gmt_ms_strict</code>, or the policy overloads when local civil time can fall into a DST gap or fold. A nonexistent local time has no UTC candidate, while an ambiguous local time has first and second UTC occurrences. UTC-to-local conversion is single-valued; use <code>zone_offset_at_utc</code> / <code>zone_offset_at_utc_ms</code> when the effective offset matters.</p>
-<h3><a class="anchor" id="autotoc_md20"></a>
+<h3><a class="anchor" id="autotoc_md27"></a>
 Example Usage:</h3>
 <div class="fragment"><div class="line">ts_t gmt_ts = <a class="code hl_function" href="group__time__conversions.html#ga5efcc46cc96ba400832647939b620280">time_shield::to_ts</a>(2024, Month::JUN, 21, 12, 0, 0);</div>
 <div class="line">ts_t ist_ts = <a class="code hl_function" href="namespacetime__shield.html#a28d37565f1e5cc7e8d5653b172c0bc06">time_shield::gmt_to_ist</a>(gmt_ts);</div>
