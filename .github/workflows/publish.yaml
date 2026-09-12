@@ -67,6 +67,7 @@ jobs:
           test -s docs/html/index.html
           grep -q "$DOC_VERSION" docs/html/index.html
           grep -q "Time Shield Library" docs/html/index.html
+          ! grep -R -q "Archived Demo Assets" docs/html
       - name: Publish generated content to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -119,6 +120,7 @@ jobs:
           test -s docs/html/index.html
           grep -q "$DOC_VERSION" docs/html/index.html
           grep -q "Time Shield Library" docs/html/index.html
+          ! grep -R -q "Archived Demo Assets" docs/html
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
