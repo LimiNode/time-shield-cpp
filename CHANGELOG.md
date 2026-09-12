@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v2.0.0] - Unreleased
+## [v2.0.0] - 2026-09-12
 - Added `dse`, `dse_ms`, `dse_to_ts`, and `dse_to_ts_ms` convenience aliases for days-since-epoch conversions.
 - Corrected the default return type of `unix_day_to_ts_ms` to the millisecond timestamp type.
 - Added `ZonedClock` with reusable named-zone and fixed-offset local-time helpers, including explicit resolution of ambiguous and nonexistent local times.
