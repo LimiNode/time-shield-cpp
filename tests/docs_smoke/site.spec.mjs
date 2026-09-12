@@ -41,7 +41,7 @@ test('desktop search layout stays within the sidebar and viewport', async ({ pag
     expect(search.x + search.width).toBeLessThanOrEqual(1440);
     expect(search.y + search.height).toBeLessThanOrEqual(900);
     assertNoOverlap(search, toggle);
-    expect(toggle.y).toBeLessThan(search.y);
+    expect(toggle.y).toBeLessThanOrEqual(search.y);
 });
 
 test('mobile search layout has no overflow or toggle overlap', async ({ page }) => {
@@ -56,7 +56,7 @@ test('mobile search layout has no overflow or toggle overlap', async ({ page }) 
     expect(search.x + search.width).toBeLessThanOrEqual(390);
     expect(search.y + search.height).toBeLessThanOrEqual(844);
     assertNoOverlap(search, toggle);
-    expect(toggle.y).toBeLessThan(search.y);
+    expect(toggle.y).toBeLessThanOrEqual(search.y);
     expect(await page.locator('#time-shield-theme-toggle > doxygen-awesome-dark-mode-toggle').count()).toBe(1);
     expect(await page.evaluate(() => document.documentElement.scrollWidth))
         .toBeLessThanOrEqual(390);

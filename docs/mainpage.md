@@ -1,14 +1,12 @@
 \mainpage Time Shield Library
 
-\htmlonly
-<div class="ts-hero">
-<p><strong>Version:</strong> <code>VERSION_PLACEHOLDER</code></p>
-<p>Header-only C++11–17 library for time conversions, parsing, formatting, ISO 8601,
-time zones, timers, astronomy helpers, and optional NTP services.</p>
-<p><a href="https://github.com/LimiNode/time-shield-cpp">Repository</a> ·
-<a href="https://liminode.github.io/time-shield-cpp/">API reference</a></p>
-</div>
-\endhtmlonly
+Version: VERSION_PLACEHOLDER
+
+Header-only C++11–17 library for time conversions, parsing, formatting, ISO 8601,
+time zones, timers, astronomy helpers, and optional NTP services.
+
+[Repository](https://github.com/LimiNode/time-shield-cpp) ·
+[API reference](https://liminode.github.io/time-shield-cpp/)
 
 \section intro_sec Introduction
 
