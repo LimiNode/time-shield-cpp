@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_ELAPSEDTIMER_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_ELAPSEDTIMER_HPP_INCLUDED
-
-#include <time_shield/timers/ElapsedTimer.hpp>
-
-#endif // TIME_SHIELD_HEADER_ELAPSEDTIMER_HPP_INCLUDED

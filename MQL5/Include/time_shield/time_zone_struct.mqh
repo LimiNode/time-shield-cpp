@@ -2,7 +2,7 @@
 //|                                             time_zone_struct.mqh |
 //|                           Time Shield - MQL5 Time Zone Structure |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_TIME_ZONE_STRUCT_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_TIME_ZONE_STRUCT_MQH_INCLUDED
@@ -15,7 +15,7 @@
 /// helper functions to create and convert time zone values in MQL5.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 #include "constants.mqh"

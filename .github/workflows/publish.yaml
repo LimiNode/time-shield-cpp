@@ -6,11 +6,17 @@ on:
       - main
     tags:
       - "v*"
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   deploy:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,7 +25,7 @@ jobs:
           fetch-depth: 0
       - name: Inject documentation version
         run: |
-          CMAKE_VERSION=$(sed -nE 's/^project\(TimeShield VERSION ([^ ]+) .*/\1/p' CMakeLists.txt)
+          CMAKE_VERSION=$(sed -nE 's/^project\(TimeShield VERSION ([^ ]+) .*/\1/p' CMakeLists.txt | head -n 1)
           test -n "$CMAKE_VERSION" || { echo "Unable to determine CMake project version"; exit 1; }
           if [ "$GITHUB_REF_TYPE" = "tag" ]; then
             VERSION="${GITHUB_REF_NAME#v}"
@@ -27,11 +33,13 @@ jobs:
               echo "Tag version $VERSION does not match CMake project version $CMAKE_VERSION"
               exit 1
             fi
+            DOC_VERSION="$VERSION"
           else
-            VERSION="$CMAKE_VERSION"
+            DOC_VERSION="${CMAKE_VERSION}-dev"
           fi
-          test -n "$VERSION" || { echo "Unable to determine project version"; exit 1; }
-          echo "Documentation version: $VERSION"
+          test -n "$DOC_VERSION" || { echo "Unable to determine documentation version"; exit 1; }
+          echo "Documentation version: $DOC_VERSION"
+          echo "DOC_VERSION=$DOC_VERSION" >> "$GITHUB_ENV"
           test -f docs/mainpage.md || { echo "mainpage.md not found!"; exit 1; }
           test -f Doxyfile || { echo "Doxyfile not found!"; exit 1; }
           grep -Fq "VERSION_PLACEHOLDER" docs/mainpage.md || {
@@ -42,21 +50,84 @@ jobs:
             echo "Version-neutral PROJECT_NUMBER not found in Doxyfile"
             exit 1
           }
-          sed -i "s/VERSION_PLACEHOLDER/$VERSION/g" docs/mainpage.md
-          sed -i -E "s/^PROJECT_NUMBER[[:space:]]*=.*/PROJECT_NUMBER         = $VERSION/" Doxyfile
+          sed -i "0,/VERSION_PLACEHOLDER/s//${DOC_VERSION}/" docs/mainpage.md
+          sed -i -E "s/^PROJECT_NUMBER[[:space:]]*=.*/PROJECT_NUMBER         = $DOC_VERSION/" Doxyfile
           if grep -Fq "VERSION_PLACEHOLDER" docs/mainpage.md; then
             echo "Version placeholder was not replaced"
             exit 1
           fi
-          grep -Fxq "PROJECT_NUMBER         = $VERSION" Doxyfile || {
+          grep -Fxq "PROJECT_NUMBER         = $DOC_VERSION" Doxyfile || {
             echo "Doxygen PROJECT_NUMBER was not updated"
             exit 1
           }
       - name: Generate Documentation
-        uses: mattnotmitt/doxygen-action@edge
+        uses: mattnotmitt/doxygen-action@v1.12.0
+      - name: Validate generated documentation
+        run: |
+          test -s docs/html/index.html
+          grep -q "$DOC_VERSION" docs/html/index.html
+          grep -q "Time Shield Library" docs/html/index.html
+          ! grep -R -q "Archived Demo Assets" docs/html
       - name: Publish generated content to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ github.token }}
           publish_dir: docs/html
           publish_branch: gh-pages
+
+  validate-docs:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: "true"
+          fetch-depth: 0
+      - name: Inject development version
+        run: |
+          CMAKE_VERSION=$(sed -nE 's/^project\(TimeShield VERSION ([^ ]+) .*/\1/p' CMakeLists.txt | head -n 1)
+          test -n "$CMAKE_VERSION" || { echo "Unable to determine CMake project version"; exit 1; }
+          DOC_VERSION="${CMAKE_VERSION}-dev"
+          echo "Documentation version: $DOC_VERSION"
+          echo "DOC_VERSION=$DOC_VERSION" >> "$GITHUB_ENV"
+          test -f docs/mainpage.md || { echo "mainpage.md not found!"; exit 1; }
+          test -f Doxyfile || { echo "Doxyfile not found!"; exit 1; }
+          grep -Fq "VERSION_PLACEHOLDER" docs/mainpage.md || {
+            echo "Version placeholder not found in mainpage.md"
+            exit 1
+          }
+          grep -Eq '^PROJECT_NUMBER[[:space:]]*=[[:space:]]*$' Doxyfile || {
+            echo "Version-neutral PROJECT_NUMBER not found in Doxyfile"
+            exit 1
+          }
+          sed -i "0,/VERSION_PLACEHOLDER/s//${DOC_VERSION}/" docs/mainpage.md
+          sed -i -E "s/^PROJECT_NUMBER[[:space:]]*=.*/PROJECT_NUMBER         = $DOC_VERSION/" Doxyfile
+          grep -Fq "VERSION_PLACEHOLDER" docs/mainpage.md && {
+            echo "Version placeholder was not replaced"
+            exit 1
+          }
+          grep -Fxq "PROJECT_NUMBER         = $DOC_VERSION" Doxyfile || {
+            echo "Doxygen PROJECT_NUMBER was not updated"
+            exit 1
+          }
+      - name: Generate Documentation
+        uses: mattnotmitt/doxygen-action@v1.12.0
+      - name: Validate generated documentation
+        run: |
+          test -s docs/html/index.html
+          grep -q "$DOC_VERSION" docs/html/index.html
+          grep -q "Time Shield Library" docs/html/index.html
+          ! grep -R -q "Archived Demo Assets" docs/html
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright browser
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.49.1
+          npx playwright install --with-deps chromium
+      - name: Run documentation layout smoke tests
+        run: npx playwright test --config=tests/docs_smoke/playwright.config.mjs

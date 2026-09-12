@@ -2,14 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.0.6] - Unreleased
+## [v2.0.0] - Unreleased
 - Added `dse`, `dse_ms`, `dse_to_ts`, and `dse_to_ts_ms` convenience aliases for days-since-epoch conversions.
 - Corrected the default return type of `unix_day_to_ts_ms` to the millisecond timestamp type.
 - Added `ZonedClock` with reusable named-zone and fixed-offset local-time helpers, including explicit resolution of ambiguous and nonexistent local times.
 - Added an MQL4 `TimeShield` facade and aligned MQL4/MQL5 umbrella-header compatibility.
 - Completed ISO week-date parsing support and formatter/parser round-trip coverage.
 - Added timeframe parsing helpers for trading and engineering strings in C++ and MQL5, with docs, examples, and tests.
-- Split Julian conversions into a dedicated header while preserving the public include surface.
+- Split Julian conversions into the astronomy domain and added dedicated canonical headers.
 - Extended parser and formatting examples and refreshed README coverage for newer APIs.
 - Accepted ISO-style offsets in `%z` custom-format parsing.
 - Restored C++11 `constexpr` compatibility in affected header-owned APIs.
@@ -20,6 +20,26 @@ All notable changes to this project will be documented in this file.
 - Moved confirmed legacy day-first Julian overloads and historical next-day aliases behind the same opt-in compatibility layer.
 - Corrected the default return type of `start_of_next_day_from_unix_day` to the seconds timestamp type.
 - Expanded timezone and NTP coverage and finalized recent timezone conversion support and NTP-facing documentation for consumers.
+- Organized public C++ headers into domain directories with domain umbrellas and removed obsolete root-level forwarding headers.
+
+### Breaking header-layout change
+
+Public C++ headers use canonical domain paths. The full-library include remains
+unchanged:
+
+```cpp
+#include <time_shield.hpp>
+```
+
+Old root-level selective include paths are removed. Use domain umbrellas or
+domain-owned leaf headers instead. For example:
+
+```text
+time_shield/validation.hpp       -> time_shield/core/validation.hpp
+time_shield/time_conversions.hpp -> time_shield/conversions.hpp
+time_shield/DateTime.hpp          -> time_shield/date_time.hpp
+time_shield/ntp_client.hpp        -> time_shield/ntp/ntp_client.hpp
+```
 
 ## [v1.0.5] - 2025-12-22
 - Added fast date conversion paths for timestamp-to-calendar helpers, along with unchecked timestamp math to reduce validation overhead in hot paths (legacy fallbacks remain for comparison).
@@ -30,7 +50,7 @@ All notable changes to this project will be documented in this file.
 - Added ISO week-date conversions, formatting, and parsing utilities.
 - Added geocentric MoonPhase calculator with quarter timings, documentation, and tests.
 - Added continuous lunar phase sin/cos helpers, structured quarter instants with event windows, documentation, and tests.
-- Split `time_conversions.hpp` into modular headers while keeping the umbrella include, preserving APIs with compatibility aliases and refreshed docs.
+- Split the former time-conversions aggregate into modular domain headers with compatibility aliases and refreshed docs.
 - Added short-form weekday and timestamp conversion aliases alongside new constexpr timezone offset helpers.
 - Expanded conversion coverage tests to exercise the renamed helpers and new wrappers across C++11/14/17 builds.
 - Documented first/last workday boundary helpers and their UTC semantics in README and Doxygen mainpage.

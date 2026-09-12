@@ -35,7 +35,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param ts Timestamp in seconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T get_unixday(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
@@ -43,7 +44,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param ts Timestamp in seconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T unix_day(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
@@ -51,7 +53,8 @@ namespace time_shield {
 
 
     /// \brief Short alias for days_since_epoch.
-    /// \copydoc days_since_epoch
+    /// \param ts Timestamp in seconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T dse(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
@@ -59,7 +62,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param ts Timestamp in seconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T unixday(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
@@ -67,7 +71,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param ts Timestamp in seconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T uday(ts_t ts = time_shield::ts()) noexcept {
         return days_since_epoch<T>(ts);
@@ -77,7 +82,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param t_ms Timestamp in milliseconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T get_unixday_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
         return days_since_epoch_ms<T>(t_ms);
@@ -85,7 +91,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param t_ms Timestamp in milliseconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T unix_day_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
         return days_since_epoch_ms<T>(t_ms);
@@ -93,7 +100,8 @@ namespace time_shield {
 
 
     /// \brief Short alias for days_since_epoch_ms.
-    /// \copydoc days_since_epoch_ms
+    /// \param t_ms Timestamp in milliseconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T dse_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
         return days_since_epoch_ms<T>(t_ms);
@@ -101,7 +109,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param t_ms Timestamp in milliseconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T unixday_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
         return days_since_epoch_ms<T>(t_ms);
@@ -109,7 +118,8 @@ namespace time_shield {
 
 
     /// \brief Alias for days_since_epoch function.
-    /// \copydoc days_since_epoch
+    /// \param t_ms Timestamp in milliseconds.
+    /// \return Number of days since the Unix epoch.
     template<class T = dse_t>
     TIME_SHIELD_CONSTEXPR T uday_ms(ts_ms_t t_ms = time_shield::ts_ms()) noexcept {
         return days_since_epoch_ms<T>(t_ms);
@@ -281,7 +291,8 @@ namespace time_shield {
 
     /// \ingroup time_structures
     /// \brief Alias for to_date_time_ms function.
-    /// \copydoc to_date_time_ms
+    /// \param ts Timestamp in milliseconds.
+    /// \return Date-time structure created from the timestamp.
     template<class T>
     inline T to_dt_ms(ts_ms_t ts) {
         return to_date_time_ms<T>(ts);
@@ -289,7 +300,8 @@ namespace time_shield {
 
     /// \ingroup time_structures
     /// \brief Alias for to_date_time_ms function.
-    /// \copydoc to_date_time_ms
+    /// \param ts Timestamp in milliseconds.
+    /// \return Date-time structure created from the timestamp.
     template<class T>
     inline T to_dt_struct_ms(ts_ms_t ts) {
         return to_date_time_ms<T>(ts);
@@ -297,7 +309,8 @@ namespace time_shield {
 
     /// \ingroup time_structures
     /// \brief Alias for to_date_time_ms function.
-    /// \copydoc to_date_time_ms
+    /// \param ts_ms Timestamp in milliseconds.
+    /// \return Date-time structure created from the timestamp.
     inline auto to_dt_ms(ts_ms_t ts_ms)
             -> decltype(to_date_time_ms<DateTimeStruct>(ts_ms)) {
         return to_date_time_ms<DateTimeStruct>(ts_ms);
@@ -2081,7 +2094,8 @@ namespace time_shield {
     }
 
     /// \brief Alias for is_workday(ts_ms_t).
-    /// \copydoc is_workday(ts_ms_t)
+    /// \param ts_ms Timestamp in milliseconds.
+    /// \return True when the timestamp falls on a workday.
     TIME_SHIELD_CONSTEXPR inline bool workday_ms(ts_ms_t ts_ms) noexcept {
         return is_workday_ms(ts_ms);
     }

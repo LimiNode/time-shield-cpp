@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_NTP_CLIENT_WSA_GUARD_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_NTP_CLIENT_WSA_GUARD_HPP_INCLUDED
-
-#include <time_shield/ntp/detail/wsa_guard.hpp>
-
-#endif // TIME_SHIELD_HEADER_NTP_CLIENT_WSA_GUARD_HPP_INCLUDED

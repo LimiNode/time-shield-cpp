@@ -5,9 +5,9 @@
 ![MIT License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20MQL4%20%7C%20MQL5-blue)
 ![C++ Standard](https://img.shields.io/badge/C++-11--17-orange)
-![CI Windows](https://img.shields.io/github/actions/workflow/status/newyaroslav/time-shield-cpp/ci.yml?branch=main&label=Windows&logo=windows)
-![CI Linux](https://img.shields.io/github/actions/workflow/status/newyaroslav/time-shield-cpp/ci.yml?branch=main&label=Linux&logo=linux)
-![CI macOS](https://img.shields.io/github/actions/workflow/status/newyaroslav/time-shield-cpp/ci.yml?branch=main&label=macOS&logo=apple)
+![CI Windows](https://img.shields.io/github/actions/workflow/status/LimiNode/time-shield-cpp/ci.yml?branch=main&label=Windows&logo=windows)
+![CI Linux](https://img.shields.io/github/actions/workflow/status/LimiNode/time-shield-cpp/ci.yml?branch=main&label=Linux&logo=linux)
+![CI macOS](https://img.shields.io/github/actions/workflow/status/LimiNode/time-shield-cpp/ci.yml?branch=main&label=macOS&logo=apple)
 
 **Time Shield** is a header-only C++ library for working with time. It provides
 functions for converting time values, formatting dates and many utilities for
@@ -44,8 +44,8 @@ entry points for focused use:
 - `time_shield/timers.hpp` — timers and scheduling;
 - `time_shield/ntp.hpp` — optional NTP client and time service.
 
-The former root-level header paths remain available as compatibility forwarding
-headers. New code can migrate to domain paths without changing API symbols.
+The domain paths are the only supported public header paths. Include the
+domain umbrella or leaf header that owns the required API.
 
 ## Why Time Shield?
 
@@ -185,7 +185,7 @@ target_link_libraries(app PRIVATE time_shield::time_shield)
 Vendor the library as a submodule:
 
 ```sh
-git submodule add https://github.com/NewYaroslav/time-shield-cpp external/time-shield-cpp
+git submodule add https://github.com/LimiNode/time-shield-cpp external/time-shield-cpp
 ```
 
 Then include it:
@@ -592,7 +592,7 @@ allows a simpler singleton-storage pattern with inline variables. For
 ## Documentation
 
 Full API description and additional examples are available at
-<https://newyaroslav.github.io/time-shield-cpp/>
+<https://liminode.github.io/time-shield-cpp/>
 
 Doxygen HTML is published via GitHub Pages.
 

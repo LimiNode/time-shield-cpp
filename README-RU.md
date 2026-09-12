@@ -3,11 +3,11 @@
 <img src="docs/logo-1280x640.png" alt="Логотип" width="600"/>
 
 ![MIT License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20MQL5-blue)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20MQL4%20%7C%20MQL5-blue)
 ![C++ Standard](https://img.shields.io/badge/C++-11--17-orange)
-![CI Windows](https://img.shields.io/github/actions/workflow/status/newyaroslav/time-shield-cpp/ci.yml?branch=main&label=Windows&logo=windows)
-![CI Linux](https://img.shields.io/github/actions/workflow/status/newyaroslav/time-shield-cpp/ci.yml?branch=main&label=Linux&logo=linux)
-![CI macOS](https://img.shields.io/github/actions/workflow/status/newyaroslav/time-shield-cpp/ci.yml?branch=main&label=macOS&logo=apple)
+![CI Windows](https://img.shields.io/github/actions/workflow/status/LimiNode/time-shield-cpp/ci.yml?branch=main&label=Windows&logo=windows)
+![CI Linux](https://img.shields.io/github/actions/workflow/status/LimiNode/time-shield-cpp/ci.yml?branch=main&label=Linux&logo=linux)
+![CI macOS](https://img.shields.io/github/actions/workflow/status/LimiNode/time-shield-cpp/ci.yml?branch=main&label=macOS&logo=apple)
 
 **Time Shield** — это header-only C++-библиотека для работы со временем. Она включает функции для конвертации временных значений, форматирования дат и множество утилит для задач с таймстампами.
 > Названа в честь «временного щита» Хомуры Акэми.
@@ -40,8 +40,9 @@ bool monday = is_workday(now);
 - `time_shield/timers.hpp` — таймеры и планировщик;
 - `time_shield/ntp.hpp` — необязательные NTP-клиент и сервис времени.
 
-Прежние пути корневых заголовков сохраняются как compatibility-forwarders.
-Переход на доменные пути не требует изменения имён API.
+Доменные пути являются единственными поддерживаемыми публичными путями к
+заголовкам. Подключайте umbrella или leaf-header домена, которому принадлежит
+нужный API.
 
 ## Зачем Time Shield?
 
@@ -411,7 +412,7 @@ variables. Для `NtpTimeService` публичный способ подклю�
 
 ## Документация
 
-Полное описание API и дополнительные примеры доступны по адресу: <https://newyaroslav.github.io/time-shield-cpp/>
+Полное описание API и дополнительные примеры доступны по адресу: <https://liminode.github.io/time-shield-cpp/>
 
 HTML-документация Doxygen публикуется через GitHub Pages.
 

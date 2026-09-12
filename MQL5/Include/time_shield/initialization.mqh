@@ -2,7 +2,7 @@
 //|                                               initialization.mqh |
 //|                   Time Shield - Library Initialization Functions |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_INITIALIZATION_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_INITIALIZATION_MQH_INCLUDED
@@ -11,12 +11,12 @@
 /// \ingroup mql5
 /// \brief Library initialization helpers.
 ///
-/// Call ::init() once at the beginning of OnStart before
-/// using other functions from the library. It currently triggers the
+/// Call init() once at the beginning of OnStart before
+/// using other functions from the library. It triggers the
 /// lazy initialization used by microseconds().
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 #include "time_utils.mqh"

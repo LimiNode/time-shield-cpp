@@ -42,6 +42,12 @@ jobs:
         run: cmake -S tests/install_consumer -B build-consumer -DCMAKE_PREFIX_PATH=${{ github.workspace }}/install -DCMAKE_CXX_STANDARD=${{ matrix.std }}
       - name: Build consumer project
         run: cmake --build build-consumer
+      - name: Configure pkg-config consumer
+        run: |
+          PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/pkgconfig" \
+            cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=${{ matrix.std }}
+      - name: Build pkg-config consumer
+        run: cmake --build build-pkg-config
 
   windows:
     runs-on: windows-latest
@@ -122,6 +128,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Pin overlay port to the checked-out revision
+        env:
+          TIME_SHIELD_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$TIME_SHIELD_REF"
+          archive_url="https://github.com/LimiNode/time-shield-cpp/archive/${TIME_SHIELD_REF}.tar.gz"
+          sha512=$(curl -fsSL "$archive_url" | sha512sum | awk '{print $1}')
+          sed -i -E "s/^    REF .*/    REF ${TIME_SHIELD_REF}/" vcpkg-overlay/ports/time-shield-cpp/portfile.cmake
+          sed -i -E "s/^    SHA512 .*/    SHA512 ${sha512}/" vcpkg-overlay/ports/time-shield-cpp/portfile.cmake
       - name: Install vcpkg
         run: |
           git clone https://github.com/microsoft/vcpkg.git
@@ -129,7 +145,7 @@ jobs:
       - name: Validate port
         run: ./vcpkg/vcpkg install time-shield-cpp --overlay-ports=vcpkg-overlay/ports
       - name: Configure consumer project
-        run: cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
+        run: cmake -B build -S tests/vcpkg_consumer -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
       - name: Build consumer project
         run: cmake --build build
 
@@ -149,3 +165,28 @@ jobs:
         run: cmake -S tests/install_consumer -B build-consumer -DCMAKE_PREFIX_PATH=${{ github.workspace }}/install -DCMAKE_CXX_STANDARD=11
       - name: Build installed consumer
         run: cmake --build build-consumer
+      - name: Configure pkg-config consumer without NTP
+        run: |
+          PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/pkgconfig" \
+            cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=11
+      - name: Build pkg-config consumer without NTP
+        run: cmake --build build-pkg-config
+
+  pkg-config-multiarch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure with multiarch library directory
+        run: cmake -S . -B build -DTIME_SHIELD_CPP_BUILD_TESTS=OFF -DCMAKE_INSTALL_LIBDIR=lib/x86_64-linux-gnu
+      - name: Build and install
+        run: cmake --build build && cmake --install build --prefix install
+      - name: Verify relocatable pkg-config prefix
+        run: |
+          export PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/x86_64-linux-gnu/pkgconfig"
+          test "$(realpath "$(pkg-config --variable=prefix time-shield)")" = "$(realpath install)"
+      - name: Configure pkg-config consumer
+        run: |
+          PKG_CONFIG_PATH="${{ github.workspace }}/install/lib/x86_64-linux-gnu/pkgconfig" \
+            cmake -S tests/pkg_config_consumer -B build-pkg-config -DCMAKE_CXX_STANDARD=11
+      - name: Build pkg-config consumer
+        run: cmake --build build-pkg-config

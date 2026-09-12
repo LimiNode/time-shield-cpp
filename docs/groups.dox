@@ -18,7 +18,6 @@ std::cout << time_shield::to_cstr(weekday, time_shield::FormatType::FULL_NAME); 
 
 /*!
 \defgroup lib_initialization Library Initialization
-\ingroup cpp
 \brief Functions used to initialize the Time Shield library.
 
 This group includes functions that perform setup procedures required before using

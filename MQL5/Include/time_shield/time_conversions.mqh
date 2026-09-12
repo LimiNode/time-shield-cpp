@@ -2,7 +2,7 @@
 //|                                             time_conversions.mqh |
 //|                              Time Shield - MQL5 Time Conversions |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL5_HEADER_TIME_CONVERSIONS_MQH_INCLUDED
 #define TIME_SHIELD_MQL5_HEADER_TIME_CONVERSIONS_MQH_INCLUDED
@@ -17,7 +17,7 @@
 /// for obtaining sub-second parts and working with date structures.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 #include "constants.mqh"

@@ -61,13 +61,12 @@ PROJECT_BRIEF          = "C++ library for working with time"
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = E:/_repoz/time-shield-cpp/docs/icon-64x64.png
+PROJECT_LOGO           = docs/icon-64x64.png
 
 # With the PROJECT_ICON tag one can specify an icon that is included in the tabs
 # when the HTML document is shown. Doxygen will copy the logo to the output
 # directory.
 
-PROJECT_ICON           = docs/icon-64x64.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -907,7 +906,7 @@ WARN_IF_UNDOC_ENUM_VAL = NO
 # Possible values are: NO, YES, FAIL_ON_WARNINGS and FAIL_ON_WARNINGS_PRINT.
 # The default value is: NO.
 
-WARN_AS_ERROR          = NO
+WARN_AS_ERROR          = FAIL_ON_WARNINGS
 
 # The WARN_FORMAT tag determines the format of the warning messages that doxygen
 # can produce. The string should contain the $file, $line, and $text tags, which
@@ -1060,7 +1059,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = doxygen
+EXCLUDE                = doxygen \
+                         docs/assets/archive
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1076,7 +1076,8 @@ EXCLUDE_SYMLINKS       = NO
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories for example use the pattern */test/*
 
-EXCLUDE_PATTERNS       =
+EXCLUDE_PATTERNS       = */*-RU.md \
+                         */docs/assets/archive/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
@@ -1278,23 +1279,17 @@ VERBATIM_HEADERS       = YES
 # generated with the -Duse_libclang=ON option for CMake.
 # The default value is: NO.
 
-CLANG_ASSISTED_PARSING = NO
-
 # If the CLANG_ASSISTED_PARSING tag is set to YES and the CLANG_ADD_INC_PATHS
 # tag is set to YES then doxygen will add the directory of each input to the
 # include path.
 # The default value is: YES.
 # This tag requires that the tag CLANG_ASSISTED_PARSING is set to YES.
 
-CLANG_ADD_INC_PATHS    = YES
-
 # If clang assisted parsing is enabled you can provide the compiler with command
 # line options that you would normally use when invoking the compiler. Note that
 # the include paths will already be set by doxygen for the files and directories
 # specified with INPUT and INCLUDE_PATH.
 # This tag requires that the tag CLANG_ASSISTED_PARSING is set to YES.
-
-CLANG_OPTIONS          =
 
 # If clang assisted parsing is enabled you can provide the clang parser with the
 # path to the directory containing a file called compile_commands.json. This
@@ -1306,8 +1301,6 @@ CLANG_OPTIONS          =
 # will be added as well.
 # Note: The availability of this option depends on whether or not doxygen was
 # generated with the -Duse_libclang=ON option for CMake.
-
-CLANG_DATABASE_PATH    =
 
 #---------------------------------------------------------------------------
 # Configuration options related to the alphabetical class index
@@ -1413,7 +1406,8 @@ HTML_STYLESHEET        =
 
 HTML_EXTRA_STYLESHEET  = .github/doxygen-awesome-css/doxygen-awesome.css \
                          .github/doxygen-awesome-css/doxygen-awesome-sidebar-only.css \
-                         .github/doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css
+                         .github/doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css \
+                         .github/doxygen-custom/overrides.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1424,7 +1418,10 @@ HTML_EXTRA_STYLESHEET  = .github/doxygen-awesome-css/doxygen-awesome.css \
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
 HTML_EXTRA_FILES       = .github/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-                         .github/doxygen-awesome-css/doxygen-awesome-paragraph-link.js
+                         .github/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+                         .github/doxygen-custom/theme-toggle.js
+
+HTML_COPY_CLIPBOARD    = YES
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
@@ -1504,7 +1501,6 @@ HTML_CODE_FOLDING      = YES
 # The default value is: YES.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_COPY_CLIPBOARD    = YES
 
 # Doxygen stores a couple of settings persistently in the browser (via e.g.
 # cookies). By default these settings apply to all HTML pages generated by
@@ -1513,7 +1509,6 @@ HTML_COPY_CLIPBOARD    = YES
 # be stored separately.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_PROJECT_COOKIE    =
 
 # With HTML_INDEX_NUM_ENTRIES one can control the preferred number of entries
 # shown in the various tree structured indices initially; the user can expand
@@ -1794,7 +1789,7 @@ ENUM_VALUES_PER_LINE   = 4
 # Minimum value: 0, maximum value: 1500, default value: 250.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-TREEVIEW_WIDTH         = 250
+TREEVIEW_WIDTH         = 460
 
 # If the EXT_LINKS_IN_WINDOW option is set to YES, doxygen will open links to
 # external symbols imported via tag files in a separate window.
@@ -1845,7 +1840,7 @@ FORMULA_MACROFILE      =
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-USE_MATHJAX            = NO
+USE_MATHJAX            = YES
 
 # With MATHJAX_VERSION it is possible to specify the MathJax version to be used.
 # Note that the different versions of MathJax have different requirements with
@@ -2005,7 +2000,7 @@ EXTRA_SEARCH_MAPPINGS  =
 # If the GENERATE_LATEX tag is set to YES, doxygen will generate LaTeX output.
 # The default value is: YES.
 
-GENERATE_LATEX         = YES
+GENERATE_LATEX         = NO
 
 # The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -2243,7 +2238,6 @@ RTF_EXTENSIONS_FILE    =
 # available.
 # This tag requires that the tag GENERATE_RTF is set to YES.
 
-RTF_EXTRA_FILES        =
 
 #---------------------------------------------------------------------------
 # Configuration options related to the man page output

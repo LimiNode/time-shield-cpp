@@ -1,7 +1,7 @@
 //+------------------------------------------------------------------+
 //|                                                   TimeShield.mqh |
 //|                                      Copyright 2025, NewYaroslav |
-//|                   https://github.com/NewYaroslav/time-shield-cpp |
+//|                   https://github.com/LimiNode/time-shield-cpp |
 //+------------------------------------------------------------------+
 #ifndef TIME_SHIELD_MQL4_MQH_INCLUDED
 #define TIME_SHIELD_MQL4_MQH_INCLUDED
@@ -10,7 +10,7 @@
 /// \brief Main MQL4 header file for the Time Shield library.
 
 #property copyright "Copyright 2025, NewYaroslav"
-#property link      "https://github.com/NewYaroslav/time-shield-cpp"
+#property link      "https://github.com/LimiNode/time-shield-cpp"
 #property strict
 
 const int TSHIELD_MS_PER_SEC = 1000;       ///< Milliseconds per second.

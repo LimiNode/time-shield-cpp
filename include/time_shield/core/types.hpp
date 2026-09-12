@@ -16,7 +16,6 @@ namespace time_shield {
 
 /// \defgroup time_types Time Types
 /// \brief Fundamental type definitions for time-related data.
-/// \ingroup cpp
 ///
 /// This group defines the core time representations used throughout the library,
 /// including timestamps, fractional time units, Julian dates, and time zone offsets.

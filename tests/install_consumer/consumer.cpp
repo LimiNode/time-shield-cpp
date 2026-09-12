@@ -1,11 +1,9 @@
 #include <time_shield.hpp>
 #include <time_shield/core.hpp>
 #include <time_shield/core/config.hpp>
-#include <time_shield/config.hpp>
 #if TIME_SHIELD_ENABLE_NTP_CLIENT
 #include <time_shield/ntp.hpp>
 #include <time_shield/ntp/ntp_time_service.hpp>
-#include <time_shield/ntp_time_service.hpp>
 #endif
 
 /// \brief Verify library usage from an installed location.

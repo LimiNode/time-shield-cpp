@@ -1,6 +1,12 @@
 \mainpage Time Shield Library
 
-**Version:** `VERSION_PLACEHOLDER`
+Version: VERSION_PLACEHOLDER
+
+Header-only C++11–17 library for time conversions, parsing, formatting, ISO 8601,
+time zones, timers, astronomy helpers, and optional NTP services.
+
+[Repository](https://github.com/LimiNode/time-shield-cpp) ·
+[API reference](https://liminode.github.io/time-shield-cpp/)
 
 \section intro_sec Introduction
 
@@ -68,8 +74,7 @@ Public headers are grouped by domain. The preferred entry points are
 `time_shield/core.hpp`, `time_shield/conversions.hpp`, `time_shield/text.hpp`,
 `time_shield/date_time.hpp`, `time_shield/timezone.hpp`,
 `time_shield/astronomy.hpp`, `time_shield/timers.hpp`, and the optional
-`time_shield/ntp.hpp`. Root-level header paths remain available as compatibility
-forwarders.
+`time_shield/ntp.hpp`. Domain paths are the supported public header paths.
 
 \section invariants_sec API Invariants
 
@@ -170,13 +175,13 @@ std::string text = to_string_ms("%G-%V-%u", monday.unix_ms(), monday.utc_offset(
 Time Shield provides an optional NTP stack (`TIME_SHIELD_ENABLE_NTP_CLIENT`)
 that can query remote servers and compute a local offset for UTC time.
 
-### Components
+\subsection ntp_components_sec Components
 - `NtpClient` performs a single NTP request to one server.
 - `NtpClientPool` samples multiple servers with rate limiting and backoff.
 - `NtpClientPoolRunner` runs the pool periodically in a background thread.
 - `NtpTimeService` exposes a singleton interface with cached offset/UTC time.
 
-### Offset computation
+\subsection ntp_offset_sec Offset computation
 Each response is parsed using the standard four-timestamp method:
 `offset = ((t2 - t1) + (t3 - t4)) / 2`,
 `delay = (t4 - t1) - (t3 - t2)`,
@@ -332,7 +337,7 @@ linking details, see `docs/library-integration-guidelines.md` in the repository.
 Vendor the library as a submodule:
 
 \code{.sh}
-git submodule add https://github.com/NewYaroslav/time-shield-cpp external/time-shield-cpp
+git submodule add https://github.com/LimiNode/time-shield-cpp external/time-shield-cpp
 \endcode
 
 Then include it:
@@ -359,7 +364,7 @@ cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/scripts/buildsystems/v
 \endcode
 
 The port is intended to be upstreamed to
-\ref https://github.com/microsoft/vcpkg "microsoft/vcpkg".
+[microsoft/vcpkg](https://github.com/microsoft/vcpkg).
 
 For MQL5/MetaTrader, run `install_mql5.bat` to copy the `.mqh` files to your
 include directory.
@@ -381,11 +386,15 @@ To build the C++ examples use the helper scripts:
 \section docs_sec Online Documentation
 
 The latest generated API reference is available at
-\ref https://newyaroslav.github.io/time-shield-cpp/ "newyaroslav.github.io/time-shield-cpp".
+[liminode.github.io/time-shield-cpp](https://liminode.github.io/time-shield-cpp/).
+Russian engineering guides are available in the repository:
+[header implementation](https://github.com/LimiNode/time-shield-cpp/blob/main/docs/header-implementation-guidelines-RU.md),
+[library integration](https://github.com/LimiNode/time-shield-cpp/blob/main/docs/library-integration-guidelines-RU.md), and
+[singleton storage](https://github.com/LimiNode/time-shield-cpp/blob/main/docs/singleton-storage-guidelines-RU.md).
 
 \section repo_sec Repository
 
-[Time Shield Library GitHub repository](https://github.com/NewYaroslav/time-shield-cpp)
+[Time Shield Library GitHub repository](https://github.com/LimiNode/time-shield-cpp)
 
 \section license_sec License
 

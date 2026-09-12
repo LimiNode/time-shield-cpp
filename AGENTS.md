@@ -31,12 +31,11 @@ Global rules:
 Additional policy:
 
 - Public C++ headers are organized by domain under `include/time_shield`.
-  Prefer domain umbrellas (`core.hpp`, `conversions.hpp`, `text.hpp`,
+  Use domain umbrellas (`core.hpp`, `conversions.hpp`, `text.hpp`,
   `date_time.hpp`, `timezone.hpp`, `astronomy.hpp`, `timers.hpp`, and
   optional `ntp.hpp`) for cross-domain includes. Same-domain leaf includes may
   use local paths. Do not use `../` includes or include another domain's leaf
-  header directly. Root-level compatibility headers and documented legacy
-  paths are forwarding shells and are exempt from the domain dependency rule.
+  header directly. Do not add root-level compatibility forwarding headers.
 - Keep domain dependencies acyclic: lower-level domains must not include
   higher-level domain headers. Detail headers belong to their owning domain
   and are not public cross-domain dependencies.
@@ -75,5 +74,6 @@ Use the following order for repository changes and reviews:
 7. Preserve convenient public aliases. Short or alternative names are not legacy merely because a canonical equivalent exists. Classify an API as legacy only when it has been historically renamed or superseded, or when a deliberate replacement is introduced. When replacing a useful short alias, provide an equally practical preferred alias. Move a confirmed legacy alias to `legacy_aliases.hpp` and make it available only through `TIME_SHIELD_ENABLE_LEGACY_ALIASES`.
 8. Keep documentation source templates version-neutral. Do not commit generated
    documentation version substitutions; publish.yaml injects the effective version
-   during publication.
+   during publication. Main-branch documentation uses the CMake version with a
+   `-dev` suffix; release-tag documentation uses the matching tag version.
 9. Finish with `git diff --check`, a status review, and a concise summary of remaining risks or unverified platform-specific checks.

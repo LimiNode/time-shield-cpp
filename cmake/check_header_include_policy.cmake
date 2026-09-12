@@ -5,8 +5,40 @@ if(NOT DEFINED TIME_SHIELD_SOURCE_DIR)
 endif()
 
 set(TIME_SHIELD_INCLUDE_DIR "${TIME_SHIELD_SOURCE_DIR}/include/time_shield")
+set(TIME_SHIELD_DOMAINS
+    astronomy
+    conversions
+    core
+    datetime
+    ntp
+    text
+    timers
+    timezone)
+set(TIME_SHIELD_ROOT_HEADERS
+    astronomy.hpp
+    conversions.hpp
+    core.hpp
+    date_time.hpp
+    ntp.hpp
+    text.hpp
+    timers.hpp
+    timezone.hpp)
 set(TIME_SHIELD_DOMAIN_UMBRELLAS
-    core.hpp conversions.hpp text.hpp date_time.hpp astronomy.hpp timers.hpp ntp.hpp timezone.hpp)
+    ${TIME_SHIELD_ROOT_HEADERS})
+
+file(GLOB TIME_SHIELD_ROOT_HEADER_FILES RELATIVE "${TIME_SHIELD_INCLUDE_DIR}"
+    "${TIME_SHIELD_INCLUDE_DIR}/*.hpp")
+foreach(root_header IN LISTS TIME_SHIELD_ROOT_HEADER_FILES)
+    if(NOT root_header IN_LIST TIME_SHIELD_ROOT_HEADERS)
+        message(FATAL_ERROR
+            "Unexpected root-level header: ${root_header}. Use a domain directory.")
+    endif()
+endforeach()
+list(LENGTH TIME_SHIELD_ROOT_HEADER_FILES TIME_SHIELD_ROOT_HEADER_COUNT)
+list(LENGTH TIME_SHIELD_ROOT_HEADERS TIME_SHIELD_EXPECTED_ROOT_HEADER_COUNT)
+if(NOT TIME_SHIELD_ROOT_HEADER_COUNT EQUAL TIME_SHIELD_EXPECTED_ROOT_HEADER_COUNT)
+    message(FATAL_ERROR "Root-level header inventory does not match the domain layout")
+endif()
 
 set(TIME_SHIELD_DOMAIN_DEPENDENCIES_core "")
 set(TIME_SHIELD_DOMAIN_DEPENDENCIES_conversions core)
@@ -26,8 +58,8 @@ foreach(header IN LISTS TIME_SHIELD_CANONICAL_HEADERS)
     string(REGEX MATCH "^([^/]+)/" domain_match "${relative_header}")
     set(source_domain "${CMAKE_MATCH_1}")
 
-    if(source_domain STREQUAL "detail" OR source_domain STREQUAL "ntp_client")
-        continue()
+    if(NOT source_domain IN_LIST TIME_SHIELD_DOMAINS)
+        message(FATAL_ERROR "Unknown header domain: ${source_domain}")
     endif()
     if(relative_header MATCHES "(^|/)legacy_aliases\\.hpp$")
         continue()
@@ -114,5 +146,25 @@ foreach(umbrella IN LISTS TIME_SHIELD_DOMAIN_UMBRELLAS)
         endif()
     endforeach()
 endforeach()
+
+file(STRINGS "${TIME_SHIELD_SOURCE_DIR}/include/time_shield.hpp" TIME_SHIELD_MAIN_HEADER_LINES)
+set(TIME_SHIELD_MAIN_ROOT_HEADERS_FOUND)
+foreach(line IN LISTS TIME_SHIELD_MAIN_HEADER_LINES)
+    if(line MATCHES "^[ \t]*#[ \t]*include[ \t]+[\"<]time_shield/([^>\"]+)[>\"]")
+        set(target "${CMAKE_MATCH_1}")
+        if(NOT target IN_LIST TIME_SHIELD_ROOT_HEADERS)
+            message(FATAL_ERROR
+                "Main umbrella must include root domain umbrellas only: ${line}")
+        endif()
+        list(APPEND TIME_SHIELD_MAIN_ROOT_HEADERS_FOUND "${target}")
+    endif()
+endforeach()
+list(REMOVE_DUPLICATES TIME_SHIELD_MAIN_ROOT_HEADERS_FOUND)
+list(SORT TIME_SHIELD_MAIN_ROOT_HEADERS_FOUND)
+set(TIME_SHIELD_EXPECTED_MAIN_ROOT_HEADERS ${TIME_SHIELD_ROOT_HEADERS})
+list(SORT TIME_SHIELD_EXPECTED_MAIN_ROOT_HEADERS)
+if(NOT TIME_SHIELD_MAIN_ROOT_HEADERS_FOUND STREQUAL TIME_SHIELD_EXPECTED_MAIN_ROOT_HEADERS)
+    message(FATAL_ERROR "Main umbrella does not include exactly the expected domain umbrellas")
+endif()
 
 message(STATUS "Header include policy passed")

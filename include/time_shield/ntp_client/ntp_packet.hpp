@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_NTP_CLIENT_NTP_PACKET_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_NTP_CLIENT_NTP_PACKET_HPP_INCLUDED
-
-#include <time_shield/ntp/detail/ntp_packet.hpp>
-
-#endif // TIME_SHIELD_HEADER_NTP_CLIENT_NTP_PACKET_HPP_INCLUDED

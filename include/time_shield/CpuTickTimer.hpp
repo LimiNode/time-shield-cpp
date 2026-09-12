@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_CPUTICKTIMER_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_CPUTICKTIMER_HPP_INCLUDED
-
-#include <time_shield/timers/CpuTickTimer.hpp>
-
-#endif // TIME_SHIELD_HEADER_CPUTICKTIMER_HPP_INCLUDED

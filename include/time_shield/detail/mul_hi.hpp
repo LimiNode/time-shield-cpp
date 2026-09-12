@@ -1,8 +1,0 @@
-// SPDX-License-Identifier: MIT
-#pragma once
-#ifndef TIME_SHIELD_HEADER_DETAIL_MUL_HI_HPP_INCLUDED
-#define TIME_SHIELD_HEADER_DETAIL_MUL_HI_HPP_INCLUDED
-
-#include <time_shield/conversions/detail/mul_hi.hpp>
-
-#endif // TIME_SHIELD_HEADER_DETAIL_MUL_HI_HPP_INCLUDED
