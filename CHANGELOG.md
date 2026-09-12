@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
 - Moved confirmed legacy day-first Julian overloads and historical next-day aliases behind the same opt-in compatibility layer.
 - Corrected the default return type of `start_of_next_day_from_unix_day` to the seconds timestamp type.
 - Expanded timezone and NTP coverage and finalized recent timezone conversion support and NTP-facing documentation for consumers.
-- Organized public C++ headers into domain directories with domain umbrellas while preserving legacy root include paths through compatibility forwarders.
+- Organized public C++ headers into domain directories with domain umbrellas and removed obsolete root-level forwarding headers.
 
 ## [v1.0.5] - 2025-12-22
 - Added fast date conversion paths for timestamp-to-calendar helpers, along with unchecked timestamp math to reduce validation overhead in hot paths (legacy fallbacks remain for comparison).
